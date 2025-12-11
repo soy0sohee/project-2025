@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>입력태그 - 종류1</title>
+    <!-- label태그 : 입력태그의 이름-->
+    <!-- for속성 : 연결된 입력태그 지정 / 해당 <label>을 <input>과 연결해주는 속성 -->
+
+    <!-- input태그 : 입력태그 -->
+    <!-- id속성 : html 문서 안에서 유일한 구분자 / 해당 <input>을 <label>과 연결해주는 속성 -->
+    <!-- placeholder속성 : 힌트 문구 -->
+    <!-- vlaue속성 : 입력태그의 실제값 / sumit,button속성에서 많이 사용됨 -->
+    <!-- onclick속성 : '클릭 이벤트가 일어나면 ~ 해줘'로 해석됨 / on = 행동개시 예약어 / button속성에서 많이 사용됨 -->
+
+    <!-- type속성 종류 -->
+    <!-- submit : 제출 버튼 -->
+    <!-- button : 일반 버튼 -->
+
+    <!-- submit vs button -->
+    <!-- submit : 제출(전송) 되는 버튼 -->
+    <!-- button : 클릭만 되는 버튼 -->
+
+    <!-- input태그 안에 속성은 모두 사용이 가능하지만, 짝꿍처럼 많이 사용되는 요소들이 정해져있음 -->
+  </head>
+  <body>
+    <form action="">
+      <!-- <label>-for속성과 <input>-id속성은 함께 사용해야 <label>을 클릭했을때 <input>이 활성화 됨 -->
+      <label for="nickname">별명</label>
+      <input type="text" id="nickname" placeholder="별명입력" /> <br />
+
+      <label for="address">주소</label>
+      <input type="text" id="address" placeholder="주소입력" /> <br />
+
+      <!-- 제출버튼 -->
+      <input type="submit" value="로그인" /> <br />
+
+      <!-- 일반버튼 -->
+      <input type="button" value="회원가입" onclick="alert('버튼클릭');" />
+    </form>
+  </body>
+</html>

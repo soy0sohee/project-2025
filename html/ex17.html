@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>입력태그 - form태그</title>
+    <!-- form태그 : 로그인, 회원가입에 주로 사용 -->
+    <!-- action속성 : 서버주소 -->
+    <!-- method속성 : 서버로 전송하는 http 통신 방식 / get,post 중 선택 -->
+
+    <!-- input태그 : 사용자의 입력을 받는 필드 / span(inline) 한칸 속성을 가짐 -->
+    <!-- type속성 : 사용자 입력을 받는 필드의 종류 -->
+
+    <!-- type속성 종류 -->
+    <!-- text : 문자, 숫자, 특수문자 입력 필드(기본값) -->
+    <!-- password : 내용이 가려지는 비밀번호 필드 -->
+    <!-- file : 파일 업로드 필드 -->
+    <!-- submit : 폼 제출 버튼 -->
+    <!-- button : 일반 버튼 -->
+    <!-- image : 이미지 버튼 -->
+    <!-- checkbox : 다중선택 -->
+    <!-- radio : 단일선택 -->
+
+    <!-- 프론트엔드(웹브라우저)에서 백엔드(서버)로 정보 전송 -->
+    <!-- From태그 또는 자바스크립트 이용 -->
+  </head>
+  <body>
+    <form action="http://www.naver.com"></form>
+
+    <!-- localhost : 내PC 주소 예약어 / 자체개발인 경우 사용 -->
+    <!-- 8080 : port(포트)이름 / 프로그램 구분자 -->
+    <form action="localhost:8080" method="get">
+      아이디 : <input type="text" /> <br />
+      비밀번호 : <input type="password" /> <br />
+      파일업로드 : <input type="file" /> <br />
+      제출하기 : <input type="submit" />
+    </form>
+  </body>
+</html>

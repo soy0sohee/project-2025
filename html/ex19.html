@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>입력태그 - 체크박스와 라디오버튼</title>
+    <!-- type속성 종류 -->
+    <!-- checkbox : 다중선택 -->
+    <!-- radio : 단일선택 -->
+
+    <!-- id속성 : html 문서안에서 반드시 유일해야 함(중복x) / js,css에서 개별 요소 접근할 때 사용 -->
+    <!-- name속성 : 서버와 연결되는 이름 / 폼이 서버로 제출될 때, 같은 이름으로 데이터를 그룹화하여 전송 -->
+  </head>
+  <body>
+    <form action="">
+      <input type="checkbox" id="check1" /> <label>사과</label> <br />
+      <input type="checkbox" id="check2" /> <label>수박</label> <br />
+      <input type="checkbox" id="check3" /> <label>딸기</label> <br />
+
+      <br />
+
+      <input type="radio" id="radio0" name="adress" /> <label>선택안함</label>
+      <br />
+      <input type="radio" id="radio1" name="adress" /> <label>강원도</label>
+      <br />
+      <input type="radio" id="radio2" name="adress" /> <label>경기도</label>
+      <br />
+      <input type="radio" id="radio3" name="adress" /> <label>제주도</label>
+    </form>
+  </body>
+</html>

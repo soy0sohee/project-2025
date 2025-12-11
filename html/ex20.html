@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>입력태그 - 이미지버튼</title>
+    <!-- 이미지 사이트 : 픽사베이, flaticon -->
+
+    <!-- button태그 vs input태그-type="image" -->
+    <!-- button태그 : html.v4부터 만들어진 기능 -->
+    <!-- input태그 : 이미지타입은 무조건 이미지버튼 -->
+
+    <style>
+      .btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <input type="button" value="버튼" /> <br />
+
+      <button>버튼</button> <br />
+
+      <!-- 이미지버튼 inputx태그 방식 -->
+      <input type="image" src="play.png" /> <br />
+
+      <!-- 이미지버튼 button태그 방식 -->
+      <button class="btn">
+        <img src="play.png" alt="재생 이미지" />
+      </button>
+    </form>
+  </body>
+</html>
