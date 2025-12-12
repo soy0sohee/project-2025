@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>공간분할 - div태그, span태그</title>
+    <!-- div태그 : block속성 -->
+    <!-- span태그 : inline속성 -->
+    <!-- ----------------------  -->
+    <!-- |        DIV         |  -->
+    <!-- ----------------------  -->
+    <!-- | SPAN | SPAN | SPAN |  -->
+    <!-- ----------------------  -->
+
+    <!-- div태그와 span태그는 정보없이 다른 태그를 감싸는 태그 / 레이아웃 구조 태그 -->
+    <!-- span태그 줄바꿈 시 이전 컨텐츠 사이에 약간의 공간이 생김 -->
+
+    <style>
+      div,
+      span {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>더미문구입니다.</div>
+    <div>더미문구입니다.</div>
+    <div>더미문구입니다.</div>
+
+    <span>더미문구입니다.</span><span>더미문구입니다.</span>
+    <span>더미문구입니다.</span>
+  </body>
+</html>

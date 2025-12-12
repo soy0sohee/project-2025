@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>회원가입 폼</title>
+    <!-- 연습문제-PB -->
+    <!-- form태그로 꼭 전체 감싸줘야함 -->
+    <!-- input태그의 radio 또는 checkbox 타입속성을 사용할 때는 따라오는 문구를 label태그로 묶어 주는 것이 좋음 -->
+  </head>
+  <body>
+    <h2>회원가입 폼</h2>
+
+    <form>
+      <label for="id">이름 :</label>
+      <input type="text" id="id" placeholder="이름을 입력하세요." />
+      <br />
+
+      <label for="pw">비밀번호 :</label>
+      <input type="password" id="pw" placeholder="비밀번호를 입력하세요." />
+      <br />
+
+      <label for="mobile">핸드폰 :</label>
+      <input type="tel" id="mobile" placeholder="핸드폰번호를 입력하세요." />
+      <br />
+
+      <label for="mail">이메일 :</label>
+      <input type="email" id="mail" placeholder="이메일을 입력하세요." />
+      <br />
+
+      <label>성별</label>
+      <input type="radio" name="gender" value="gender01" id="man" checked />
+      <label for="man">남성</label>
+      <input type="radio" name="gender" value="gender02" id="woman" />
+      <label for="woman">여성</label>
+      <br />
+
+      <label>취미</label>
+      <input type="checkbox" name="hobby" id="walk" />
+      <label for="walk">걷기</label>
+      <input type="checkbox" name="hobby" id="run" />
+      <label for="run">달리기</label>
+      <input type="checkbox" name="hobby" id="bike" />
+      <label for="bike">자전거타기</label>
+      <br />
+
+      <label for="live">사는곳</label>
+      <select name="address" id="live">
+        <option value="address00" selected>해당없음</option>
+        <option value="address01">서울</option>
+        <option value="address02">경기</option>
+        <option value="address03">인천</option>
+      </select>
+      <br />
+
+      <input type="submit" value="회원가입" />
+    </form>
+  </body>
+</html>

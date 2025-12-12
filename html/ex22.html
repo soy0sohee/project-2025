@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>입력태그 - 컬러,날짜,시간선택</title>
+    <!-- input type속성 종류 -->
+    <!-- color : 컬러피커 -->
+    <!-- date : 날짜피커 -->
+    <!-- datetime-local : 날짜-시간피커 / datetime은 웹브라우저별 오류발생 -->
+    <!-- month : 달월피커 -->
+    <!-- email : 이메일 입력폼 / type="text"와 동일하나 문법체크 됨 -->
+    <!-- number : 숫자 입력폼 -->
+    <!-- range : 바(bar) -->
+
+    <!-- value속성 : 선택(입력)된 값 -->
+    <!-- type="color" : 16진법으로 컬러값 표시 -->
+    <!-- type="date" : 0000-00-00으로 표시 / '-'가 호환성이 가장 좋음 -->
+    <!-- type="datetime" : 0000-00-00T00:00으로 표시 -->
+    <!-- type="month" : 0000-00으로 표시 -->
+
+    <!-- step속성 : 지정 숫자만큼 숫자 증감 -->
+    <!-- min속성 : 최소값 -->
+    <!-- max속성 : 최대값 -->
+
+    <!-- textarea태그 : 많은양의 텍스트 입력폼 / type="text"는 적은양의 텍스트 입력 -->
+    <!-- cols속성 : columns 가로줄수 -->
+    <!-- rows속성 : rows 세로줄수 -->
+    <!-- value속성이 없고, 태그 안에 값을 넣음 -->
+
+    <!-- 색상값 : R0 ~ R255(10진수), 0x00 ~ 0xff(16진수) -->
+  </head>
+  <body>
+    <input type="color" value="#ff0000" /> <br />
+    <input type="date" value="2025-01-01" /> <br />
+    <input type="datetime-local" value="2025-12-25T00:00" /> <br />
+    <input type="month" value="2025-10" /> <br />
+    <input type="email" vlaue="" placeholder="hong@gmail.com" /> <br />
+    <input type="number" value="1" step="2" min="1" max="9" /> <br />
+    <input type="range" value="50" step="10" min="0" max="100" /> <br />
+
+    <textarea
+      cols="30"
+      rows="10"
+      placeholder="300자 이내로 작성하세요."
+    ></textarea>
+  </body>
+</html>
