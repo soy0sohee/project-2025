@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>메타 태그</title>
+    <!-- 메타태그 : html문서의 정보를 담는 태그 -->
+
+    <!-- charset : 문자 인코딩 타입 / 데이터를 저장하고 처리, 전송하는 필수 개념 / 대표 인코딩 타입 - utf-8(유니코드), euc-kr(완성형한글) 등  -->
+    <!-- utf-8 : 전세계 표준 / euc-kr : 대한민국 표준(2350자) -->
+    <meta charset="utf-8" />
+
+    <!-- viewport : 모바일 해상도 대응 -->
+    <!-- device-width : 웹페이지의 너비가 모바일기기 너비와 동일하게 -->
+    <!-- initial-scale : 확대 비율 / 1.0=1:1(정비율), 2.0=1:2(2배 확대), 0.5=1:0.5(50% 축소) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 5초에 한번씩 자동 새로고침 -->
+    <!-- <meta http-equiv="refresh" content="5" /> -->
+
+    <!-- 5초후에 네이버 사이트로 이동 -->
+    <!-- <meta http-equiv="refresh" content="5; url=http://www.naver.com" /> -->
+
+    <!-- :: 기타 부가적 기능 :: -->
+    <!-- X-UA-Conpatible : 익스플로러 브라우저의 최신버전 대응 / X=호환을 뜻, UA=유저에이전트, Conpatible=호환가능 -->
+    <!-- ie=edge : 익스플로러 브라우저가 없으면 엣지 브라우저로 대치 / ie=인터넷 익스플로러 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- content-type : 콘텐츠 형식을 웹 브라우저에게 알려줌 -->
+    <!-- text/html : text 기반의 html 콘텐츠 / html = xml을 착안한 문서 -->
+    <!-- text/xml : text 기반의 xml 콘텐츠 / xml = 태그 기반으로 된 정보 문서 -->
+    <!-- application/json : Key-Value형식의 문자열 콘텐츠 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <!-- 프론트엔드           인터넷          백엔드
+        (웹브라우저)        (http통신)      (http서버)
+
+        naver.com 주소 --------요청------ > 네이버서버
+                           request(헤더)
+
+        naver.com 주소 < ------응답-------- 네이버서버
+                           response(헤더+결과물(html,xml,json,파일,스트림)) -->
+
+    <!-- 검색 결과 노출 잘도록 하는 기본 설정 -->
+    <!-- keyword : 검색 로봇에 의해 검색되는 단어(키워드) 설정 -->
+    <meta name="keyword" content="쇼핑몰, 패션, 의류, 음료수" />
+    <!-- description : 검색 로봇에 의해 검색되는 설명 문구 -->
+    <meta name="description" content="저희는 종합쇼핑몰 다사와입니다." />
+
+    <!-- noindex : 검색 로봇에 안걸리게 설정 / 페이지 오픈을 원하지 않을때 -->
+    <!-- nofollow : 검색 로봇이 하위페이지를 검색하지 않게함 / 메인 화면만 오픈 상세페이지는 접근 X -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- author : 웹페이지 개발자 -->
+    <meta name="author" content="홍길동 개발자" />
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>시맨틱 태그 - inline-block 속성</title>
+    <!-- address태그 : 주소 정보를 담는 시맨틱 태그 -->
+
+    <!-- style태그 : html 안에서 css 실행하는 태그 -->
+    <!-- body태그 : 상하좌우 기본 8픽셀 여백이 있음 / margin, padding 속성값을 0으로 셋팅 -->
+    <!-- margin : html 요소 간의 간격 / 테두리선 기준 바깥쪽 여백 -->
+    <!-- padding : 테두리선과 내용 간의 간격 / 테두리선 기준 안쪽 여백 -->
+    <!-- border : 테두리선 / 선두깨 선종류 선색상 -->
+    <!-- display : block - 한 줄 차지(줄바꿈 됨) -->
+    <!--         : inline - 한 칸 차지(줄바꿈 안됨) / 간단한 텍스트만 입력 가능 -->
+    <!--         : inline-block - inline과 동일(width, height 적용가능) -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        border: 1px solid blue;
+      }
+      header {
+        border: 1px solid skyblue;
+      }
+      nav {
+        border: 1px solid green;
+      }
+      main {
+        border: 1px solid red;
+      }
+      aside {
+        display: inline-block;
+        /* width : 부모가 가지는 넓이를 기준으로 함 */
+        width: 28%;
+        border: 1px dashed green;
+      }
+      section {
+        display: inline-block;
+        width: 70%;
+        border: 1px dashed orangered;
+      }
+      footer {
+        border: 1px solid skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>header area</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#">menu1</a></li>
+        <li><a href="#">menu2</a></li>
+        <li><a href="#">menu3</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <aside>
+        <ul>
+          <li><a href="#">side menu1</a></li>
+          <li><a href="#">side menu2</a></li>
+          <li><a href="#">side menu3</a></li>
+        </ul>
+      </aside>
+
+      <section>
+        <article>
+          <h3>title1</h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+            magnam rerum minima, perspiciatis a dignissimos quae totam,
+            reiciendis ratione alias non reprehenderit odio voluptate. Tenetur
+            alias corporis maiores vitae ratione?
+          </p>
+        </article>
+        <article>
+          <h3>title2</h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+            magnam rerum minima, perspiciatis a dignissimos quae totam,
+            reiciendis ratione alias non reprehenderit odio voluptate. Tenetur
+            alias corporis maiores vitae ratione?
+          </p>
+        </article>
+        <article>
+          <h3>title3</h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+            magnam rerum minima, perspiciatis a dignissimos quae totam,
+            reiciendis ratione alias non reprehenderit odio voluptate. Tenetur
+            alias corporis maiores vitae ratione?
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <address>address 123-1</address>
+    </footer>
+  </body>
+</html>

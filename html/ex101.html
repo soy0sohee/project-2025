@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="5; http://www.w3schools.com" /> -->
+    <title>문서제목입니다.</title>
+
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>H1태그입니다.</h1>
+    <hr />
+
+    <p>
+      줄바꿈태그 br를 사용합니다. <br />
+      줄바꿈태그 br를 사용합니다.
+    </p>
+    <hr />
+
+    <p>
+      문단태그를 사용하여 여줄의 글을 표현할 수 있다. 문단태그를 사용하여 여줄의
+      글을 표현할 수 있다. 문단태그를 사용하여 여줄의 글을 표현할 수 있다.
+    </p>
+    <p>
+      문단태그를 사용하여 여줄의 글을 표현할 수 있다. 문단태그를 사용하여 여줄의
+      글을 표현할 수 있다. 문단태그를 사용하여 여줄의 글을 표현할 수 있다.
+    </p>
+    <hr />
+
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident iste
+      omnis alias nam! Eligendi alias libero quia voluptate voluptates officiis
+      expedita quo deleniti iure sint eius consequatur assumenda, delectus in.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident iste
+      omnis alias nam! Eligendi alias libero quia voluptate voluptates officiis
+      expedita quo deleniti iure sint eius consequatur assumenda, delectus in.
+    </p>
+    <hr />
+
+    <a href="http://www.w3schools.com">link to w3schools</a>
+    <hr />
+
+    <a href="#" download="ex20_07.html">ex.20_07.html 파일다운로드</a>
+    <hr />
+
+    <h3>해야 할 일</h3>
+    <ul>
+      <li>장보기</li>
+      <li>전등 교체하기</li>
+      <li>커피믹스 사기</li>
+      <li>
+        이사준비
+        <ul>
+          <li>짐정리</li>
+          <li>이사업체 선정</li>
+          <li>이삿날 날씨보기</li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+
+    <table width="300">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>80</td>
+      </tr>
+    </table>
+    <hr />
+
+    <table width="300">
+      <tr>
+        <th>Name:</th>
+        <td>Bill Gates</td>
+      </tr>
+      <tr>
+        <th>Telephone:</th>
+        <td>555 77 854</td>
+      </tr>
+      <tr>
+        <th>Telephone:</th>
+        <td>555 77 855</td>
+      </tr>
+    </table>
+    <hr />
+
+    <img
+      src="https://www.w3schools.com/html/img_girl.jpg"
+      alt="img_girl 이미지"
+      width="500"
+      height="600"
+    />
+    <hr />
+
+    <a href="https://www.w3schools.com">
+      <img
+        src="https://www.w3schools.com/images/w3schools_green.jpg"
+        alt="W3school 바로가기"
+      />
+    </a>
+    <hr />
+
+    <form>
+      <h3>레스토랑 예약하기</h3>
+
+      <fieldset>
+        <legend>예약자 정보</legend>
+
+        <label for="name">예약자:</label>
+        <input type="text" id="name" name="name" />
+        <br />
+        <label for="tel">연락처:</label>
+        <input type="tel" id="tel" name="tel" placeholder="000-0000-0000" />
+        <br />
+
+        <label for="num">예약인원:</label>
+        <select name="num" id="num">
+          <option value="num2">2인</option>
+          <option value="num3">3인</option>
+          <option value="num4">4인</option>
+          <option value="num5">5인 이상</option>
+        </select>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>일자 선택 및 시간 선택</legend>
+
+        <input type="date" name="date" />
+        <input type="time" name="time" />
+      </fieldset>
+      <br />
+
+      <input type="submit" value="예약" />
+      <input type="button" value="취소" />
+    </form>
+    <br />
+    <hr />
+
+    <form>
+      <h3>설문조사</h3>
+
+      <fieldset>
+        <legend>성별과 나이를 입력하세요.</legend>
+
+        <label>성별</label>
+        <input type="radio" name="gender" id="male" />
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="female" />
+        <label for="female">여성</label>
+        <br />
+
+        <label for="age">나이:</label>
+        <input type="number" name="age" id="age" />
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>관심 분야를 선택하세요.</legend>
+
+        <input type="checkbox" id="interest01" name="interest" />
+        <label for="interest01">디지털 콘텐츠</label>
+        <input type="checkbox" id="interest02" name="interest" />
+        <label for="interest02">웹 프로그래밍</label>
+        <input type="checkbox" id="interest03" name="interest" />
+        <label for="interest03">데이터 베이스</label>
+        <input type="checkbox" id="interest04" name="interest" />
+        <label for="interest04">전자출판</label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>다음 문항에 대해 5점 척도로 답하세요.</legend>
+
+        <label>본 세미나의 주제는 만족스러운가?</label>
+        1<input type="range" min="1" max="5" name="seti01" value="3" />5
+        <br />
+        <label>본 세미나의 초청 강사는 만족스러운가?</label>
+        1<input type="range" min="1" max="5" name="seti02" value="3" />5
+        <br />
+        <label>본 세미나의 강의 시간은 적당한가?</label>
+        1<input type="range" min="1" max="5" name="seti03" value="3" />5
+      </fieldset>
+      <br />
+
+      <label>기타 의견 사항</label>
+      <br />
+      <textarea
+        name="etc"
+        cols="30"
+        rows="6"
+        placeholder="의견을 적으세요."
+      ></textarea>
+      <br />
+
+      <input type="submit" value="확인" />
+      <input type="button" value="취소" />
+    </form>
+    <hr />
+
+    <!-- 통신함 -->
+    <input type="submit" value="예약" />
+    <!-- 통신안함  -->
+    <input type="button" value="취소" />
+    <!-- 통신함 -->
+    <button>예약</button>
+    <button type="submit">예약</button>
+    <!-- 통신안함 -->
+    <button type="button">취소</button>
+    <hr />
+
+    <!-- 단일 영상포맷 지원 -->
+    <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+    <!-- 다중 영상포맷 지원 -->
+    <video controls>
+      <source
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        type="video/mp4"
+      />
+      <source
+        src="https://www.w3schools.com/html/mov_bbb.ogg"
+        type="video/ogg"
+      />
+      브라우저가 mp4와 ogg를 지원하지 않습니다.
+    </video>
+    <hr />
+
+    <!-- 단일 오디오포맷 지원 -->
+    <audio src="https://www.w3schools.com/html/horse.mp3" controls></audio>
+    <!-- 다중 오디오포맷 지원 -->
+    <audio controls>
+      <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg" />
+      <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mp3" />
+      브라우저가 mp3와 ogg를 지원하지 않습니다.
+    </audio>
+    <hr />
+
+    <iframe src="https://www.youtube.com/embed/4mYN9dEr3jo"></iframe>
+    <hr />
+
+    <p>
+      block타입 : div, h1~h6, p, ol,li, table, text속성태그, ul, hr, form
+      <br />
+      inline타입 : span, a, img, input, select, video, audio, iframe
+    </p>
+    <hr />
+
+    <p>
+      header태그 : 로고 및 검색 등 머릿말 영역 / 웹페이지의 최상단 영역
+      <br />
+      nav태그 : 메인 메뉴 영역 / 웹페이지의 네비게이션 길안내 영역
+      <br />
+      section태그 : main 영역 내 그룹별 영역 / 웹페이지의 주된 콘텐츠 영역
+      <br />
+      aside태그 : main 영역 내 사이드 메뉴 영역 / 부가적인 콘텐츠를 담는 영역
+      <br />
+      footer태그 : 회사 소개 및 주소 등 바닥글 영역 / 웹페이지의 맨아래 영역
+    </p>
+    <hr />
+
+    <p>meta http-equiv="refresh" content="5; http://www.w3schools.com"</p>
+  </body>
+</html>
