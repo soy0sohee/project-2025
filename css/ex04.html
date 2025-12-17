@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - id선택자, class선택자</title>
+    <!-- id : html 문서 안에 유일한 태그로 지정(개인 / 주민번호, 학번) -->
+    <!-- class : html 문서 안에 여러개 묶어서 하나의 태그로 지정 (그룹 / 1학년, 2학년) -->
+
+    <!-- css 적용 방법 -->
+    <!-- id = # / class = . -->
+    <style>
+      #header1 {
+        color: red;
+      }
+      .tag1 {
+        background-color: orange;
+      }
+      /* 연습문제 */
+      /* id="header2"를 가진 태그의 글자색을 blue로 하시오 */
+      #header2 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="header1">제목태그 H1</h1>
+    <h1 id="header2">제목태그 H1</h1>
+    <p class="tag1">문단태그 p</p>
+    <a class="tag1" href="#">앵커태그 a</a>
+  </body>
+</html>

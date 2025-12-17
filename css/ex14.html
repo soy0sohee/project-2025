@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - n번째 선택자</title>
+    <style>
+      /* 첫번째 li만 선택 */
+      li:nth-child(1) {
+        color: red;
+      }
+      /* 두번째 li만 선택 */
+      li:nth-child(2) {
+        color: blue;
+      }
+      /* 첫번째와 마지막 li만 선택 */
+      li:first-child,
+      li:last-child {
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>동위레벨 1</li>
+      <li>동위레벨 2</li>
+      <li>동위레벨 3</li>
+      <li>동위레벨 4</li>
+      <li>동위레벨 5</li>
+    </ul>
+  </body>
+</html>

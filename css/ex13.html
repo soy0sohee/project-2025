@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - 상태선택자</title>
+    <!-- 상태 : 활성화, 비활성화, 포커스, 체크됨, 선택됨 등 -->
+    <!-- 활성화 : 기본입력폼 / enabled -->
+    <!-- 비활성화 : 입력불가상태 / disabled -->
+    <!-- 포커스 : 입력대기상태 / focus -->
+    <!-- 체크됨 : checked(체크박스) -->
+    <!-- 선택됨 : selected(선택박스, 라디오버튼) -->
+    <style>
+      /* 활성화 상태 */
+      input:enabled {
+        background-color: red;
+      }
+      /* 비활성화 상태 */
+      input:disabled {
+        background-color: darkcyan;
+      }
+      /* 포커스 상태 */
+      input:focus {
+        background-color: purple;
+      }
+      /* 체크됨 */
+      input:checked {
+        outline: 4px solid red;
+      }
+      /* 선택됨 */
+      option:checked {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>활성화 상태</h1>
+    <input type="text" />
+    <h1>비활성화 상태</h1>
+    <input type="text" disabled />
+    <h1>체크박스</h1>
+    <input type="checkbox" checked />
+    <h1>선택박스</h1>
+    <select>
+      <option>사과</option>
+      <option selected>감귤</option>
+    </select>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 적용 방법 3가지</title>
+    <!-- 방법1 : head태그 안에 style태그로 적용 / 기본 -->
+    <!-- 방법2 : 인라인 스타일, 태그 안에 style 속성으로 적용 / 인스턴트(임시용), 유지보수가 어려움 -->
+    <!-- 방법3 : .css 확장자 파일로 추가(임포트) / 대용량 -->
+
+    <!-- style태그 : html의 스타일 정보 -->
+    <!-- h1 : h1태그 선택 -->
+    <!-- {} : css속성을 넣는 블럭(영역) -->
+    <!-- color : css속성(글자색-전경색) -->
+    <!-- :(콜론) : css속성과 css속성값의 구분자 -->
+    <!-- ;(세미콜론) : css속성 마침표 -->
+    <style>
+      h1 {
+        color: red;
+      }
+    </style>
+
+    <!-- link태그 : 외부파일(css,js)을 임포트 할 때 -->
+    <!-- rel : 외부파일 형식 -->
+    <!-- href : 외부파일 이름 -->
+    <link rel="stylesheet" href="ex02.css" />
+  </head>
+  <body>
+    <h1>제목태그 h1입니다.</h1>
+    <h2 style="color: blue">제목태그 h2입니다.</h2>
+    <h3>제목태그 h3입니다.</h3>
+  </body>
+</html>

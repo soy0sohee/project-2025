@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - n변수 선택자</title>
+    <!-- :nth-cild(n) -->
+    <style>
+      li {
+        color: red;
+      }
+      /* n : 0 ~ n까지의 정수 */
+      li:nth-child(n) {
+        background-color: yellow;
+      }
+      /* 2n : 2의 배수, 짝수 */
+      li:nth-child(2n) {
+        color: blue;
+      }
+      /* even : 짝수 */
+      li:nth-child(even) {
+        background-color: lightblue;
+      }
+      /* 2n+1 : 2의 배수 + 1, 홀수 */
+      li:nth-child(2n + 1) {
+        background-color: lightpink;
+      }
+      /* odd : 홀수 */
+      li:nth-child(odd) {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>아이템1</li>
+      <li>아이템2</li>
+      <li>아이템3</li>
+      <li>아이템4</li>
+      <li>아이템5</li>
+      <li>아이템6</li>
+      <li>아이템7</li>
+    </ul>
+  </body>
+</html>

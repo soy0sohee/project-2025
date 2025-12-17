@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <!-- 1. 아이템1에 마우스 hover시 글자색 red로 -->
+    <!-- 2. 아이템2에 마우스 click시 글자색 blue로 -->
+    <!-- 3. 입력1에 포커스가 되면 배경색을 green으로 -->
+    <!-- 4. nth-child를 이용하여, 아이템1의 색상을 brown로 -->
+    <!-- 5. 짝수번째 아이템의 배경색을 aqua로 -->
+    <style>
+      li:first-child:hover {
+        color: red;
+      }
+
+      li:nth-child(2):active {
+        color: blue;
+      }
+
+      /* 5번째 li 바로 뒤에 나오는 input 선택 */
+      /* li:nth-child(5) + input:focus { } */
+
+      /* 전체 자식기준 6번째 있는 input 선택 */
+      /* input:nth-child(6):focus { } */
+
+      /* li 요소 바로 뒤에 오는 input 선택 */
+      li + input:focus {
+        background-color: green;
+      }
+
+      li:nth-child(1) {
+        color: brown;
+      }
+
+      /* 2배수 li 선택 */
+      /* li:nth-child(2n) { } */
+
+      /* 짝수 li 선택 */
+      /* li:nth-child(evens) { } */
+
+      /* 2번째, 4번째 나오는 li선택 */
+      li:nth-child(2),
+      li:nth-child(4) {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>아이템1</li>
+      <li>아이템2</li>
+      <li>아이템3</li>
+      <li>아이템4</li>
+      <li>아이템5</li>
+      <input type="text" value="입력1" />
+      <br />
+      <input type="text" value="입력2" />
+      <br />
+      <input type="text" value="입력3" />
+    </ul>
+  </body>
+</html>

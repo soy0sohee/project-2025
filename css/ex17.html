@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - 상속관계에서 n번째 선택자</title>
+    <!-- :nth-of-type(n) -->
+    <style>
+      /* 상속관계에서 n번째 선택 */
+      p:nth-of-type(1) {
+        color: red;
+      }
+      p:first-of-type {
+        background-color: lightblue;
+      }
+      p:last-of-type {
+        background-color: lightgreen;
+      }
+
+      /* 부모와 자식의 이름이 동일할 때에는 부모를 먼저 지정해주고 자식을 찾아감 */
+      div > div:first-of-type {
+        color: blue;
+      }
+
+      /* 형제 요소 중에 다른 타입의 태그 요소도 선택은 되지만 권장하는 방식은 아님 */
+      p:nth-child(5) {
+        background-color: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>div 아이템</div>
+      <div>div 아이템</div>
+      <div>div 아이템</div>
+      <p>p 아이템</p>
+      <p>p 아이템</p>
+      <p>p 아이템</p>
+    </div>
+  </body>
+</html>

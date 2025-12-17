@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - 후손선택자, 직계(첫째)선택자</title>
+    <!-- 상속관계 : 태그 안에 태그가 들어가는 경우 -->
+    <!-- 후손 : 상속관계에서 아래의 모든 태그 -->
+    <!-- 직계 : 후손태그 중 첫 태그 -->
+    <style>
+      /* 후손선택자 : 공백 문자 사용 */
+      #header h1 {
+        color: red;
+      }
+      /* 직계선택자 : > 닫는 꺽쇠 문자 사용 */
+      #header > h1 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>제목태그 1</h1>
+      <h1>제목태그 1</h1>
+      <h1>제목태그 1</h1>
+      <div>
+        <h1>제목태그 2</h1>
+      </div>
+    </div>
+    <div id="section">
+      <h1>제목태그 1</h1>
+      <div>
+        <h1>제목태그 2</h1>
+      </div>
+    </div>
+  </body>
+</html>
