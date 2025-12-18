@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - text-align</title>
+    <!-- text-align : 가로방향 정렬 / left center right -->
+    <style>
+      * {
+        border: 1px solid red;
+      }
+      #box1 {
+        height: 100px;
+      }
+      h3 {
+        border: 1px solid blue;
+
+        /* 한줄 텍스트의 경우 : line-height */
+        /* 여러줄 텍스트의 경우 : flexbox */
+        margin-top: 35px;
+
+        /* hn 태그 요소는 block타입 */
+        /* hn 안에 있는 inline 콘텐츠를 가운데 정렬 */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <h3>가운데 정렬</h3>
+    </div>
+  </body>
+</html>
