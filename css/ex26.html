@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - 테두리선 속성</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+
+        /* 축약 표현 : 굵기 타입 색상 */
+        border: 10px solid red;
+
+        /* 굵기 */
+        border-width: 20px;
+
+        /* 타입 : solid-실선, dashed-줄선, dotted-점선 */
+        border-style: dashed;
+        border-style: dotted;
+        border-style: solid;
+
+        /* 색상 */
+        border-color: green;
+
+        /* 모서리 둥글게 */
+        /* LT,RT,LB,RB 값 1개로 공통 지정 */
+        border-radius: 20px;
+        /* LT,RB / RT,LB 값 2개로 부분 지정 */
+        border-radius: 30px 60px;
+        /* LT / RT / RB / LB 시계방향 값 4개로 낱개 지정 */
+        border-radius: 10px 20px 30px 40px;
+        /* 값 하나로 부분 지정 */
+        border-top-left-radius: 48px;
+        border-top-right-radius: 48px;
+        border-bottom-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

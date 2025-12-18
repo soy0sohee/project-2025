@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자 - 부정선택자</title>
+    <style>
+      /* 속성선택자 */
+      input[type="password"] {
+        background-color: lightblue;
+      }
+      /* not선택자 : 해당 속성이 아닌 것들을 선택 */
+      /* :not( [속성선택] ) */
+      input:not([type="password"]) {
+        background-color: lightcyan;
+      }
+      /* not선택자 : 해당 태그가 아닌 것들을 선택 */
+      /* :not( 태그명 ) */
+      body :not(h1) {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" /> <br />
+    <input type="password" /> <br />
+    <input type="text" /> <br />
+    <input type="password" /> <br />
+    <h1>제목태그 h1</h1>
+    <p>문단태그 p</p>
+  </body>
+</html>

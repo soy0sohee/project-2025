@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 : 색상(color)</title>
+    <!-- 색상 선언 3가지 방법 -->
+    <!-- 1. 140개 예약어 : red, blue, ... / https://www.w3schools.com/colors/colors_names.asp -->
+    <!-- 2. 16진수 표현 : #000000 -->
+    <!-- 3. rgb() or rgba() 함수 사용 / a = 투명도(alpah) -->
+    <style>
+      /* color : 예약어 */
+      h1 {
+        color: blueviolet;
+      }
+      /* color : #000000 */
+      /* 빛의 3원색 : red + green + blue */
+      /* 16진수 : 0~9(10) + a~f(6) / 16이 되면 자릿수 증가 */
+      /* red : 0~255 #00~#ff */
+      /* green : 0~255 #00~#ff */
+      /* blue : 0~255 #00~#ff */
+      /* 16진수 표현 : #RRGGBB */
+      h2 {
+        background-color: #ae12a8;
+      }
+      /* color : rgb(000,000,000) */
+      /* 10진수 : 0~9(10) / 10이 되면 자릿수 증가 */
+      h3 {
+        color: rgb(255, 221, 0);
+      }
+      /* color : rgba(000,000,000,0.0) */
+      /* a(alpha) : 0.0(투명)~1.0(불투명) */
+      h4 {
+        color: rgba(0, 255, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- h$*6 : h1~h6 태그 생성 -->
+    <!-- h${제목태그 h$}*6 : 제목태그 h1~h6 문구 삽입 -->
+    <!-- $ : 증감 -->
+    <h1>제목태그 h1</h1>
+    <h2>제목태그 h2</h2>
+    <h3>제목태그 h3</h3>
+    <h4>제목태그 h4</h4>
+    <h5>제목태그 h5</h5>
+    <h6>제목태그 h6</h6>
+  </body>
+</html>

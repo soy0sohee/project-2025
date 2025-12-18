@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - div 이미지 삽입</title>
+    <style>
+      div {
+        border: 8px solid red;
+        width: 1600px;
+        height: 1600px;
+        background-image: url("cat.png");
+        background-repeat: no-repeat;
+
+        /* 이미지의 위치 설정 : X값 Y값 */
+        /* background-position: 100px 100px; */
+        /* 가로 : left center right / 세로 : top center bottom */
+        /* background-position: center center; */
+        /* 가로, 세로 : 0% 50% 100% (left-center-right의 백분률) */
+        background-position: 0% 0%;
+
+        /* contain : 이미지의 width, height 중 큰 값을 캔버스에 맞춤 / 공백이 생김 */
+        /* cover : 이미지의 width, heihgt 중 좁은 값을 캔버스에 맞춤 / 이미지 잘림 */
+        background-image: url("bg1.png");
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - 배경이미지</title>
+    <!-- background-image : url("-") - 이미지 불러오기 -->
+    <!-- background-repeat : no-repeat - 반복 제거 -->
+    <!-- background-size : cover - 영역을 화면 해상도에 맞춤 / 이미지 해상도 유지 but 이미지가 잘림 -->
+    <!--                 : contain - 영역을 컨텐츠 영역에 맞춤 / 이미지 영역 유지 but 여백이 생김 -->
+    <style>
+      body {
+        background-image: url("bg.png");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+      }
+      /* 속성 축약 버전 / 단점! 속성이 하나라도 빠지면 적용이 안됨 */
+      /* background : image repeat position size - 순서로 작성되어야 함 */
+      body {
+        background: url("bg.png") no-repeat center top / cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- div > p{문단태그} * 5 -->
+    <div>
+      <p>문단태그</p>
+      <p>문단태그</p>
+      <p>문단태그</p>
+      <p>문단태그</p>
+      <p>문단태그</p>
+    </div>
+  </body>
+</html>

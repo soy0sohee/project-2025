@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - 크기 단위</title>
+    <!-- 크기 단위 : px-픽셀, em-배수, %-백분율 -->
+    <!-- 0은 단위 문자를 붙이지 않음 / 0, 1px, 1em, 1%, ... -->
+    <!-- 기본문자크기 : 16px(가로x세로 점의 갯수) -->
+    <style>
+      /* font-size : 글자크기 - px */
+      p:nth-of-type(1) {
+      }
+      p:nth-of-type(2) {
+        font-size: 8px;
+      }
+      p:nth-of-type(3) {
+        font-size: 16px;
+      }
+      p:nth-of-type(4) {
+        font-size: 24px;
+      }
+      p:nth-of-type(5) {
+        font-size: 32px;
+      }
+
+      /* font-size : 글자크기 - em */
+      p:nth-of-type(1) {
+      }
+      /* 16px * 1 = 1em(16px) */
+      p:nth-of-type(2) {
+        font-size: 1em;
+      }
+      /* 16px * 2 = 2em(32px) */
+      p:nth-of-type(3) {
+        font-size: 2em;
+      }
+      /* 16px * 1.5 = 1.5em(24px) */
+      p:nth-of-type(4) {
+        font-size: 1.5em;
+      }
+      /* 16px * 1.25 = 1.25em(20px) */
+      p:nth-of-type(5) {
+        font-size: 1.25em;
+      }
+
+      /* font-size : 글자크기 - % */
+      p:nth-of-type(1) {
+      }
+      /* 16px * 1 = 100%(16px) */
+      p:nth-of-type(2) {
+        font-size: 100%;
+      }
+      /* 16px * 1.5 = 150%(24px) */
+      p:nth-of-type(3) {
+        font-size: 150%;
+      }
+      /* 16px * 2 = 200%(32px) */
+      p:nth-of-type(4) {
+        font-size: 200%;
+      }
+      /* 16px * 3 = 300%(48px) */
+      p:nth-of-type(5) {
+        font-size: 300%;
+      }
+    </style>
+  </head>
+  <body>
+    <p>문단태그 p입니다.</p>
+    <p>문단태그 p입니다.</p>
+    <p>문단태그 p입니다.</p>
+    <p>문단태그 p입니다.</p>
+    <p>문단태그 p입니다.</p>
+
+    <h1>제목태그 h입니다.</h1>
+  </body>
+</html>

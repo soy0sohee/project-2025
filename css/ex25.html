@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - box model 배치</title>
+    <!-- 박스모델 : 모든 레이아웃은 사각형으로 이루어짐 -->
+    <!-- 4가지의 공간 -->
+    <!-- margin(마진) : 요소들 간의 간격 -->
+    <!-- border(테두리선) : 테두리선 -->
+    <!-- padding(여백) : 테두리선과 내용 간의 간격 -->
+    <!-- content(내용) : 내용물 크기 -->
+    <style>
+      body {
+        /* body 태그의 기본 마진은 8px, 패딩은 0px */
+        margin: 0;
+        padding: 0;
+        border: 10px solid blue;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        border: 10px solid black;
+        margin: 10px;
+        padding: 10px;
+      }
+      span {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>내용물1</span>
+    </div>
+    <div>
+      <span>내용물2</span>
+    </div>
+  </body>
+</html>

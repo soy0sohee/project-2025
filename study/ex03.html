@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>테이블 연습</title>
+
+    <style>
+      body *:not(caption) {
+        border: 1px solid black;
+      }
+      col {
+        width: 140px;
+      }
+      tr th {
+        background-color: lightblue;
+      }
+      tbody td:first-of-type {
+        text-align: center;
+      }
+      tbody td:nth-of-type(2),
+      tbody td:nth-of-type(3) {
+        text-align: right;
+      }
+      tfoot td {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <table>
@@ -41,20 +63,23 @@
           <td></td>
           <td>30,000</td>
         </tr>
-        <tr>
+      </tbody>
+
+      <tfoot>
+        <tr class="total">
           <th rowspan="3">총계</th>
           <td>수입</td>
           <td>지출</td>
         </tr>
-        <tr>
+        <tr class="total">
           <td>1,000,000</td>
           <td>35,000</td>
         </tr>
-        <tr>
+        <tr class="total">
           <td>남은돈</td>
           <td>965,000</td>
         </tr>
-      </tbody>
+      </tfoot>
     </table>
   </body>
 </html>
