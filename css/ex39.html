@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - 이미지 위 텍스트02</title>
+    <!-- div 배경 이미지 위에 글자 배치하기 -->
+    <!-- position: absolute; -->
+    <!-- background-color: transparent; -->
+
+    <style>
+      div {
+        height: 400px;
+        background: url("cosmos.jpg") no-repeat left top / contain;
+        position: relative;
+      }
+      h2 {
+        font-size: 32px;
+        position: absolute;
+        left: 160px;
+        top: 140px;
+        color: aqua;
+      }
+    </style>
+
+    <style>
+      div {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Div배경 이미지 위에 글자배치</h1>
+    <div>
+      <h2>코스모스 가을향기</h2>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - box-sizing</title>
+    <!-- width, height의 기준 설정 -->
+    <!-- content-box : 콘텐츠의 너비, 높이 값으로 지정(기본값) -->
+    <!-- 패딩값과 테두리선 두께까지 고려하여 너비, 높이값을 지정해야되므로, 계산이 복잡함 -->
+    <!-- border-box : 콘텐츠 + 패딩 + 테두리선를 너비, 높이 값으로 지정 -->
+
+    <!-- *---------b---------*     *---------b---------* -->
+    <!-- |                   |     |                   |-->
+    <!-- |   *-----------*   |     |   *-----------*   | -->
+    <!-- | p |     c     |   |  m  | p |     c     |   | -->
+    <!-- |   *-----------*   |     |   *-----------*   | -->
+    <!-- |                   |     |                   | -->
+    <!-- *-------------------*     *-------------------* -->
+
+    <!-- overflow : 내용물이 넘치면, 안보이게 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        border: 10px solid black;
+        overflow: hidden;
+        margin: 10px;
+        padding: 10px;
+      }
+
+      /* box-sizing 기본값 */
+      /* content 사이즈가 width:100px; height:100px;임 */
+      /* div 사이즈 : width:140; height:140px; / cont:100px + padding:10px,10px + border:10px,10px */
+      div:nth-of-type(1) {
+        box-sizing: content-box;
+        background-color: skyblue;
+      }
+
+      /* width, height = div의 width, height */
+      /* div 사이즈 : width:100px; height:100px; */
+      div:nth-of-type(2) {
+        box-sizing: border-box;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>content-box</h2>
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+      blanditiis ipsum doloremque molestias voluptatum repellendus quam quisquam
+      tenetur! Aliquid facere reiciendis omnis nostrum error iure numquam
+      corporis id aut est?
+    </div>
+
+    <h2>border-box</h2>
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+      voluptatibus vel alias consequuntur? Sunt qui magni eveniet ea dolore. Eos
+      itaque nesciunt sunt nemo saepe at minima ab atque! Debitis.
+    </div>
+  </body>
+</html>

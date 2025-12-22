@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - 이미지 위 텍스트01</title>
+    <!-- img태그 위에 글자 배치하기 -->
+    <!-- position: absolute; -->
+    <!-- background-color: transparent; -->
+
+    <style>
+      div {
+        position: relative;
+      }
+      img {
+        width: 600px;
+        border: 2px solid red;
+      }
+      h2 {
+        font-size: 32px;
+        color: aqua;
+        position: absolute;
+        top: 150px;
+        left: 170px;
+      }
+    </style>
+
+    <!-- <style>
+      div {
+        position: relative;
+      }
+      img {
+        width: 500px;
+      }
+      h2 {
+        position: absolute;
+        top: 120px;
+        left: 150px;
+        color: aqua;
+      }
+    </style> -->
+  </head>
+  <body>
+    <h1>img태그 위에 글자배치</h1>
+    <div>
+      <img src="cafe.jpg" alt="카페" />
+      <h2>향기로운 커피향기</h2>
+    </div>
+  </body>
+</html>

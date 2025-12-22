@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - overflow</title>
+    <!-- visible : 초과 콘텐츠 그대로 노출(기본값) -->
+    <!-- hidden : 초과 콘텐츠 숨김 -->
+    <!-- scroll : 스크롤 생성 / overflow-y = 세로 스크롤만 생성 -->
+    <!-- auto : 콘텐츠 초과시에만 스크롤 생성 -->
+
+    <style>
+      .box {
+        width: 400px;
+        height: 100px;
+        border: 2px solid #a3a3a3;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        display: inline-block;
+      }
+
+      .visible {
+        overflow: visible;
+        background-color: lightblue;
+      }
+
+      .hidden {
+        overflow: hidden;
+        background-color: lightgreen;
+      }
+
+      .scroll {
+        /* overflow: scroll; */
+        /* overflow-y: scroll; */
+        overflow-x: scroll;
+        background-color: lightcoral;
+      }
+      .scroll .inner {
+        height: auto;
+        width: auto;
+      }
+
+      .auto {
+        overflow: auto;
+        background-color: lightsalmon;
+      }
+
+      /* scroll은 되지만 ui는 안보이도록 */
+      .test {
+        overflow: auto;
+        background-color: lightslategray;
+        /* firefox */
+        scrollbar-width: none;
+        /* IE, Edge */
+        -ms-overflow-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box visible">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus sint
+      pariatur nostrum nesciunt inventore quo corporis eius quia quas sunt,
+      sequi soluta. Qui dolores voluptas voluptate quis doloremque porro
+      perspiciatis.
+    </div>
+    <div class="box hidden">
+      Corrupti perspiciatis autem distinctio asperiores excepturi deleniti
+      assumenda sit veniam culpa cumque ab quibusdam maxime, sunt ipsa, possimus
+      quisquam mollitia sint itaque architecto, maiores nemo voluptatibus?
+      Blanditiis consectetur repellendus sit!
+    </div>
+    <div class="box scroll">
+      <div class="inner">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus sint
+        pariatur nostrum nesciunt inventore quo corporis eius quia quas sunt,
+        sequi soluta. Qui dolores voluptas voluptate quis doloremque porro
+        perspiciatis.
+      </div>
+    </div>
+    <div class="box auto">
+      Incidunt totam quaerat nostrum cumque animi. Sint distinctio iste officia,
+      recusandae dolor ipsa temporibus, consequuntur nostrum error voluptas
+      ullam quia quae exercitationem necessitatibus fugit quaerat ducimus
+      adipisci voluptate doloribus. Ducimus!
+    </div>
+
+    <div class="box test">
+      Incidunt totam quaerat nostrum cumque animi. Sint distinctio iste officia,
+      recusandae dolor ipsa temporibus, consequuntur nostrum error voluptas
+      ullam quia quae exercitationem necessitatibus fugit quaerat ducimus
+      adipisci voluptate doloribus. Ducimus!
+    </div>
+  </body>
+</html>

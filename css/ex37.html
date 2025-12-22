@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - position</title>
+    <!-- 웹페이지 만드는 과정 -->
+    <!-- 화면 레이아웃(배치) - 박스 모델 -->
+    <!-- 1. html 기본구조(html, head, body) -->
+    <!-- 2. 시맨틱태그(header, nav, main, aside, section, footer) / div태그 대체 가능 -->
+    <!-- 3. div태그에 나머지 구조 넣기 -->
+    <!-- 4. display : bolck, inline, inline-bolock 큰 구조 설정 -->
+    <!-- 5. flexbox : 배치(정렬) / text-align, vertical-algin, line-heiht : 배치(정렬) -->
+    <!-- 6. width, height : 너비 설정 -->
+    <!-- 7. overflow : hidden 내용물 정리 -->
+    <!-- 8. margin, padding : 여백 설정 -->
+    <!-- 9. img - object-fit : 이미지 배치 -->
+    <!-- 10. background-size : 이미지 배치 -->
+    <!-- 11. position : 배치 완료 후 적용해야 틀이 안무너짐 -->
+    <!-- 12. top, bottom, left, right로 위치 값 지정 / position - static 속성에서는 적용 X -->
+
+    <!-- position 속성 -->
+    <!-- static(고정) : 순차적으로 쌓이는 방식(기본값) / 남의 영역에 침범 X -->
+    <!-- relative(상대) : 상대(부모)좌표에 자식 요소가 따라감 -->
+    <!-- absolute(절대) : 부모를 기준으로 절대좌표로 원하는 좌표에 자식 요소가 위치 -->
+    <!--                : 부모가 relative, absolute, fixed인 경우에만 허용 -->
+    <!-- fixed(고정) : 뷰포트(웹 브라우저 화면) 기준 일정 위치에 고정 -->
+    <!-- sticky(고정) : 스크롤 시 특정 위치에 고정 -->
+
+    <style>
+      /* static - 기본값 */
+      #static-box {
+        position: static;
+        background-color: aqua;
+      }
+
+      /* relative - margin값은 원래 내 위치를 기준으로 생김 */
+      #relative-box {
+        position: relative;
+        background-color: coral;
+        top: 10px;
+        left: 10px;
+        margin-bottom: 40px;
+      }
+
+      /* abolute */
+      #container {
+        position: relative;
+        background-color: lightgoldenrodyellow;
+        border: 2px solid black;
+        height: 50px;
+        left: 30px;
+      }
+      #absolute-box {
+        position: absolute;
+        background-color: orange;
+        top: 10px;
+        left: 20px;
+      }
+
+      /* fixed - 플로팅 버튼에 주로 사용됨 */
+      #fixed-box {
+        position: fixed;
+        background-color: green;
+        bottom: 20px;
+        right: 40px;
+      }
+
+      /* sticky - 스크롤 시 특정 위치에 고정 */
+      #sticky-box {
+        position: sticky;
+        background-color: lightpink;
+        height: 80px;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="static-box">static</div>
+    <div id="relative-box">relative</div>
+    <div id="container">
+      <div id="absolute-box">absolute</div>
+    </div>
+    <div id="fixed-box">fixed</div>
+    <div id="sticky-box">sticky (스크롤 → 상단 고정)</div>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dicta at
+      sed nihil laudantium cum sint veniam odit amet. Labore cumque ea tempore
+      perferendis distinctio dolores ipsa iusto alias modi? Laudantium, deleniti
+      facere! Architecto itaque ducimus tempore sed doloribus, voluptatem
+      nostrum sunt beatae id voluptatibus odit totam nemo quas libero expedita
+      harum aut at consectetur saepe molestiae omnis impedit. Dicta? Rerum ea
+      quos sint, vitae fuga voluptates. Iure veniam modi voluptates accusantium
+      sunt vitae tempora, aspernatur assumenda rem, ea, dignissimos quos
+      praesentium id earum. Quas nam cupiditate qui totam expedita! Et, magni.
+      Alias eveniet impedit enim iusto! Quos quia explicabo praesentium vel ad
+      sint facere voluptatum qui ipsam exercitationem, assumenda voluptates
+      consequatur sunt odio! Laboriosam reprehenderit quas perferendis obcaecati
+      beatae! Quis similique, aliquid amet minus, labore placeat nesciunt
+      reprehenderit blanditiis quibusdam totam recusandae libero modi id. Iure,
+      pariatur quae. Quia eum, eius dolore assumenda iste perspiciatis laborum
+      nisi beatae hic. Repellat iusto nulla voluptatum qui laudantium unde illo
+      eos voluptate temporibus consequuntur praesentium, eveniet aliquam, quas,
+      impedit perferendis suscipit aperiam incidunt aliquid corrupti quaerat
+      enim eius quos ab. Amet, facere? Laborum sint ipsum doloribus, ex sequi
+      voluptas perferendis facere alias id! A fuga ad perspiciatis impedit
+      dignissimos culpa at alias! Doloribus placeat dolorem in cumque aut odit
+      totam ut accusamus. Molestiae nemo illo fuga. Soluta alias dolores,
+      laboriosam officia sequi eligendi velit nesciunt consequatur, ab repellat
+      itaque similique saepe consectetur harum! Excepturi odio vero provident
+      consectetur, rem quia qui exercitationem. Debitis, quae praesentium. Culpa
+      modi perferendis nesciunt, impedit quia porro totam. Ab voluptates, quo
+      officia maxime fugit voluptatibus iure deleniti quia libero ex adipisci
+      minus dolore modi aperiam aliquam et? Neque dolorum itaque possimus
+      repellendus necessitatibus, cum iste corrupti. Doloribus consectetur
+      laborum, ratione ut eveniet facere harum perferendis quae neque animi
+      provident repellat, recusandae reprehenderit. Reprehenderit assumenda
+      possimus neque iure. Dicta veniam accusamus molestias nesciunt amet
+      quisquam ad, iure aliquid animi corporis maxime voluptas nulla incidunt
+      eos quaerat tempore? Voluptatum quasi iusto accusantium corrupti voluptas.
+      Modi nesciunt ad doloribus itaque. Excepturi eaque dicta repellat, et, eum
+      accusantium quod totam deleniti architecto quia deserunt ipsam quae
+      repellendus quisquam doloremque aspernatur blanditiis asperiores labore
+      suscipit corrupti rem ratione dolorem! Sed, accusantium cupiditate? Nobis
+      sit necessitatibus laborum quos in rerum praesentium, eligendi blanditiis
+      veniam quis tempore nisi? Nihil quas reprehenderit repudiandae deserunt
+      facere. Aut mollitia dolores itaque unde quod corporis, distinctio magnam
+      deserunt. Id sunt, error natus perspiciatis in necessitatibus neque quasi,
+      magni nobis beatae officia facere dicta similique repellat suscipit
+      voluptatibus ducimus? Fugiat doloremque tempore expedita consequatur eius
+      quae molestias iusto inventore?
+    </p>
+  </body>
+</html>
