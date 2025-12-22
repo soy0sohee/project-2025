@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - flex로 시맨틱 기반 웹구조 만들기</title>
+    <style>
+      .wrapper {
+        width: 1000px;
+        margin: 0 auto;
+        border: 2px solid #111;
+      }
+      .common {
+        color: white;
+        border: 2px solid #111;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      header {
+        height: 50px;
+        background-color: purple;
+      }
+      nav {
+        height: 50px;
+        background-color: green;
+      }
+      main {
+        height: 500px;
+        display: flex;
+      }
+      section {
+        flex: 7;
+        background-color: teal;
+      }
+      aside {
+        flex: 3;
+        background-color: orange;
+      }
+      footer {
+        height: 50px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="common">Header</header>
+      <nav class="common">Nav</nav>
+      <main>
+        <section class="common">Section</section>
+        <aside class="common">Aside</aside>
+      </main>
+      <footer class="common">Footer</footer>
+    </div>
+  </body>
+</html>

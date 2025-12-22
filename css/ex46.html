@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - flexbox 05</title>
+    <!-- align-items 속성 : 교차축을 기준으로 상하 정렬 -->
+    <!-- stretch : 높이값에 맞춰 늘어남(기본값) -->
+    <!--         : 이미지의 경우 부모 높이값에 맞춰 늘어남 -->
+    <!-- flex-start : 상단 정렬 -->
+    <!-- flex-end : 하단 정렬 -->
+    <!-- center : 중앙 정렬 -->
+    <!-- baseline : 아이템을 텍스트 베이스라인 기준으로 정렬  -->
+
+    <style>
+      .container {
+        background-color: yellow;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        width: 500px;
+        height: 250px;
+        display: flex;
+        flex-flow: row wrap;
+      }
+      .box {
+        background-color: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+
+      .opt1 {
+        align-items: stretch;
+      }
+      .opt2 {
+        align-items: flex-start;
+      }
+      .opt3 {
+        align-items: flex-end;
+      }
+      .opt4 {
+        align-items: center;
+      }
+      .opt5 {
+        align-items: baseline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container opt1">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+      <div class="box">
+        <p>4</p>
+      </div>
+    </div>
+    <div class="container opt2">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+      <div class="box">
+        <p>4</p>
+      </div>
+    </div>
+    <div class="container opt3">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+      <div class="box">
+        <p>4</p>
+      </div>
+    </div>
+    <div class="container opt4">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+      <div class="box">
+        <p>4</p>
+      </div>
+    </div>
+    <div class="container opt5">
+      <div class="box">
+        <h1>1</h1>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <h3>3</h3>
+      </div>
+      <div class="box">
+        <p>4</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - flexbox 03</title>
+    <!-- flex-flow 속성 : flex-direction과 flex-wrap을 한번에 지정하는 단축 속성 -->
+    <!-- row nowrap : L 기준, 줄바꿈 없음(기본값) -->
+
+    <style>
+      .container {
+        background-color: yellow;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        display: flex;
+        width: 40%;
+      }
+      .box {
+        background-color: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+      .opt1 {
+        flex-flow: row nowrap;
+      }
+      .opt2 {
+        flex-flow: row-reverse wrap-reverse;
+      }
+      .opt3 {
+        flex-flow: column nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container opt1">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <div class="container opt2">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <div class="container opt3">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+  </body>
+</html>
