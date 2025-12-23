@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex 연습</title>
+    <!-- 
+    줄어들고 늘어나는 출발선 : flex-basis
+    각 아이템별 늘어나는 비율 : flex-grow
+    각 아이템별 줄어드는 비율 : flex-shrink
+    -->
+    <style>
+      .container {
+        width: 80%;
+        height: auto;
+        background: yellow;
+        border: 10px solid black;
+        padding: 20px;
+
+        display: flex;
+      }
+      .container1 {
+        /* min-width: 600px; */
+      }
+      .item {
+        background: green;
+        border: 10px solid black;
+        padding: 20px;
+        margin: 10px;
+
+        flex-basis: 0;
+      }
+      .item1 {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      .item2 {
+        flex-grow: 1;
+        flex-shrink: 2;
+      }
+      .item3 {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-basis, flex-grow, flex-shrink</h1>
+    <div class="container container1">
+      <div class="item item1">
+        <h3>AAA</h3>
+      </div>
+      <div class="item item2">
+        <h3>BBBBBBBBBBBBBBBBB</h3>
+      </div>
+      <div class="item item3">
+        <h3>CCC</h3>
+      </div>
+    </div>
+  </body>
+</html>

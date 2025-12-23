@@ -3,101 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>flex 연습</title>
+    <title>연습문제 - flexbox 응용</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      a {
-        color: #121212;
-        text-decoration: none;
-      }
-      body {
-        color: #121212;
+      .font-style {
+        font-family: "Jua", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
 
       .wrapper {
         width: 1000px;
         margin: 0 auto;
       }
+      body {
+        color: #121212;
+      }
+      a {
+        color: #121212;
+        text-decoration: none;
+      }
+
       header {
-        /* background-color: red; */
-
         padding: 40px 0;
-
         display: flex;
-        box-sizing: border-box;
         justify-content: center;
-        align-items: center;
+      }
+      header h1 {
+        font-size: 44px;
+        text-align: center;
       }
       nav {
-        /* background-color: orange; */
-
-        padding: 12px 0;
-        border: 1px solid #aaa;
+        padding: 8px 0;
+        background: #ddd;
       }
       nav ul {
-        width: 440px;
+        width: 400px;
         margin: 0 auto;
-
         display: flex;
-        gap: 20px;
         justify-content: space-between;
       }
       main {
-        /* background-color: yellow; */
-
         height: 600px;
-        padding: 20px 0;
-
         display: flex;
-        gap: 20px;
-        align-items: stretch;
-        box-sizing: border-box;
+        gap: 16px;
+        padding: 20px 0;
       }
       aside {
-        /* background-color: navy; */
+        flex-basis: 0;
+        flex-grow: 2;
+        flex-shrink: 0;
 
-        flex: 2;
-        padding: 16px 20px;
-        border: 1px solid #aaa;
-
+        padding: 16px;
         display: flex;
-        flex-flow: column wrap;
+        flex-direction: column;
         gap: 12px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
       }
-      aside img {
-        width: 100%;
+      aside h3 {
+        font-size: 18px;
+        font-weight: bold;
       }
       aside ul {
         display: flex;
-        flex-flow: column wrap;
-        gap: 4px;
+        flex-direction: column;
+        gap: 2px;
+      }
+      aside img {
+        /* 
+        width: 100%;만 적용할 때 보다 
+        height: auto; display: block;을 추가했을 때
+        이미지 비율 유지에 안정적
+         */
+        width: 100%;
+        height: auto;
+        display: block;
       }
       section {
-        /* background-color: purple; */
+        flex-basis: 0;
+        flex-grow: 8;
+        flex-shrink: 0;
 
-        flex: 8;
-        padding: 16px 20px;
-        border: 1px solid #aaa;
+        padding: 16px;
       }
-      section .margin {
-        margin-bottom: 12px;
+      section h2 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      section .layout {
+        margin-bottom: 16px;
       }
       footer {
-        /* background-color: green; */
-
-        padding: 12px 0;
-        border: 1px solid #aaa;
+        padding: 8px 0;
+        background: #ddd;
       }
       footer ul {
-        width: 440px;
+        width: 400px;
         margin: 0 auto;
-
         display: flex;
-        gap: 20px;
         justify-content: space-between;
       }
     </style>
@@ -105,7 +117,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>골든리트리버 - Golden Retriever</h1>
+        <h1 class="font-style">골든리트리버 - Golden Retriever</h1>
       </header>
       <nav>
         <ul>
@@ -118,7 +130,7 @@
       <main>
         <aside>
           <h3>Golden Retriever</h3>
-          <img src="img.png" alt="이미지" />
+          <img src="dog.png" alt="이미지" />
           <ul>
             <li><a href="#">기본특성</a></li>
             <li><a href="#">단점</a></li>
@@ -127,8 +139,8 @@
           </ul>
         </aside>
         <section>
-          <h2 class="margin">Golden Retriever</h2>
-          <p class="margin">
+          <h2 class="layout">Golden Retriever</h2>
+          <p class="layout">
             개의 품종 중 하나로, 원산지는 영국의 스코틀랜드 지역이다. 비슷하게
             생긴 래브라도 리트리버가 원형이다. 이름대로 윤기가 흐르는 크림빛
             또는 금빛의 풍성한 털이 가장 큰 특징이며 은은하게 귀티가 흐르는
@@ -140,7 +152,7 @@
             '천사견'이라는 별명도 있다. 온순한 성미와 똑똑한 것으로 인해 맹인
             안내견으로도 유명하다.
           </p>
-          <p class="margin">
+          <p class="layout">
             리트리버는 원래 사냥개 중에서도 총에 맞은 새를 물어오는
             것(Retriever)을 목적으로 교배된 견종이다. 당연히 주인이 총을 쏘기
             전에 짖거나, 난리를 피우면 새가 날아서 도망갈 테니 주인이 물어오라는

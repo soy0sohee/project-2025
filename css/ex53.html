@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - flexbox 09</title>
+    <!-- 아이템이 늘어나거나 줄어들기 전의 초기 크기(메인축 기준) -->
+    <!-- flex 아이템이 레이아웃 계산을 시작할 때 가지는 기본 크기 -->
+
+    <!-- flex-basis 속성 -->
+    <!-- auto : width값 사용 / 지정값 없으면 콘텐츠의 크기만큼(기본값) -->
+    <!-- content : 콘텐츠 크기만큼 -->
+    <!-- 단위(px,em) : 지정값 / % : 비율(정비율) -->
+    <!-- 0 : 고정 크기 유지 / flex-grow와 함께 사용하며, flex-grow 비율로 분배 -->
+
+    <!-- width 보다 flex-basis 우선순위가 더 높음 -->
+    <!-- width : 컨텐츠 너비 > width = overflow 발생 -->
+    <!-- flex-basis : 컨텐츠 너비 > width = 컨텐츠가 최소값이 됨 -->
+
+    <!-- flex-basis: auto + width : width를 참고값으로 사용 -->
+    <!-- flex-basis: 200px : 200px을 시작값으로 강제 사용  -->
+
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background: yellow;
+        border: 10px solid black;
+        padding: 10px;
+        display: flex;
+      }
+      .item {
+        /* width: auto; */
+        background: green;
+        padding: 10px;
+        margin: 10px;
+        border: 10px solid black;
+
+        flex-basis: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-basis</h1>
+    <div class="container">
+      <div class="item">
+        <h3>AAA</h3>
+      </div>
+      <div class="item">
+        <h3>BBB,BBB,BBB</h3>
+      </div>
+      <div class="item">
+        <h3>CCC</h3>
+      </div>
+    </div>
+  </body>
+</html>

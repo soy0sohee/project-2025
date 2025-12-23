@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - flexbox 10</title>
+    <!-- 여백을 각 아이템들이 공유하는 것 -->
+
+    <!-- flex-grow 속성 -->
+    <!-- 0 : 고정 크기 유지(기본값) -->
+    <!-- 정수(1,2..) : 지정된 숫자 비율 -->
+
+    <!-- flex-basis:auto; : 콘텐츠 값을 포함하면서 비율 늘리기 -->
+    <!-- flex-basis:0; : 콘텐츠 값을 무시하고 비율 늘리기 -->
+
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background-color: yellow;
+        border: 10px solid black;
+        padding: 10px;
+
+        display: flex;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        margin: 10px;
+        border: 10px solid black;
+        padding: 10px;
+        background-color: rgb(136, 219, 136);
+
+        flex-basis: 200px;
+        /* flex-grow: 1; */
+      }
+      .item:nth-child(1) {
+        flex-grow: 1;
+      }
+      .item:nth-child(2) {
+        flex-grow: 2;
+      }
+      .item:nth-child(3) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-grow : 비율에 맞춰 늘리기</h1>
+    <div class="container">
+      <div class="item">
+        <h3>AAA</h3>
+      </div>
+      <div class="item">
+        <h3>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</h3>
+      </div>
+      <div class="item">
+        <h3>CCC</h3>
+      </div>
+    </div>
+  </body>
+</html>
