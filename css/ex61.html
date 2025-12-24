@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상요소</title>
+    <!-- 가상요소 : body안에 실제 태그는 없지만 웹브라우저가 실행시 자동 생성하는 요소 -->
+    <!-- before : 요소의 앞에 생성 -->
+    <!-- after : 요소의 뒤에 생성 -->
+
+    <!-- 주로 "버튼 앞 아이콘" / "장식선" / "clearfix" 등에 사용 -->
+    <style>
+      .before::before {
+        content: "before는 콘텐츠 앞에 생성.";
+        color: red;
+      }
+      .after::after {
+        content: "after은 콘텐츠 뒤에 생성.";
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="before">before 예시</p>
+    <p class="after">after 예시</p>
+    <p class="before after">before after 예시</p>
+  </body>
+</html>

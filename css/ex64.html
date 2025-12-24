@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상요소 사용예시</title>
+    <style>
+      .login-container {
+        width: 420px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .login-button {
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        border-radius: 4px;
+      }
+      .login {
+        background: #fee500;
+      }
+      .qr-login {
+        background: #ddd;
+      }
+      .line {
+        width: 100%;
+        font-size: 12px;
+        color: #999;
+        margin: 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .line::before,
+      .line::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <button type="submit" class="login-button login">로그인</button>
+      <span class="line">또는</span>
+      <button type="button" class="login-button qr-login">QR코드 로그인</button>
+    </div>
+  </body>
+</html>

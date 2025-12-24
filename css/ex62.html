@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상요소 사용예시</title>
+    <!-- 구분선 만들 때 사용 -->
+    <style>
+      li {
+        list-style: none;
+        display: inline-block;
+        padding: 10px;
+      }
+      li::after {
+        /* content: "|";
+        color: #ccc;
+        display: inline-block;
+        margin-left: 30px; */
+
+        content: "";
+        width: 1px;
+        height: 12px;
+        vertical-align: middle;
+        display: inline-block;
+        border-right: 1px solid #ccc;
+        margin-left: 30px;
+      }
+      li:last-of-type::after {
+        content: "";
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>로그인</li>
+      <li>회원가입</li>
+      <li>마이페이지</li>
+      <li>사이트맵</li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - z-index</title>
+    <!-- z-index : 쌓기 -->
+    <!-- 요소가 겹칠때 순서를 정하는 속성 -->
+    <!-- position 속성에서 사용 -->
+
+    <!-- 숫자가 클수록 위로 올라옴 -->
+
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background: yellow;
+        border: 10px solid black;
+        padding: 10px;
+
+        display: flex;
+        gap: 10px;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        background: green;
+        border: 10px solid black;
+        padding: 10px;
+      }
+      .item:nth-of-type(1) {
+        z-index: 0;
+      }
+      .item:nth-of-type(2) {
+        z-index: 2;
+        /* 변형속성 : 확대축소비율 1.5배 */
+        transform: scale(2);
+        /* 투명도 : 1 - 불투명 / 0 - 투명 */
+        opacity: 0.8;
+      }
+      .item:nth-of-type(3) {
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>z-index</h1>
+    <div class="container">
+      <div class="item">
+        <h3>AAA</h3>
+      </div>
+      <div class="item">
+        <h3>BBB</h3>
+      </div>
+      <div class="item">
+        <h3>CCC</h3>
+      </div>
+    </div>
+  </body>
+</html>

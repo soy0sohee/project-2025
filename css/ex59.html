@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 속성 - flex 12</title>
+    <!-- order : 줄서기 -->
+    <!-- 아이템 보이는 순서를 정하는 속성 -->
+    <!-- flex/grid 속성에서 사용 -->
+
+    <!-- 0 = 먼저 -->
+    <!-- 1 = 나중 -->
+    <!-- 숫자가 작은것부터 나열 -->
+
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background: yellow;
+        border: 10px solid black;
+        padding: 10px;
+
+        display: flex;
+        gap: 10px;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        background: green;
+        border: 10px solid black;
+        padding: 10px;
+      }
+      .item:nth-of-type(1) {
+        order: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex order</h1>
+    <div class="container">
+      <div class="item">
+        <h3>AAA</h3>
+      </div>
+      <div class="item">
+        <h3>BBB</h3>
+      </div>
+      <div class="item">
+        <h3>CCC</h3>
+      </div>
+    </div>
+  </body>
+</html>
