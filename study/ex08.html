@@ -4,86 +4,110 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>메가박스-헤더영역</title>
+    <link rel="stylesheet" href="ex08.css" />
   </head>
   <body>
     <header>
-      <div class="utill warp">
-        <ul class="utill-left">
+      <div class="utill wrap">
+        <ul class="utill-menu left">
           <li><a href="#">VIP LOUNGE</a></li>
           <li><a href="#">멤버십</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>
-        <ul class="utill-right">
+        <ul class="utill-menu right">
           <li><a href="#">로그인</a></li>
           <li><a href="#">회원가입</a></li>
           <li><a href="#">빠른예매</a></li>
         </ul>
       </div>
 
-      <div class="logo warp">
-        <h1>
+      <div class="wrap">
+        <h1 class="logo">
           <a href="#">
-            <img src="" alt="홈 바로가기" />
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png"
+              alt="홈 바로가기"
+            />
           </a>
         </h1>
       </div>
 
-      <div class="header-actions warp">
+      <div class="header-actions wrap">
         <div class="action left">
           <button type="button">
-            <img src="" alt="전체메뉴" />
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap.png"
+              alt="전체메뉴"
+            />
           </button>
           <button type="button">
-            <img src="" alt="통합검색" />
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png"
+              alt="통합검색"
+            />
           </button>
         </div>
-        <div class="action-right">
+        <div class="action right">
           <a href="">
-            <img src="" alt="빠른예매" />
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png"
+              alt="빠른예매"
+            />
           </a>
           <button type="button">
-            <img src="" alt="마이페이지" />
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega.png"
+              alt="마이페이지"
+            />
           </button>
         </div>
       </div>
 
-      <div class="gnb">
+      <nav class="gnb">
         <ul>
           <li>
             <a href="#">영화</a>
-            <div class="lnb">
-              <ul>
-                <li><a href="#">전체메뉴</a></li>
-              </ul>
+            <div class="lnb-wrap">
+              <div class="lnb">
+                <ul>
+                  <li><a href="#">전체메뉴</a></li>
+                </ul>
+              </div>
             </div>
           </li>
           <li>
             <a href="#">예매</a>
-            <div class="lnb">
-              <ul>
-                <li><a href="#">빠른예매</a></li>
-                <li><a href="#">상영시간표</a></li>
-                <li><a href="#">더 부티크 프라이빗 예매</a></li>
-              </ul>
+            <div class="lnb-wrap">
+              <div class="lnb">
+                <ul>
+                  <li><a href="#">빠른예매</a></li>
+                  <li><a href="#">상영시간표</a></li>
+                  <li><a href="#">더 부티크 프라이빗 예매</a></li>
+                </ul>
+              </div>
             </div>
           </li>
-          <li>
+          <li class="left">
             <a href="#">극장</a>
-            <div class="lnb">
-              <ul>
-                <li><a href="#">전체극장</a></li>
-                <li><a href="#">특별관</a></li>
-              </ul>
+            <div class="lnb-wrap">
+              <div class="lnb">
+                <ul>
+                  <li><a href="#">전체극장</a></li>
+                  <li><a href="#">특별관</a></li>
+                </ul>
+              </div>
             </div>
           </li>
-          <li>
+          <li class="right">
             <a href="#">이벤트</a>
-            <div class="lnb">
-              <ul>
-                <li><a href="#">진행중 이벤트</a></li>
-                <li><a href="#">지난 이벤트</a></li>
-                <li><a href="#">당첨자발표</a></li>
-              </ul>
+            <div class="lnb-wrap">
+              <div class="lnb">
+                <ul>
+                  <li><a href="#">진행중 이벤트</a></li>
+                  <li><a href="#">지난 이벤트</a></li>
+                  <li><a href="#">당첨자발표</a></li>
+                </ul>
+              </div>
             </div>
           </li>
           <li class="lnb-none">
@@ -91,15 +115,510 @@
           </li>
           <li>
             <a href="#">혜택</a>
-            <div class="lnb">
-              <ul>
-                <li><a href="#">메가박스 멤버십</a></li>
-                <li><a href="#">제휴/할인</a></li>
-              </ul>
+            <div class="lnb-wrap">
+              <div class="lnb">
+                <ul>
+                  <li><a href="#">메가박스 멤버십</a></li>
+                  <li><a href="#">제휴/할인</a></li>
+                </ul>
+              </div>
             </div>
           </li>
         </ul>
-      </div>
+      </nav>
     </header>
+
+    <nav class="breadcrumb-wrap">
+      <div class="breadcrumb-default">
+        <ul class="bread-menu wrap">
+          <li>
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png"
+              alt="홈"
+            />
+          </li>
+          <li><a href="#">영화</a></li>
+          <li><a href="#">전체영화</a></li>
+        </ul>
+      </div>
+      <div class="breadcrumb-float">
+        <ul class="bread-menu wrap">
+          <li>
+            <img
+              src="https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png"
+              alt="홈"
+            />
+          </li>
+          <li><a href="#">영화</a></li>
+          <li><a href="#">전체영화</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <h2 class="content-title wrap">전체영화</h2>
+
+      <section class="tab-wrap">
+        <div class="movie-tab wrap">
+          <ul class="tab-list">
+            <li><a href="#">박스오피스</a></li>
+            <li><a href="#">상영예정작</a></li>
+            <li><a href="#">MEGA ONLY</a></li>
+            <li><a href="#">필름소사이어티</a></li>
+            <li><a href="#">클래식소사이어티</a></li>
+          </ul>
+        </div>
+
+        <div class="float-tab">
+          <ul class="tab-list wrap">
+            <li><a href="#">박스오피스</a></li>
+            <li><a href="#">상영예정작</a></li>
+            <li><a href="#">MEGA ONLY</a></li>
+            <li><a href="#">필름소사이어티</a></li>
+            <li><a href="#">클래식소사이어티</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <article class="side">
+          <div class="check">
+            <input type="checkbox" id="list-control" />
+            <label for="list-control">개봉작만</label>
+          </div>
+          <span>67개의 영화가 검색되었습니다.</span>
+
+          <div class="search">
+            <input type="search" value="영화명 검색" id="list-search" />
+            <span class="ico-search"></span>
+            <label for="list-search">영화명 검색</label>
+          </div>
+        </article>
+
+        <article>
+          <ul class="movie-list">
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>1</p>
+                <div class="spacial_badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png"
+                    alt="MX4D"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png"
+                    alt="Dolby Cinema"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png"
+                    alt="Dolby Atmos"
+                  />
+                </div>
+                <div class="poster-hover">
+                  <p>
+                    월드 와이드 흥행 불멸의 1위 <아바타> 시리즈의 세 번째
+                    이야기! 판도라를 위협하는 재의 부족, 더 이상 인간만이 적이
+                    아니다! 12월, 모두의 운명을 뒤흔들 거대한 전투가 시작된다!
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>9.2</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png"
+                  alt="관람가"
+                />
+                <p>아바타: 불과 재</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>39.4%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.17</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  2.3k
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+                <button value="button" class="btn">
+                  <img
+                    src="https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png"
+                    alt="DolbyCINEMA"
+                  />
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/04/W6p1b8p719ZRz5LvVdBwWEOJqQZGYIyH_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>2</p>
+                <div class="poster-hover">
+                  <p>
+                    가장 초라했던 그때, 가장 눈부시던 우리 고향 가는 고속버스에
+                    올라탄 은호(구교환)와 휴학 후 어디론가 떠날 결심을 한
+                    정원(문가영), 나란히 앉게 된 두 사람은 뜻밖의 인연을 맺는다.
+                    서로의 꿈을 응원하며 의지하던 두 사람은 어느새 일상 깊숙이
+                    스며들어 연인으로 발전한다. 웃고, 싸우고, 화해하며 세상을 다
+                    가진 듯 뜨겁게 사랑하지만, 현실의 벽 앞에 두 사람은 결국
+                    다른 길을 선택하게 된다. 그렇게 10년이 지난 후, 다시 마주한
+                    순간 은호는 정원에게 오랫동안 묻어두었던 한마디를 꺼낸다.
+                    “만약에 우리...”
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>8.9</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png"
+                  alt="관람가"
+                />
+                <p>만약에 우리</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>13.9%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.31</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  746
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>3</p>
+                <div class="spacial_badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png"
+                    alt="MX4D"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png"
+                    alt="Dolby Cinema"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png"
+                    alt="Dolby Atmos"
+                  />
+                </div>
+                <div class="poster-hover">
+                  <p>
+                    더 화려해진 세계, 더 넓어진 주토피아! 디즈니의 가~~장
+                    사랑스러운 콤비 '주디'와 '닉'이 돌아온다! 미스터리한 뱀
+                    ‘게리’가 나타난 순간, 주토피아가 다시 흔들리기 시작했다!
+                    혼란에 빠진 도시를 구하기 위해 환상의 콤비 ‘주디’ & ‘닉’이
+                    잠입 수사에 나서고 상상 그 이상의 진실과 위협을 마주하게
+                    되는데...! 11월, 초특급 추적 어드벤처가 펼쳐진다!
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>9.2</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png"
+                  alt="관람가"
+                />
+                <p>주토피아 2</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>9.2%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.11.26</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  2.3k
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>4</p>
+                <div class="poster-hover">
+                  <p>
+                    매일 너의 기억을 채워주고 싶은 남자, 김재원(추영우) 학교를
+                    가도 아무 의욕이 없던 나에게 어느 순간, 웃을 때마다 빛나는
+                    긴 머리의 한 아이가 나의 심장 속에 들어오기 시작했다.
+                    “시간이 지날수록 다른 건 다 모르겠고, 그냥 보고 싶기만 해.”
+                    매일 나의 기억을 잃어버리는 여자, 한서윤(신시아) 매일 기억이
+                    리셋되어 모든 것을 기록해야 하는 하루가 고단했던 나에게 키
+                    크고 눈빛이 잊히지 않는 한 아이가 나의 기억 속에 들어오기
+                    시작했다. “안 하던 짓 좀 해보려고. 안 그럼 너무 지루하잖아.”
+                    오늘 밤, 세계에서 이 사랑이 사라진다 해도 내일의 너를 다시
+                    사랑할 거야
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>9.2</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png"
+                  alt="관람가"
+                />
+                <p>오늘 밤, 세계에서 이 사랑</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>8.5%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.24</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  840
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/23/zJqlVMrN3C4d5PfCwPJGTiX1JLCxf1o4_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>5</p>
+                <div class="only-badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/megaonly_main.png"
+                    alt="메가 온리"
+                  />
+                </div>
+                <div class="poster-hover">
+                  <p>
+                    계속 찍어요 우리만 할 수 있으니까 1959년 파리, 젊은 비평가
+                    ‘고다르’가 올해 최악의 영화이자 세기의 데뷔작이 될 <네
+                    멋대로 해라>를 찍는 미친 모험의 시간으로 점프하는 리처드
+                    링클레이터의 시네마 매직
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>8.6</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png"
+                  alt="관람가"
+                />
+                <p>누벨바그</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>7%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.31</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  512
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/11/25/v344HrDrKIU3iFAbZWMwLssegzKFKdZ7_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>6</p>
+                <div class="poster-hover">
+                  <p>
+                    대북제재로 돈줄이 막힌 북한. 국제사회의 2억 달러 지원을 얻기
+                    위한 마지막 방법은 단 하나! 보위부는 당의 명령을 받고, 북한
+                    최초의 가짜 찬양단을 만드는 임무를 맡는다.
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>0</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png"
+                  alt="관람가"
+                />
+                <p>신의악단</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>3.7%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.31</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  134
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/11/20/QrLgK75zTzO9bZehTlQLDRViW115sr1i_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>7</p>
+                <div class="spacial_badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png"
+                    alt="MX4D"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png"
+                    alt="Dolby Cinema"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png"
+                    alt="Dolby Atmos"
+                  />
+                </div>
+                <div class="poster-hover">
+                  <p>
+                    세기의 콤비 톰과 제리, 최초 3D 탄생! 마법의 나침반을 깨운
+                    톰과 제리의 차원이동이 시작된다! 박물관 경비원으로 일하는
+                    톰은 몰래 들어온 제리를 쫓다 우연히 마법의 황금나침반을
+                    깨우게 되고, 신비로운 빛에 휩싸여 동양의 한 고대도시에
+                    불시착한다 뜻밖의 차원이동을 하게 된 톰과 제리는 300년 동안
+                    고대도시를 지켜온 봉황사부와 그의 친구들을 만나 기상천외한
+                    모험을 시작하는데…! 황금나침반을 이용해 천계로 돌아가야 하는
+                    봉황사부와 톰과 제리의 시공을 초월한 모험이 펼쳐진다!
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>9.2</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png"
+                  alt="관람가"
+                />
+                <p>톰과 제리: 황금나침반 대</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>2%</dd>
+                <dt>개봉일</dt>
+                <dd>2026.01.01</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  160
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/03/xpyJM8dD5sBjVofJ2gqwUh4docg5vbsJ_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>8</p>
+                <div class="poster-hover">
+                  <p>
+                    25년 마지막을 장식할 25주년 기념 완벽한 화양연화를 만나다
+                    1962년, 같은 날 같은 아파트로 이사 온 ‘첸 부인’과 ‘차우’.
+                    이사 첫날부터 자주 마주치던 두 사람은 ‘차우’의 넥타이와 ‘첸
+                    부인’의 가방이 각자 배우자의 것과 똑같음을 깨닫고 그들의
+                    관계를 눈치챈다. 그 관계의 시작이 궁금해진 두 사람은
+                    비밀스러운 만남을 이어가다, 점점 빠져들고 만다. 안타까운
+                    마음에도 불구하고 사랑하지 않겠다는 약속을 지키기 위해
+                    그들은 결국 이별을 선택하게 된다. 그리고 2001년, 다른
+                    모습으로 재회하게 된 두 사람은 다시 한번 서로를 마주보게
+                    된다.
+                  </p>
+                  <dl>
+                    <dt>관람평</dt>
+                    <dd>9.4</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png"
+                  alt="관람가"
+                />
+                <p>화양연화 특별판</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>1.9%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.31</dd>
+              </dl>
+              <div class="btn-wrap">
+                <label for="icon-like" class="btn-line">
+                  <input type="checkbox" id="icon-like" />
+                  840
+                </label>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
   </body>
 </html>

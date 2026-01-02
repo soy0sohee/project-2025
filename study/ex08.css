@@ -1,0 +1,299 @@
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: #666;
+}
+button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+body {
+  height: 2000px;
+}
+
+/* 공통 */
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.left {
+  margin-right: auto;
+}
+.right {
+  margin-left: auto;
+}
+
+/* 헤더 */
+header {
+  width: 100%;
+  height: 91px;
+  border-bottom: 1px solid #351f67;
+
+  position: relative;
+}
+/* 유틸 메뉴 */
+.utill {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+}
+.utill-menu {
+  display: flex;
+  gap: 20px;
+}
+/* 로고 */
+.logo {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -70px;
+}
+.logo img {
+  width: 140px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+/* 아이콘 버튼 */
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.action {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-actions img {
+  width: 36px;
+  height: 36px;
+  object-fit: none;
+  object-position: 50% 50%;
+}
+/* GNB */
+.gnb {
+  position: relative;
+  left: 0;
+  top: -36px;
+  z-index: 999;
+}
+.gnb > ul {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  padding: 0 150px;
+}
+.gnb > ul > li {
+  width: 60px;
+  height: auto;
+  text-align: center;
+}
+.gnb > ul > li > a {
+  display: inline-block;
+  height: 50px;
+  border-bottom: 4px solid transparent;
+  font-size: 20px;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+/* LNB */
+.lnb-wrap {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: #339eb2;
+  display: none;
+}
+.lnb {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.lnb > ul {
+  height: 41px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.lnb > ul > li > a {
+  font-size: 15px;
+  color: #fff;
+}
+/* 네비게이션 동작 */
+.gnb > ul > li:hover a {
+  border-bottom: 4px solid #339eb2;
+  text-decoration-color: #fff;
+}
+.gnb > ul > .lnb-none:hover a {
+  border-bottom: 0;
+}
+.gnb > ul > li:hover .lnb-wrap {
+  display: block;
+}
+
+/* 이동 경로 */
+.breadcrumb-wrap {
+  width: 100%;
+  height: 80px;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 999;
+}
+
+.breadcrumb-default {
+  width: 100%;
+  height: 40px;
+  background: #eee;
+}
+
+.breadcrumb-float {
+  width: 100%;
+  height: auto;
+  background: #555;
+
+  position: absolute;
+  top: 0;
+  opacity: 0;
+
+  animation: fade linear forwards;
+  animation-timeline: scroll();
+  animation-range: entry 0px contain 91px;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.breadcrumb-float > ul > li > a {
+  color: #fff;
+}
+.breadcrumb-float > ul > li > a:hover {
+  text-decoration-color: #fff;
+}
+
+.bread-menu {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bread-menu li {
+  display: flex;
+  gap: 10px;
+}
+.bread-menu img {
+  width: 13px;
+  height: 20px;
+  object-fit: none;
+  object-position: 50% 40%;
+}
+.bread-menu li:first-of-type::before {
+  content: "";
+  display: none;
+}
+.bread-menu li::before {
+  content: "";
+  width: 5px;
+  height: 12px;
+  background: url("https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png")
+    no-repeat 0 0;
+  margin-top: 6px;
+}
+
+/* 콘텐츠 */
+main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+/* 타이틀 */
+.content-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* 탭 */
+.tab-wrap {
+  width: 100%;
+  height: 80px;
+
+  position: sticky;
+  top: 40px;
+}
+
+.movie-tab > .tab-list {
+  display: flex;
+  justify-content: space-around;
+}
+.movie-tab > .tab-list > li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ddd;
+}
+
+.float-tab {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+
+  position: absolute;
+  top: 0;
+  opacity: 0;
+
+  animation: fade linear forwards;
+  animation-timeline: scoll();
+  animation-range: entry 238px contain 278px;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.float-tab .tab-list {
+  display: flex;
+  gap: 24px;
+}
+
+.tab-list > li {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
