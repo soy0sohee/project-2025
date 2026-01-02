@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>반응형 웹 - 미디어쿼리 속성</title>
+    <!-- 반응형 웹이란? -->
+    <!-- 카페24 디자인센터 - 반응형 웹사이트 -->
+    <!-- 화면 너비에 따라서 반응하는 동적인 웹 / 화면 높이는 세로 스크롤로 대응 -->
+
+    <!-- 해상도 대응 방법 -->
+    <!-- 1. pc만 / 가로 1024px 이상 고정 -->
+    <!-- 2. mobile만 / 가로 768px 이하 고정 -->
+    <!-- 3. 반응형 / mobile,tablet,pc 대응 -->
+
+    <!-- 대표 사이드 -->
+    <!-- 1. PC웹과 Mobile웹을 별도로 제작 -->
+    <!-- 예> 네이버(www.naver.com / m.naver.com) -->
+    <!-- 2. 반응형 웹 제작 -->
+    <!-- 예> 카페24 디자인 센터, 아임웹, 크리에이터링크 -->
+
+    <!-- PC 해상도 : 가로 960px 이상 -->
+    <!-- Tablet 해상도 : 가로 768px 이상 / 아이패드 기준 -->
+    <!-- Mobile 해상도 : 가로 767px 이하 -->
+
+    <!-- 모바일 해상도 meta 태그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- @media screen : 미디어 쿼리 -->
+    <!-- 특정 해상도에서 특정 css를 적용할 때 사용하는 문법 -->
+    <style>
+      /* PC 해상도 */
+      @media screen and (min-width: 1024px) {
+        body {
+          background: plum;
+        }
+      }
+
+      /* Tablet 해상도 */
+      @media screen and (min-width: 768px) and (max-width: 1023px) {
+        body {
+          background: lightgreen;
+        }
+      }
+
+      /* Mobile 해상도 - 세로 모드 */
+      @media screen and (max-width: 767px) and (orientation: portrait) {
+        body {
+          background: aqua;
+        }
+      }
+
+      /* Mobile 해상도 - 가로 모드 */
+      @media screen and (max-width: 767px) and (orientation: landscape) {
+        body {
+          background: lightcoral;
+        }
+      }
+
+      /* Mobile 해상도 가로 모드가 필요한 경우 */
+      /* 1. 가로폭은 넓은데 세로가 너무 짧을 때 / 하단 UI가 잘리기 쉬움 */
+      /* 2. 영상, 게임, 갤러리 화면 / youtube 전체화면, 웹게임, 이미지 슬라이더 */
+      /* 3. 가로 전용 인터랙션이 있을 때 / 일정표, 카드 슬라이더 */
+      /* 4. 키보다가 올라오는 화면 / 입력창이 가려짐 */
+      /* 5. 모바일 가로를 태블릿처럼 오해하는 경우 / 버튼이 작아지고 터치UX가 망가짐 */
+    </style>
+  </head>
+  <body>
+    <h1>제목태그 h1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus id
+      mollitia numquam libero a veniam pariatur saepe, nobis aut voluptatem eum
+      assumenda voluptatum fuga error quam, eligendi vitae quo consequatur.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem
+      accusantium adipisci officia omnis eos aliquid corrupti incidunt, itaque
+      harum eius facere labore! Quaerat distinctio quia beatae ullam libero
+      natus atque.
+    </p>
+  </body>
+</html>

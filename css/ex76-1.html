@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메가박스 - 네비게이션</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+      }
+      /* body * {
+        border: 1px solid #ccc;
+      } */
+      /* 최상단 */
+      .links {
+        display: flex;
+        gap: 15px;
+      }
+      .links a,
+      nav a {
+        text-decoration: none;
+        color: #333;
+      }
+      .links a:hover,
+      nav a:hover {
+        text-decoration: underline;
+        text-decoration-color: #4f3395;
+      }
+      .links-right {
+        justify-content: flex-end;
+      }
+      /* 주메뉴 */
+      header {
+        padding: 0 50px;
+        margin-top: 8px;
+        border-bottom: 1px solid #4f3395;
+        /* 2depth dropdown 메뉴에서 absolute 적용하기 위해 지정 */
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+      }
+      .header-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 75px;
+        /* 최대 너비가 1100px 이면서 최대 100% */
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .header-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 15px;
+      }
+      .menus {
+        display: flex;
+        justify-content: space-between;
+      }
+      .menus a {
+        display: block;
+        width: 30px;
+        height: 30px;
+      }
+      .menu-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .icon {
+        width: 36px;
+        height: 36px;
+        background-repeat: no-repeat;
+        background-position: 50%;
+      }
+      .hamburger {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap.png");
+      }
+      .search {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png");
+      }
+      .menus button {
+        padding: 15px 0;
+        cursor: pointer;
+        border: none;
+        /* 투명 테두리를 미리 만들어 줌으로서 hover시 영역을 고정시킴 */
+        border-bottom: 3px solid transparent;
+        background: transparent;
+        font-size: 18px;
+      }
+      .menus button:hover {
+        border-bottom: 3px solid #339eb2;
+      }
+      #logo {
+        width: 140px;
+        object-fit: contain;
+      }
+      .calendar {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png");
+      }
+      .mypage {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega.png");
+      }
+      .nav-toolbar {
+        visibility: hidden;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #339eb2;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 0 50px;
+        font-size: 14px;
+      }
+      .nav-toolbar > a {
+        text-decoration: none;
+        color: #fff;
+        /* 콘텐츠 크기만큼 */
+        width: auto;
+        height: auto;
+      }
+
+      .menu-reservation:hover ~ .toolbar-reservation,
+      .toolbar-reservation:hover {
+        visibility: visible;
+      }
+
+      /* nav카테고리 */
+      nav {
+        background: #f2f2f2;
+        height: 40px;
+        padding: 10px 50px;
+      }
+      .nav-wrap {
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+      }
+      nav a {
+        margin: 0 5px;
+      }
+      nav div {
+        width: 20px;
+        height: 20px;
+      }
+      .home {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png");
+      }
+      .arrow-right {
+        background-image: url("https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png");
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-wrap">
+        <div class="header-container">
+          <div class="links links-left">
+            <a href="#">VIP LOUNGE</a>
+            <a href="#">멤버십</a>
+            <a href="#">고객센터</a>
+          </div>
+          <div class="menus">
+            <div class="menu-icons">
+              <a href="#" class="icon hamburger"></a>
+              <a href="#" class="icon search"></a>
+            </div>
+            <button class="menu-movie">영화</button>
+            <div class="nav-toolbar toolbar-movie">
+              <a href="#">전체영화</a>
+            </div>
+            <button class="menu-reservation">예매</button>
+            <div class="nav-toolbar toolbar-reservation">
+              <a href="#">빠른예매</a>
+              <a href="#">상영시간표</a>
+              <a href="#">더 부티크 프라이빗 예매</a>
+            </div>
+            <button class="menu-cinema">극장</button>
+            <div class="nav-toolbar toolbar-cinema">
+              <a href="#">전체극장</a>
+              <a href="#">특별관</a>
+            </div>
+          </div>
+        </div>
+        <img
+          src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png"
+          alt="logo"
+          id="logo"
+        />
+        <div class="header-container">
+          <div class="links links-right">
+            <a href="#">로그인</a>
+            <a href="#">회원가입</a>
+            <a href="#">빠른예매</a>
+          </div>
+          <div class="menus">
+            <button class="menu-event">이벤트</button>
+            <div class="nav-toolbar toolbar-event">
+              <a href="#">진행중 이벤트</a>
+              <a href="#">지난 이벤트</a>
+              <a href="#">당첨자발표</a>
+            </div>
+            <button class="menu-store">스토어</button>
+            <button class="menu-gift">혜택</button>
+            <div class="nav-toolbar toolbar-gift">
+              <a href="#">메가박스 멤버십</a>
+              <a href="#">제휴/할인</a>
+            </div>
+            <div class="menu-icons">
+              <a href="#" class="icon calendar"></a>
+              <a href="#" class="icon mypage"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav>
+      <div class="nav-wrap">
+        <div class="icon home"></div>
+        <div class="icon arrow-right"></div>
+        <a href="#">영화</a>
+        <div class="icon arrow-right"></div>
+        <a href="#">전체영화</a>
+      </div>
+    </nav>
+  </body>
+</html>

@@ -1,56 +1,260 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>css 연습문제 39제</title>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <header>
+        <div class="inner">
+          <h1 class="logo">
+            <a href="#"></a>
+          </h1>
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 700px;
-        height: 100%;
+          <nav class="utility">
+            <ul class="utility-menu left">
+              <li><a href="#">VIP LOUNGE</a></li>
+              <li><a href="#">멤버십</a></li>
+              <li><a href="#">고객센터</a></li>
+            </ul>
+            <ul class="utility-menu right">
+              <li><a href="#">로그인</a></li>
+              <li><a href="#">회원가입</a></li>
+              <li><a href="#">빠른예매</a></li>
+            </ul>
+          </nav>
 
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-      }
-      header {
-        flex-grow: 1;
-        background: yellow;
-      }
-      .row {
-        flex-grow: 8;
-        display: flex;
-      }
-      nav {
-        flex-grow: 2;
-        background: orange;
-      }
-      section {
-        flex-grow: 6;
-        background: olivedrab;
-      }
-      aside {
-        flex-grow: 2;
-        background: orange;
-      }
-      footer {
-        flex-grow: 1;
-        background: plum;
-      }
-    </style>
-  </head>
-  <body>
-    <header>header</header>
-    <div class="row">
-      <nav>nav</nav>
-      <section>section</section>
-      <aside>aside</aside>
+          <div class="header-action">
+            <div class="left">
+              <a href="#" class="ico_menu"></a>
+              <a href="#" class="ico_search"></a>
+            </div>
+            <div class="right">
+              <a href="#" class="ico_callendar"></a>
+              <a href="#" class="ico_mymega"></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <nav class="gnb">
+        <div class="wrap-1depth">
+          <ul class="gnb-1depth">
+            <li>
+              <a href="#">영화</a>
+            </li>
+            <li>
+              <a href="#">예매</a>
+            </li>
+            <li>
+              <a href="#">극장</a>
+            </li>
+          </ul>
+          <ul class="gnb-1depth">
+            <li>
+              <a href="#">이벤트</a>
+            </li>
+            <li>
+              <a href="#">스토어</a>
+            </li>
+            <li>
+              <a href="#">혜택</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="wrap-2depth">
+          <ul class="gnb-2depth">
+            <li><a href="#">전체영화</a></li>
+          </ul>
+          <ul class="gnb-2depth">
+            <li><a href="#">빠른예매</a></li>
+            <li><a href="#">상영시간표</a></li>
+            <li><a href="#">더 부티크 프라이빗 예매</a></li>
+          </ul>
+          <ul class="gnb-2depth">
+            <li><a href="#">전체극장</a></li>
+            <li><a href="#">특별관</a></li>
+          </ul>
+          <ul class="gnb-2depth">
+            <li><a href="#">진행중 이벤트</a></li>
+            <li><a href="#">지난 이벤트</a></li>
+            <li><a href="#">당첨자발표</a></li>
+          </ul>
+          <ul class="gnb-2depth">
+            <li><a href="#">멤버십 안내</a></li>
+            <li><a href="#">제휴/할인</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
 
-    <footer>footer</footer>
-  </body>
-</html>
+    <nav class="breadcrumb">
+      <ol>
+        <li>
+          <img
+            src="https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png"
+            alt="홈"
+          />
+        </li>
+        <li><a href="#">영화</a></li>
+        <li><a href="#">전체영화</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <h2>전체영화</h2>
+
+      <section>
+        <ul class="movie-tab">
+          <li><a href="#">박스오피스</a></li>
+          <li><a href="#">상영예정작</a></li>
+          <li><a href="#">MEGA ONLY</a></li>
+          <li><a href="#">필름소사이어티</a></li>
+          <li><a href="#">클래식소사이어티</a></li>
+        </ul>
+      </section>
+
+      <section class="box-office">
+        <article class="side">
+          <div class="check">
+            <input type="checkbox" id="list-control" />
+            <label for="list-control">개봉작만</label>
+          </div>
+          <span>67개의 영화가 검색되었습니다.</span>
+
+          <div class="search">
+            <input type="search" value="영화명 검색" id="list-search" />
+            <span class="ico-search"></span>
+            <label for="list-search">영화명 검색</label>
+          </div>
+        </article>
+
+        <article class="movie-list">
+          <ul>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>1</p>
+                <div class="spacial_badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png"
+                    alt="MX4D"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png"
+                    alt="Dolby Cinema"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png"
+                    alt="Dolby Atmos"
+                  />
+                </div>
+              </div>
+              <div class="poster-hover">
+                <p>
+                  월드 와이드 흥행 불멸의 1위 <아바타> 시리즈의 세 번째 이야기!
+                  판도라를 위협하는 재의 부족, 더 이상 인간만이 적이 아니다!
+                  12월, 모두의 운명을 뒤흔들 거대한 전투가 시작된다!
+                </p>
+                <dl>
+                  <dt>관람평</dt>
+                  <dd>9.2</dd>
+                </dl>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png"
+                  alt="관람가"
+                />
+                <p>아바타: 불과 재</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>39.4%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.17</dd>
+              </dl>
+              <div class="btn-wrap">
+                <button value="button" class="btn-line">
+                  <span class="icon-like"></span>
+                  <span>2.3k</span>
+                </button>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+                <button value="button" class="btn">
+                  <img
+                    src="https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png"
+                    alt="DolbyCINEMA"
+                  />
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="poster">
+                <img
+                  src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
+                  alt="영화포스터"
+                />
+                <p>1</p>
+                <div class="spacial_badge">
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png"
+                    alt="MX4D"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png"
+                    alt="Dolby Cinema"
+                  />
+                  <img
+                    src="https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png"
+                    alt="Dolby Atmos"
+                  />
+                </div>
+              </div>
+              <div class="poster-hover">
+                <p>
+                  월드 와이드 흥행 불멸의 1위 <아바타> 시리즈의 세 번째 이야기!
+                  판도라를 위협하는 재의 부족, 더 이상 인간만이 적이 아니다!
+                  12월, 모두의 운명을 뒤흔들 거대한 전투가 시작된다!
+                </p>
+                <dl>
+                  <dt>관람평</dt>
+                  <dd>9.2</dd>
+                </dl>
+              </div>
+              <div class="title">
+                <img
+                  src="https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png"
+                  alt="관람가"
+                />
+                <p>아바타: 불과 재</p>
+              </div>
+              <dl class="text">
+                <dt>예매율</dt>
+                <dd>39.4%</dd>
+                <dt>개봉일</dt>
+                <dd>2025.12.17</dd>
+              </dl>
+              <div class="btn-wrap">
+                <button value="button" class="btn-line">
+                  <span class="icon-like"></span>
+                  <span>2.3k</span>
+                </button>
+                <button value="button" class="btn">
+                  <span>예매</span>
+                </button>
+                <button value="button" class="btn">
+                  <img
+                    src="https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png"
+                    alt="DolbyCINEMA"
+                  />
+                </button>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daum 로그인 화면 연습문제</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+
+        box-sizing: border-box;
+      }
+      body {
+        color: #222;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #222;
+      }
+      .wrapper {
+        width: 480px;
+        height: auto;
+        margin: 0 auto;
+      }
+      .header {
+        width: 100%;
+        padding: 80px 0px 32px 0px;
+        display: flex;
+        justify-content: center;
+      }
+      .img-logo {
+        width: 72px;
+        height: 24px;
+        background: url("logo_kakao.png") no-repeat 0 0;
+        background-size: 80px auto;
+      }
+
+      section {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        padding: 44px 60px;
+      }
+      .login {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .login-text {
+        padding: 8px 0;
+        border: 0;
+        border-bottom: 2px solid #ccc;
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+      .login-text::placeholder {
+        color: #999;
+      }
+      .login-text:focus {
+        outline: none;
+        border-bottom: 2px solid #222;
+      }
+      .login-check {
+        margin: 8px 0 28px 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .login-check .icon-check {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: url("ico_comm.png") no-repeat 0px 0px;
+        background-size: 300px auto;
+        cursor: pointer;
+      }
+      .login-check .icon-check:checked {
+        background-position: -24px 0;
+      }
+      .login-check > label {
+        font-size: 12px;
+        line-height: 10px;
+        color: #666;
+        cursor: pointer;
+        margin-right: 2px;
+      }
+      .login-check .icon-info {
+        width: 16px;
+        height: 16px;
+        background: url("ico_comm.png") no-repeat -120px -130px;
+        background-size: 300px auto;
+        cursor: pointer;
+      }
+      .btn {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .btn button {
+        padding: 12px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        color: #222;
+      }
+      .btn-login {
+        background: #fee500;
+      }
+      .btn-qrlogin {
+        background: #e3e3e3;
+      }
+      .line {
+        width: 100%;
+        font-size: 11px;
+        color: #737373;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+      .line::before,
+      .line::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background: #ddd;
+      }
+      .login-list {
+        width: 100%;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        margin-top: 16px;
+      }
+      .login-list li:nth-of-type(1) {
+        margin-right: auto;
+      }
+      .vertical-line::before {
+        content: "";
+        display: inline-block;
+        height: 8px;
+        border-left: 1px solid #ccc;
+        padding-left: 6px;
+      }
+      .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 24px;
+        gap: 5px;
+        padding: 0 60px;
+      }
+      select {
+        border: 0;
+        font-size: 11px;
+      }
+      .footer ul {
+        display: flex;
+        gap: 6px;
+      }
+      .footer ul li {
+        font-size: 11px;
+      }
+      .footer small {
+        font-size: 11px;
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <span class="img-logo"></span>
+      </div>
+      <section>
+        <!-- <form>는 <article> 또는 <section>로 묶어 독립적인 기능 구조를 나눠주는 것이 좋음 -->
+        <form class="login">
+          <!-- <input>을 사용할때는 <label>과 함께 사용후 가려주는 것이 명확함 -->
+          <input
+            type="text"
+            placeholder="카카오메일 아이디, 이메일, 전화번호"
+            class="login-text"
+          />
+          <input type="password" placeholder="비밀번호" class="login-text" />
+          <div class="login-check">
+            <input type="checkbox" id="check" class="icon-check" />
+            <label for="check">간편로그인 정보 저장</label>
+            <div class="icon-info"></div>
+          </div>
+          <div class="btn">
+            <button type="submit" class="btn-login">로그인</button>
+            <span class="line">또는</span>
+            <button type="submit" class="btn-qrlogin">QR코드 로그인</button>
+          </div>
+        </form>
+        <ul class="login-list">
+          <li><a href="#">회원가입</a></li>
+          <li><a href="#">계정 찾기</a></li>
+          <li class="vertical-line"><a href="#">비밀번호 찾기</a></li>
+        </ul>
+      </section>
+      <div class="footer">
+        <select name="language" id="lang">
+          <option value="ko">한국어</option>
+          <option value="en">영어</option>
+          <option value="ja">일본어</option>
+        </select>
+        <ul>
+          <li class="vertical-line"><a href="#">이용약관</a></li>
+          <li class="vertical-line">
+            <a href="#">개인정보 처리방침</a>
+          </li>
+          <li class="vertical-line"><a href="#">고객센터</a></li>
+        </ul>
+        <small class="copy">
+          <a href="#">© kakao Crop.</a>
+        </small>
+      </div>
+    </div>
+  </body>
+</html>

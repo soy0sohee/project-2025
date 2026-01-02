@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - 반응형 웹과 flex 연동</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-weight: bold;
+      }
+      #wrapper {
+        display: flex;
+        flex-flow: row wrap;
+      }
+      #wrapper .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header {
+        flex: 1 100%;
+        background: greenyellow;
+        height: 60px;
+      }
+      .section1 {
+        flex: 1 50%;
+        background: lightcoral;
+        height: 120px;
+      }
+      .section2 {
+        flex: 1 50%;
+        background: lightpink;
+        height: 120px;
+      }
+      .section3 {
+        flex: 1 50%;
+        background: lightseagreen;
+        height: 120px;
+      }
+      .section4 {
+        flex: 1 50%;
+        background: lightblue;
+        height: 120px;
+      }
+      .ad {
+        flex: 1 50%;
+        height: 60px;
+        background: plum;
+      }
+      .info {
+        flex: 1 50%;
+        height: 60px;
+        background: lightslategray;
+      }
+      .footer {
+        flex: 1 100%;
+        height: 60px;
+        background: aquamarine;
+      }
+
+      /* 태블릿 */
+      @media screen and (min-width: 726px) and (max-width: 1023px) {
+        .header {
+          flex: 1 80%;
+          order: 0;
+        }
+        .ad {
+          flex: 1 20%;
+          order: 1;
+        }
+        .section1 {
+          flex: 1 100%;
+          height: 60px;
+          order: 2;
+        }
+        .section2 {
+          flex: 1 100%;
+          height: 60px;
+          order: 3;
+        }
+        .section3 {
+          flex: 1 100%;
+          height: 60px;
+          order: 4;
+        }
+        .section4 {
+          flex: 1 100%;
+          height: 60px;
+          order: 5;
+        }
+        .info {
+          flex: 1 30%;
+          order: 6;
+        }
+        .footer {
+          flex: 1 70%;
+          order: 7;
+        }
+      }
+
+      /* 모바일 */
+      @media screen and (max-width: 725px) {
+        .ad {
+          flex: 1 30%;
+        }
+        .info {
+          flex: 1 70%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="flex header">헤더</header>
+      <section class="flex section1">섹션1</section>
+      <section class="flex section2">섹션2</section>
+      <section class="flex section3">섹션3</section>
+      <section class="flex section4">섹션4</section>
+      <article class="flex ad">광고</article>
+      <article class="flex info">정보</article>
+      <footer class="flex footer">푸터</footer>
+    </div>
+  </body>
+</html>

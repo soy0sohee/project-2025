@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>transition 속성</title>
+    <!-- transition-delay : 변환 전 지연시간 / 몇 초 후에 시작 -->
+    <!-- transition-duration : 변환 시간 -->
+    <!-- transition-property : 대상 속성 -->
+    <!-- transition-timing-function : 보간 타입 -->
+
+    <!-- 보간 : interpolation(시간의 간격을 메꿈 / 변화하는 동안의 중간 값 -->
+    <!-- 시간 대비 변화량 -->
+
+    <!-- linear : 일정 속도 -->
+    <!-- ease : 빠른 시작, 천천히 끝 (기본값) -->
+    <!-- ease-in : 천천히 시작 -->
+    <!-- ease-out : 천천히 끝 -->
+    <!-- ease-in-out : 시작, 끝 모두 느림 -->
+    <!-- https://lionbum.tistory.com/187 -->
+    <!-- https://cruiseweb.tistory.com/entry/CSS-Transition -->
+
+    <style>
+      #graph {
+        width: 610px;
+        border: 3px solid black;
+      }
+      .bar {
+        width: 10px;
+        height: 50px;
+        background: orange;
+        margin: 5px;
+        white-space: nowrap;
+
+        transition-duration: 3s;
+        transition-delay: 0.5s;
+        transition-property: width, backgroun-color;
+      }
+      #graph:hover .bar {
+        width: 600px;
+        background: red;
+      }
+      .bar:nth-of-type(1) {
+        transition-timing-function: linear;
+      }
+      .bar:nth-of-type(2) {
+        transition-timing-function: ease;
+      }
+      .bar:nth-of-type(3) {
+        transition-timing-function: ease-in;
+      }
+      .bar:nth-of-type(4) {
+        transition-timing-function: ease-out;
+      }
+      .bar:nth-of-type(5) {
+        transition-timing-function: ease-in-out;
+      }
+      .bar:nth-of-type(6) {
+        /* 베지어 곡선(Bezier-Curve) / https://cubic-bezier.com */
+        /* cubic-bezier(x1, y1, x2, y2) */
+        /* x1 : 시작 후 가속 / y1 초 */
+        transition-timing-function: cubic-bezier(1, 0.01, 0, 0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="graph">
+      <div class="bar">linear</div>
+      <div class="bar">ease</div>
+      <div class="bar">ease-in</div>
+      <div class="bar">ease-out</div>
+      <div class="bar">ease-in-out</div>
+      <div class="bar">cubic-bezier</div>
+    </div>
+  </body>
+</html>

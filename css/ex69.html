@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변형속성 - transform</title>
+    <!-- html/css/js로 구현된 게임 콘텐츠에서 많이 사용 -->
+
+    <!-- 크기, 각도 등이 변형되는 것 -->
+    <!-- 2차원(xy평면), 3차원(xyz평면) : unity, directX 좌표가 대중적 -->
+
+    <!-- 함수명 -->
+    <!-- rotate(각도값) : 회전 / 단위 deg -->
+    <!-- translate(x,y) : 좌표로 이동 -->
+    <!-- translateX(x) : x축 좌표만 이동 -->
+    <!-- translateY(y) : y축 좌표만 이동 -->
+    <!-- scale(x,y) : 크기 확대/축소, 1(원래값), 2(두배확대) -->
+    <!-- scaleX(x) : x축으로 확대/축소 -->
+    <!-- scaleY(y) : y축으로 확대/축소 -->
+    <!-- skew(x,y) : 기울기 / 단위 deg -->
+    <!-- skewX(x) skewY(y) -->
+    <!-- transform-origin : 앵커값(기준점) -->
+
+    <style>
+      section {
+        width: 100px;
+        height: 100px;
+        border: 5px solid black;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+        background: blue;
+
+        /* 회전 */
+        /* transform: rotate(45deg); */
+        /* transform-origin: right bottom; */
+        /* transform-origin: 100% 100%; */
+
+        /* 이동 */
+        /* transform: translate(-30px, 50px); */
+
+        /* 회전 + 이동 */
+        /* transform: rotate(45deg) translateX(30px); */
+
+        /* 기울기 */
+        transform: skewX(-10deg);
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div></div>
+    </section>
+  </body>
+</html>

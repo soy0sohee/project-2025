@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daum 로그인 화면 문제풀이</title>
+    <style>
+      /* 초기화 */
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+      /* 중앙 정렬 */
+      #wrapper {
+        width: 580px;
+        margin: 0 auto;
+      }
+      /* 로고 정렬 */
+      #header {
+        display: flex;
+        justify-content: center;
+      }
+      #logo {
+        width: 88px;
+        height: 27px;
+        background: url("logo_kakao.png") no-repeat 0 0;
+        background-size: 100px auto;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+      /* 콘텐츠 영역 */
+      #section {
+        border: 1px solid #ccc;
+        padding: 50px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        display: block;
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        height: 32px;
+        padding: 16px 0px;
+        font-size: 15px;
+        font-family: "맑은고딕";
+        margin-bottom: 20px;
+      }
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        outline: none;
+        border-bottom: 2px solid #222;
+      }
+      .keep_status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      #checkbox-label {
+        margin-bottom: 2px;
+        color: #555;
+        font-size: 12px;
+      }
+      .keep_status input[type="checkbox"] {
+        appearance: none;
+        cursor: pointer;
+        background: url("ico_comm.png") no-repeat 0 0;
+        background-size: 300px auto;
+        background-position: 0px 0px;
+
+        width: 20px;
+        height: 20px;
+      }
+      .keep_status #ico_info {
+        appearance: none;
+        cursor: pointer;
+        background: url("ico_comm.png") no-repeat 0 0;
+        background-size: 300px auto;
+        background-position: -118px -128px;
+
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+      input[type="submit"],
+      button[type="button"] {
+        width: 100%;
+        border: none;
+        height: 50px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"] {
+        background: #fee500;
+      }
+      input[type="submit"]:hover {
+        background: #fada0a;
+      }
+      button[type="button"] {
+        background: #e3e3e3;
+        margin-bottom: 20px;
+      }
+      button[type="button"]:hover {
+        background: #dfdfdf;
+      }
+      #line {
+        text-align: center;
+        font-size: 12px;
+        margin: 10px 0;
+        display: block;
+      }
+      #line::before,
+      #line::after {
+        content: "";
+        display: inline-block;
+        height: 1px;
+        background: #ddd;
+        width: 210px;
+        margin: 5px;
+      }
+      #join {
+        display: flex;
+        justify-content: space-between;
+      }
+      #join a {
+        font-size: 12px;
+        color: black;
+      }
+      #footer {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #footer option,
+      #footer span,
+      #footer a {
+        font-size: 12px;
+        color: #555;
+      }
+      #footer a {
+        margin: 0 10px;
+      }
+      #footer a::before {
+        content: "|";
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <div id="logo"></div>
+      </div>
+      <div id="section">
+        <input type="text" placeholder="카카오메일 아이디, 이메일, 전화번호" />
+        <input type="password" placeholder="비밀번호" />
+        <div class="keep_status">
+          <input type="checkbox" />
+          <span id="checkbox-label">로그인 상태 유지</span>
+          <span id="ico_info"></span>
+        </div>
+        <input type="submit" value="로그인" />
+        <span id="line">또는</span>
+        <button type="button">QR코드 로그인</button>
+        <div id="join">
+          <div>
+            <a href="#">회원가입</a>
+          </div>
+          <div>
+            <!-- 공백문자 &nbsp : 마진 대체가능 -->
+            <a href="#">계정찾기</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">비밀번호찾기</a>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <select name="lang" id="language">
+          <option value="ko">한국어</option>
+          <option value="en">영어</option>
+          <option value="jp">일본어</option>
+        </select>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보 처리방침</a>
+        <a href="#">고객센터</a>
+        <span>© kakao Crop.</span>
+      </div>
+    </div>
+  </body>
+</html>
