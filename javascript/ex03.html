@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 출력하는 방법 - 02 console</title>
+    <script>
+      // console창에 출력하는 방법(개발자 선호)
+      console.log("Hello JS - 1");
+      console.log("hello JS - 2");
+      console.log("hello JS - 3");
+      console.log("hello JS - 4");
+      console.log("hello JS - 5");
+
+      // 에러가 난 상황 재현
+      // console.log("hello JS 6);
+
+      // console.log() : 기본 로그
+      // console.info() : 정보성 로그
+      // console.warn() : 경고성 로그 - 무시해도 됨
+      // console.error() : 오류 로그 - 심각한 오류 해결해야 됨
+      console.info("정보성 로그");
+      console.warn("경고성 로그");
+      console.error("심각한 오류 로그");
+
+      const num = [10, 20, 10];
+      console.table(num);
+    </script>
+  </head>
+  <body></body>
+</html>

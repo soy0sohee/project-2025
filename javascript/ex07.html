@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>데이터타입 - data type(형)</title>
+    <!-- 데이터 타입 -->
+    <!-- number : 숫자 정수/실수, 64비트 부동소수점
+                                  - 소수점 위치가 고정되어 있지 않고, 지수에 따라 이동하는 숫자 표현 방식
+                                  [ 부호(+/-) | 지수(소수점 위치 정보) | 가수(실제 숫자값) ] -->
+    <!-- string : 문자열(한자도 포함) -->
+    <!-- boolen : 논리형 true/false -->
+    <!-- underfined : 선언은 되었지만 값이 할당되지 않은 상태 -->
+    <!-- object : 객체(객체, 배열, 날짜, 클래스 등) -->
+    <!-- function : 함수 -->
+    <!-- null : 의도적으로 값이 없음(할당도 선언도 안됨) -->
+    <script>
+      // num = 변수이름 / number = 변수타입
+      // 변수 타입은 변수의 값이 들어갈때 결정됨
+      // ex) let 변수이름 = 변수값(number, string, boolean, ...)
+
+      // typeof 연산자 : 변수의 타입을 문자열로 반환해주는 연산자
+      let num = 10;
+      document.write("변수 타입은 " + typeof num + "<br/>");
+
+      let str = "자바스크립트";
+      document.write("변수 타입은 " + typeof str + "<br/>");
+
+      let bool = true;
+      document.write("변수 타입은 " + typeof bool + "<br/>");
+
+      //선언만 하고 값은 넣지 않은 상태
+      let underfinedType;
+      document.write("변수 타입은 " + typeof underfinedType + "<br/>");
+
+      // 배열(리스트)
+      let array = [10, 20, 30];
+      document.write("변수 타입은 " + typeof array + "<br/>");
+
+      // {key : value}
+      let object = { name: "홍길동", age: 30 };
+      document.write("변수 타입은 " + typeof object + "<br/>");
+
+      // 일반 함수 선언
+      let func1 = function myfunc() {};
+      // 화살표 함수 선언
+      let func2 = () => {};
+
+      // 함수 선언부를 변수로 선언
+      let func = function myfunc() {};
+      document.write("변수 타입은 " + typeof func + "<br/>");
+
+      // null은 object 타입이 아니지만 JS 역사적인 버그때문에 object 타입으로
+      document.write("변수 타입은 " + typeof null + "<br/>");
+
+      // == 값이 같은가? / === 값과 타입이 모두 같은가?
+      document.write(typeof null === "object");
+      document.write(typeof null === "null");
+    </script>
+  </head>
+  <body></body>
+</html>

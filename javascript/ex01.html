@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ex01 -->
+    <title>자바스크립트 개요</title>
+
+    <!-- JavaScript : 공식명칭은 ECMA Script -->
+    <!-- 만든 사람 : 넷스케이프 브랜든 아이크라는 사람이 만듦
+                   : 썬마이크로 시스템즈와 협력해서 만든 언어 -->
+    <!-- Java와 JavaScript와는 전혀 다른 언어  -->
+    <!-- ES6(ECMA Script 6)에서 언어적으로 완성됨. -->
+    <!-- 특징 : 웹브라우저에서 지원하는 유일한 언어 : 과거 Basic언어 
+              : 구글에서 JS V8 엔진을 향상시키고, 오픈 소스로 배포 -->
+    <!-- Node.js : 플랫폼 독립 자바스크립트 런타임(실행) 프로그램
+        플랫폼 독립 : 윈도우즈(일반, 개발용OS), 맥(일반, 개발용), 리눅스(배포용) 각각을 말함 -->
+
+    <!-- JS를 구동시키는 2가지 방법 -->
+    <!-- 1. .html안에서 동작 - 주체 : 웹브라우저(V8엔진)
+                             - 역할 : 동적인 웹을 구현 -->
+    <!-- 2. .js파일 단독으로 동작 - 주체 : Node.js
+                                  - 역할 : 프론트엔드(UI프레임워크 - 리액트, Vue.js, Svelte.js)
+                                         : 백엔드(서버 - express, Next.js, Nest.js)  -->
+
+    <!-- heml안에서 JS를 선언하는 3가지 방법 -->
+    <!-- 1. head/body 태그 안에서 script 태그 사용 -->
+    <!-- 2. 인라인 태그 속성으로 선언 - onclick="함수내용", href="javascript:함수내용" -->
+    <!-- 3. 별도의 js파일 - import, link -->
+
+    <!-- head 태그 안에서 script 태그 사용 -->
+    <script>
+      // alert() : 알림창 함수
+      alert("알림창입니다.");
+    </script>
+
+    <!-- 함수 임포트 : 자바스크립트 선언 -->
+    <script src="ex01.js"></script>
+  </head>
+  <body>
+    <!-- 함수 호출 : 자바스크립트 실행 -->
+    <button onclick="myFunc()">외부 js 연결</button>
+
+    <h1>제어대상</h1>
+
+    <!-- inline script 사용 -->
+    <button onclick="alert('클릭됨');">클릭하세요</button>
+    <a href="javascript:alert('클릭하셨어요?');">클릭하세요</a>
+
+    <!-- body 태그 안에서 script 태그 사용 -->
+    <!-- body 태그 마지막에 js 정의하는 것이 안정적임 -->
+    <script>
+      alert("알림창2입니다.");
+    </script>
+  </body>
+</html>
