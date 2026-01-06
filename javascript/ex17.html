@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자 - 논리</title>
+    <!-- 논리 : &&[and]  ||[or]  ![not] -->
+    <!-- 비교 연산자 : 연산의 결과가 Boolean(True/False)로 나온다 -->
+    <script>
+      // and : ~ 그리고, ~이고 , ~이면서
+      // or : ~ 또는, ~이거나, ~일수도, ~중의 하나이면
+      // not : ~ 아니다
+
+      // and : 조건이 엄격 둘 다 통과해야 T / 조건이 엄격함(교집합)
+      // T && T = T (둘다 true일때만 true)
+      // T && F = F
+      // F && T = F
+      // F && F = F
+
+      // or : 하나만 통과해도 T / 조건이 관대함(합집합)
+      // T || T = T
+      // T || F = T
+      // F || T = T
+      // F || F = F (둘다 false일때만 false)
+
+      // not
+      // !T = F
+      // !F = T
+
+      // console.log(!(10 > 20) || 10 < 20);   T || T = T
+      // console.log(true || (false && false && true));   T || F = T
+    </script>
+  </head>
+  <body></body>
+</html>

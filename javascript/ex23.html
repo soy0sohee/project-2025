@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤값</title>
+    <!-- Random 수(임의의 수, 난수) 발생 -->
+    <!-- 뽑기, 주사위, 확률, 무작위로 수를 뽑을때 -->
+
+    <script>
+      // Math.random() : 0.00 ~ 0.99...의 실수값을 반환하는 함수
+      console.log(Math.random());
+
+      // 주사위게임 : 1~6사이의 임의의 수 발생
+
+      // Math.floor() : 무조건 내림 / 인덱스, 페이지 번호
+      // Math.ceil() : 무조건 올림 / 금액, 갯수
+      // Math.round() : 반올림 / 사용자 입력
+      // Math.trunc() : 소수점 제거
+
+      // (0~0.99)*6 = 0~5.99 = 소수점 제거 = (0~5)+1 = 1~6
+      let random = Math.floor(Math.random() * 6) + 1;
+      console.log(random);
+
+      // 연습문제
+      // 1. 10~20사이의 랜덤 정수 하나를 발생시키고
+      //    -> 그 수를 출력, 짝수이면 "짝수" / 홀수이면 "홀수"
+      let strInt = Math.floor(Math.random() * 11) + 10;
+      nInt = Number(strInt);
+
+      if (nInt % 2 === 0) {
+        document.write("짝수 <br/>");
+      } else {
+        document.write("홀수 <br/>");
+      }
+
+      console.log(nInt);
+
+      // 2. 주사위를 1개 던져서, 1~3이 나오면 "작은수" / 4~6이 나오면 "큰수"
+      let strRandom = Math.floor(Math.random() * 6) + 1;
+      nRandom = Number(strRandom);
+
+      if (nRandom < 4) {
+        document.write("작은수");
+      } else {
+        document.write("큰수");
+      }
+
+      console.log(nRandom);
+    </script>
+  </head>
+  <body></body>
+</html>

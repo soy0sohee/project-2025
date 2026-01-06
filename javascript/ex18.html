@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <script>
+      //1. 비교연산자 : < <= > >= == !=
+      //  1) 20은 30보다 작은지 true/false로 출력하시오.
+      console.log(20 < 30);
+
+      //  2) 20은 30보다 같거나 작은지 true/false로 출력하시오.
+      console.log(20 <= 30);
+
+      //2. 논리연산자 : AND OR NOT
+      //    다음 로직의 결과를 true/false로 출력하시오.
+      //  1) 10은 20보다 작으면서(~이고), 10은 5보다 큰가?
+      console.log(10 < 20 && 10 > 5);
+
+      //  2) 123의 일의 자릿수는 3인가?
+      console.log(123 % 10 === 3);
+
+      //  3) 5는 1보다 크거나 10보다 작은가?
+      console.log(5 > 1 || 5 < 10);
+
+      //3. prompt함수로
+      //  백의 자리, 십의 자리, 일의 자리 숫자 3개를 입력받고
+      //  그 숫자를 출력하시오.
+      //  예) 3입력 2입력 5입력 => 325
+      let number100 = prompt("100의 자리를 입력하시오.");
+      let number10 = prompt("10의 자리를 입력하시오.");
+      let number1 = prompt("1의 자리를 입력하시오.");
+
+      num100 = Number(number100);
+      num10 = Number(number10);
+      num1 = Number(number1);
+
+      console.log(Number(num100 * 100 + num10 * 10 + num1));
+      console.log(num100 * 100 + num10 * 10 + num1 === 325);
+    </script>
+  </head>
+  <body></body>
+</html>

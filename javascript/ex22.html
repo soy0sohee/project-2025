@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if문 표현 방식</title>
+    <script>
+      // 단일 if문
+      if (true) {
+        // 조건 == 참
+      }
+
+      // if else문
+      if (true) {
+        // 조건 == 참
+      } else {
+        // 조건 == 거짓
+      }
+
+      // if else if문
+      if (true) {
+        // 조건1 == 참
+      } else if (true) {
+        // 조건1 == 참, 조건2 == 거짓
+      } else {
+        // 조건1 == 거짓, 조건2 == 거짓
+      }
+
+      // if문 안에 if문
+      // 단계적 의미를 가질때 / 3번 이상 if문 안으로 들어가는건 난독성 원인
+      if (true) {
+        if (true) {
+          // 조건1 == 참, 조건2 == 참
+        } else {
+          // 조건1 == 참, 조건2 == 거짓
+        }
+      } else {
+        // 조건1 == 거짓
+      }
+
+      // 클린 코드 조건
+      // 1. 변수, 함수 이름 (가독성)
+      // 2. 함수를 기능별로 잘 분리
+      // 3. 꼭 필요한 곳에는 코멘트 필수
+
+      // 변수 이름짓는 방법
+      // 1. Camel Case : 첫글자는 소문자, 단어와 단어 사이 대문자 (ex. studentList) // ** 자바 표준 **
+      // 2. Pascal Case : 첫글자부터 대문자 (ex. StudentList)
+      // 3. Snake Case : 언더바 연결 (ex. student_list / STUDENT_LIST) // ** 개발자 선호, C/C++ **
+      // 4. Dash Case : css/폴더이름에만 가능 (ex. student-list / STUDENT-LIST)
+      // 5. 헝가리언 표기법 : 접두어에 데이터 타입 표기
+      //                      (ex. nCount:number / strName:string / bVisible:boolean / arrItems:array)
+    </script>
+  </head>
+  <body></body>
+</html>

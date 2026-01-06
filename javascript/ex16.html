@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자 - 비교</title>
+    <!-- 비교 : <  >  ==  <=  >=  != -->
+    <!-- 동등(==), 부등(!=) 비교는 '=' 기호를 한번 더 써주는 것이 강력함 / 동등(===), 부등(!==) -->
+    <!-- 비교 연산자 : 연산의 결과가 Boolean(True/False)로 나온다 -->
+
+    <!-- 조건문,반복문에 비교,논리 연산자를 이용한 조건식(절)이 들어감 -->
+    <script>
+      // 비교는 A를 기준으로 함
+
+      // 비교 연산
+      // A > B : "A는 B보다 큰다?" - true/false / A기준 초과
+      // A < B : "A는 B보다 작다?" - true/false / A기준 미만
+      // A == B : "A는 B와 같다?" - true/false
+      // A === B : "A는 B와 값과 타입 모두 같다?" - true/false
+
+      console.log(10 > 20);
+      console.log(10 < 20);
+      console.log(10 == 20);
+
+      // 복합 비교 연산
+      // A >= B : "A는 B보다 크거나 같다?" - true/false / (A > B)||(A == B) / A기준 이상
+      // A <= B : "A는 B보다 작거나 같다?" - true/false / (A < B)||(A == B) / A기준 이하
+
+      console.log(10 >= 20);
+      console.log(10 <= 20);
+
+      // A != B : "A는 B와 같이 않다?" - true/false
+      // A !== B : "A는 B와 값과 타입 모두 같이 않다?" - true/false
+      console.log(10 != 20);
+      console.log(10 !== 20);
+    </script>
+  </head>
+  <body></body>
+</html>

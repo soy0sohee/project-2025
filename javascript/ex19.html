@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자 - 대입</title>
+    <!-- 대입 : A = B -->
+    <!-- 복합대입 : +=  -=  *=  /=  %= -->
+    <script>
+      function myfunc() {
+        return 20;
+      }
+
+      // 대입 : 오른쪽 항의 값을 왼쪽 항으로 덮으쓰기한다.
+      let num1 = 10;
+      let num2 = num1;
+      let num3 = myfunc();
+      console.log(num1, num2, num3);
+
+      // prettier-ignore
+      let num4 = num5 = num6 = 30;
+      console.log(num4, num5, num6);
+
+      // 복합대입
+      let num10 = 10;
+      num10 += 2; // num10 = num10 + 2;
+      num10 -= 2; // num10 = num10 - 2;
+      num10 *= 2; // num10 = num10 * 2;
+      num10 /= 2; // num10 = num10 / 2;
+      num10 %= 2; // num10 = num10 % 2;
+      num10 **= 2; // num10 = num10 ** 2; 거듭제곱(10^2 = 10*10 = 10의2승 = 100)
+
+      // +1 증가 / 복함대입 방법을 추천함
+      num10++;
+      num10 += 1;
+      num10 = num10 + 1;
+    </script>
+  </head>
+  <body></body>
+</html>

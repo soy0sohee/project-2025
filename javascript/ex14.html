@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자 - 산술</title>
+    <!-- 산술 : +  -  *  /  % -->
+    <!-- 산술 - 우선순위 : [ * / % ] > [ + - ] -->
+    <script>
+      // 사칙연산
+      console.log(10 + 3);
+      console.log(10 - 3);
+      console.log(10 * 3);
+
+      // 나누기 값을 추출, Number타입으로 정수 + 실수 포함
+      console.log(10 / 3);
+
+      // 나누기 값을 추출, 변환 함수를 사용하여 정수만 추출할 수 있음
+      // parseInt() : 문자열 함수
+      console.log(parseInt(10 / 3));
+
+      // 계산열 함수 : 실수를 정수로 바꾸기에 안정적인 방법
+      // Math.floor() : 무조건 내림 / 인덱스, 페이지 번호
+      // Math.ceil() : 무조건 올림 / 금액, 갯수
+      // Math.round() : 반올림 / 사용자 입력
+      // Math.trunc() : 소수점 제거
+      console.log(Math.floor(10 / 3));
+
+      // 나누기 나머지 값을 추출
+      console.log(10 % 3);
+
+      // 어떤 정수를 2로 나누면 나머지는 0 or 1
+      // 나머지 값이 0 이면 짝수이면서, 2의 배수
+      // 4 / 2 = 2, % = 0  →  4 = 2의 배수, 짝수
+      // 9 / 3 = 3, % = 0  →  9 = 3의 배수
+
+      // 소수(Prime Number) : 1과 자기자신으로만 나누어 떨어지는 수
+      // 2, 3, 5, 7, 11, 13, 17, ...
+    </script>
+  </head>
+  <body></body>
+</html>

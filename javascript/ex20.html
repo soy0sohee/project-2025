@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자 - 삼항(물음표)</title>
+    <!-- 삼항 : A ? B : C -->
+    <script>
+      //
+      //         [ture] ----> A값이 출동
+      // let c = 조건식(절) ? A값 : B값 ;
+      //         [false] ---------> B값이 출동
+      //
+      // 조건식(절)이 T 이면 A값 대입
+      // 조건식(절)이 F 이면 B값 대입
+
+      let num = 10 < 20 ? 10 : 20;
+      console.log(num);
+
+      // 조건식(절) : 비교(논리)연산자로 이루어진 간단한 코드
+
+      // if문으로 변경하면,
+
+      if (10 < 20) {
+        num = 10;
+      } else {
+        num = 20;
+      }
+
+      // 연습문제
+      // 1. prompt로 1~100사이의 정수를 입력받고,
+      // 50보다 크면 = 50 초과
+      // 50보다 작거나 같으면 = 50 이하
+
+      // let 사용 : 변수 선언을 통해 값을 중간에 저장해 놓을 필요가 있을때 사용
+
+      let quest = prompt("1~100사이의 정수를 입력하시오");
+
+      num = Number(quest);
+
+      let message = num > 50 ? "50 초과" : "50 이하";
+
+      console.log(message); // log() 함수는 문자열을 출력하는 함수
+
+      //
+    </script>
+  </head>
+  <body></body>
+</html>
