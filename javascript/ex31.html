@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문과 조건문의 결합</title>
+    <script>
+      // 반복문 안에서 조건문 사용하기
+      for (let i = 1; i <= 100; i++) {
+        if (i % 2 == 0 || i % 3 == 0) {
+          console.log(i);
+        }
+      }
+
+      // 총합 구하기 (sum)
+      // 1. 반복문 전에 총합을 저장한 sum변수 초기화
+      // 2. 반복문 안에서 sum + n
+      // 3. 반복문 종료 후 sum 출력
+      let sum = 0;
+      for (let i = 1; i <= 10; i++) {
+        sum = sum + i;
+        //    0   + 1  = 1
+        //    1   + 2  = 3
+        //    3   + 3  = 6
+        //    6   + 4  = 10
+        //    10  + 5  = 15
+        //    15  + 6  = 21
+        //    21  + 7  = 28
+        //    28  + 8  = 36
+        //    36  + 9  = 45
+        //    45  + 10 = 55
+      }
+      console.log(sum);
+
+      // 카운트 세기 (0부터 1씩 증가)
+      let count = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 10 == 4) {
+          count++;
+        }
+      }
+      console.log(count);
+
+      // 문자열 보간 = 문자열과 변수를 조합하는 것
+      // 백틱(Accent)문자 사용
+      console.log(`카운트 : ${count}`);
+    </script>
+  </head>
+  <body></body>
+</html>

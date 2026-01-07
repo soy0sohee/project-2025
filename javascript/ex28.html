@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch문 변칙적 사용</title>
+    <!-- break문을 생략하면 아래 case문과 함께 적용됨 -->
+    <!-- fall-through(break 생략) -->
+
+    <!-- case 하나에 여러 값 적용은 break를 생략하면 가능함 -->
+    <script>
+      let day = "금";
+      switch (day) {
+        case "토":
+        case "일":
+          console.log("주말");
+          break;
+        case "월":
+        case "화":
+        case "수":
+        case "목":
+        case "금":
+          console.log("평일");
+          break;
+        default:
+          console.log("오류");
+          break;
+      }
+
+      // 연습문제
+      // 랜덤으로 달(Month, 1~12월)을 생성하고
+      // 12~2월 = 겨울 / 3~5월 = 봄 / 6~8월 = 여름 / 9~11월 = 가을 출력하시오.
+      let season = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+      console.log(typeof season, season);
+
+      switch (season) {
+        case 12:
+        case 1:
+        case 2:
+          document.write("<h3>겨울</h3>");
+          break;
+        case 3:
+        case 4:
+        case 5:
+          document.write("<h3>봄</h3>");
+          break;
+        case 6:
+        case 7:
+        case 8:
+          document.write("<h3>여름</h3>");
+          break;
+        case 9:
+        case 10:
+        case 11:
+          document.write("<h3>가을</h3>");
+          break;
+        default:
+          console.log("오류");
+          break;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

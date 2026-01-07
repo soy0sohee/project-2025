@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <script>
+      // 문제2
+      // 철수아버지가 아들을 위해서 로봇장난감을 만들었다.
+      // 동작코드가 랜덤하게 발생한다.
+      // 동작코드가 0 = 로봇이 춤을 춘다. / 1 = 로봇이 노래를 부른다. / 2 = 로봇이 걸어간다. / 3 = 전원이 꺼짐
+      let nRobot = Math.floor(Math.random() * (3 - 0 + 1));
+      console.log(typeof nRobot, nRobot);
+
+      switch (nRobot) {
+        case 0:
+          document.write("<h3>로봇이 춤을 춘다.</h3>");
+          break;
+        case 1:
+          document.write("<h3>로봇이 노래를 춘다.</h3>");
+          break;
+        case 2:
+          document.write("<h3>로봇이 걸어다.</h3>");
+          break;
+        case 3:
+          document.write("<h3>로봇이 전원이 꺼진다.</h3>");
+          break;
+        default:
+          console.log("오류입니다.");
+          break;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

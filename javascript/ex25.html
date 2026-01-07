@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문 - switch case문</title>
+    <!-- switch는 동등비교용 문법 -->
+    <!-- 범위비교, 조건식, 논리연산, 함수호출 등 복잡한 조건은 불가능함 -->
+
+    <!-- 변수 : number, string, boolean타입 가능 -->
+    <!-- case : 값만 들어감 = switch는 if문으로 대체가 가능하나, if문을 switch로 변경 제한의 이유 -->
+    <!-- default : if문의 else와 같은 의미 -->
+    <!-- break : switch문, 반복문 종료 명령어 -->
+    <script>
+      // switch (변수) {
+      //
+      //  case 값1:
+      //    변수 === 값1 -> T이면 실행하는 수행문
+      //  break;
+      //
+      //  case 값2:
+      //    변수 === 값2 -> T이면 실행하는 수행문
+      //  break;
+      //
+      //  default:
+      //    그외의 경우 실행하는 수행문
+      //  break;
+      //
+      // }
+      let myNum = 20;
+
+      switch (myNum) {
+        case 10:
+          console.log("10 입니다.");
+          break;
+        case 20:
+          console.log("20 입니다.");
+          break;
+        default:
+          console.log("그외의 수입니다.");
+      }
+
+      if (myNum === 10) {
+        console.log("10 입니다.");
+      } else if (myNum === 20) {
+        console.log("20 입니다.");
+      } else {
+        console.log("그외의 수입니다.");
+      }
+
+      // 문자열 변수 가능
+      let season = "겨울";
+
+      switch (season) {
+        case "봄":
+          console.log(season + " 입니다.");
+          break;
+        case "여름":
+          console.log(season + " 입니다.");
+          break;
+        case "가을":
+          console.log(season + " 입니다.");
+          break;
+        case "겨울":
+          console.log(season + " 입니다.");
+          break;
+        default:
+          console.log("오류 입니다.");
+      }
+
+      // == vs ===
+      // 값과 타입이 일치하지 않아서 오류 발생하는 경우가 많음 / 실무에서는 "===" 을 선호함
+      let num = 10;
+      let str = "10";
+
+      vs = num === str ? "T" : "F";
+
+      console.log(num, str, vs);
+
+      // 데이터 타입을 정적 타입으로 설정하는 Super Set 언어 = 타입스크립트
+      // 바닐라스크립트(순수 자바스크립트) 업그레이드 버전
+    </script>
+  </head>
+  <body></body>
+</html>

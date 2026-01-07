@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript 연습문제</title>
+    <script>
+      // 문제1
+      // 담임선생님이 영희 영어점수를 채점하고 있다.
+      // 영어 점수는 0~100점 이다.
+      // 영희의 영어점수가 90점 이상이면, "A등급"
+      // 80점 이상이면, "B등급"
+      // 70점 이상이면, "C등급"
+      // 70점 미만이면, "D등급"
+      let enScore = Math.floor(Math.random() * 100) + 1;
+      console.log("문제1 " + enScore);
+
+      if (enScore >= 90) {
+        document.write("영어점수 :" + " A등급 <br/>");
+      } else if (enScore >= 80) {
+        document.write("영어점수 :" + " B등급 <br/>");
+      } else if (enScore >= 70) {
+        document.write("영어점수 :" + " C등급 <br/>");
+      } else if (enScore < 70) {
+        document.write("영어점수 :" + " D등급 <br/>");
+      } else {
+        console.log("문제1 오류");
+      }
+
+      // 문제2
+      // 철수아버지가 아들을 위해서 로봇장난감을 만들었다.
+      // 동작코드가 랜덤하게 발생한다.
+      // 동작코드가 0 = 로봇이 춤을 춘다. / 1 = 로봇이 노래를 부른다. / 2 = 로봇이 걸어간다. / 3 = 전원이 꺼집니다.
+      let rbCount = Math.floor(Math.random() * 4);
+      console.log("문제2 " + rbCount);
+
+      switch (rbCount) {
+        case 0:
+          document.write("로봇이 춤을 춘다. <br/>");
+          break;
+        case 1:
+          document.write("로봇이 노래를 부른다. <br/>");
+          break;
+        case 2:
+          document.write("로봇이 걸어간다. <br/>");
+          break;
+        case 3:
+          document.write("로봇이 종료된다. <br/>");
+          break;
+        default:
+          console.log("문제2 오류");
+          break;
+      }
+
+      // 문제3
+      // 랜덤으로 달(Month, 1~12월)을 생성하고
+      // 12~2월 = 겨울 / 3~5월 = 봄 / 6~8월 = 여름 / 9~11월 = 가을 출력하시오.
+      let month = Math.floor(Math.random() * 12) + 1;
+      console.log("문제3 " + month);
+
+      switch (month) {
+        case 12:
+        case 1:
+        case 2:
+          document.write("겨울 <br/>");
+          break;
+        case 3:
+        case 4:
+        case 5:
+          document.write("봄 <br/>");
+          break;
+        case 6:
+        case 7:
+        case 8:
+          document.write("여름 <br/>");
+          break;
+        case 9:
+        case 10:
+        case 11:
+          document.write("가을 <br/>");
+          break;
+        default:
+          console.log("문제3 오류");
+          break;
+      }
+
+      // 문제4
+      // 영희가 징검다리 게임을 하고있다.
+      // 1부터 100까지 번호가 쓰여진 돌을 건너는데
+      // 끝자리가 3으로 끝나는 돌을 건너 뛴다면
+      // 영희가 밟은 돌의 개수와 총합을 구하시오.
+      sum = 0;
+      count = 0;
+
+      for (let i = 1; i <= 100; i++) {
+        if (i % 10 !== 3) {
+          console.log("문제4");
+          sum = sum + i;
+          count++;
+        }
+      }
+
+      document.write(`영희가 밟은 돌의 합은 ${sum} <br/>`);
+      document.write(`영희가 밟은 돌의 개수는 ${count} <br/>`);
+
+      // 문제5
+      // 주사위 1개를 10번 던져서 나온 수의 총합을 구하시오
+      // 짝수가 나온 총 횟수를 출력하시오.
+      sum = 0;
+      count = 0;
+
+      for (let i = 1; i <= 10; i++) {
+        let nRandom = Math.floor(Math.random() * 6) + 1;
+        console.log("문제5 " + nRandom);
+
+        sum = sum + nRandom;
+
+        if (nRandom % 2 === 0) {
+          count++;
+        }
+      }
+
+      document.write(`주사위 합은 ${sum} <br/>`);
+      document.write(`짝수가 나온 횟수는 ${count}`);
+    </script>
+  </head>
+  <body></body>
+</html>

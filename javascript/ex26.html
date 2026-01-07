@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <script>
+      // 문제1
+      // 담임선생님이 영희 영어점수를 채점하고 있다.
+      // 영어 점수는 0~100점 이다.
+      // 영희의 영어점수가 90점 이상이면, "A등급"
+      // 80점 이상이면, "B등급"
+      // 70점 이상이면, "C등급"
+      // 70점 미만이면, "D등급"
+      let nTest = Math.floor(Math.random() * (100 - 0 + 1));
+      console.log(typeof nTest, nTest);
+
+      let score = Math.floor(nTest / 10);
+      console.log(typeof score, score);
+
+      switch (score) {
+        case 10:
+        case 9:
+          document.write("<h3>A등급</h3>");
+          break;
+        case 8:
+          document.write("<h3>B등급</h3>");
+          break;
+        case 7:
+          document.write("<h3>C등급</h3>");
+          break;
+        default:
+          document.write("<h3>D등급</h3>");
+          break;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

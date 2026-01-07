@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 100제</title>
+    <script>
+      // 문제1
+      // let al = alert("Javascript");
+
+      // 문제2
+      // let str1 = "Hi ";
+      // let str2 = "ECMA Script";
+      // document.write(str1 + str2);
+
+      // 문제3
+      // console.log("자바스크립트!");
+
+      // 문제4
+      // 같은 유형의 따옴표 중복 사용 안됨
+      // document.write("출력양식");
+      // document.write("<table border='1'>");
+      // document.write("<tr><th>학번</th><th>이름</th><th>국어점수</th></tr>");
+      // document.write("<tr><td>010</td><td>길동</td><td>80</td></tr>");
+      // document.write("</table>");
+
+      // 문제5
+      // let name = prompt("이름이 무엇입니까?");
+      // document.write(`안녕하세요. 저는 ${name} 입니다.`);
+
+      // 문제6
+      // let num = prompt("당신의 수학점수는?");
+      // num = Number(num);
+      // console.log(typeof num);
+      // document.write(`제 수학점수는 ${num} 입니다.`);
+
+      // 문제7
+      // let num1 = prompt("10을 입력하세요.");
+      // let num2 = prompt("20을 입력하세요.");
+      // let num3 = prompt("30을 입력하세요.");
+      // document.write(Number(num1) + Number(num2) + Number(num3));
+
+      // 문제8
+      // let num = 10;
+      // document.write(`num의 값은 ${num}입니다.`);
+
+      // 문제9
+      // document.write("1. 숫자를 담는 데이터타입 = Number()</br>");
+      // document.write("2. 문자열를 담는 데이터타입 = String()</br>");
+      // document.write("3. 논리값를 담는 데이터타입 = Boolean()</br>");
+      // document.write("4. 선언되지 않은 데이터타입 = Undefined()</br>");
+      // document.write("5. 객체타입 = Object()</br>");
+      // document.write("6. 함수타입 = Object()");
+
+      // 문제10
+      // let num = prompt("2를 입력하세요.");
+      // num = Number(num);
+      // document.write(num * 2);
+      // console.log(typeof num, num);
+
+      // 문제11
+      // let num = prompt("123을 입력하세요.");
+      // num = Number(num);
+      // num1 = Math.floor(num / 100);
+      // num2 = Math.floor((num - num1 * 100) / 10);
+      // num3 = Math.floor(num - num1 * 100 - num2 * 10);
+      // document.write(`백의 자리수 ${num1}<br/>`);
+      // document.write(`십의 자리수 ${num2}<br/>`);
+      // document.write(`일의 자리수 ${num3}`);
+
+      // 문제12
+      // let ko = prompt("국어점수를 입력하세요.");
+      // let math = prompt("수학점수를 입력하세요.");
+      // let en = prompt("영어점수를 입력하세요.");
+      // ko = Number(ko);
+      // math = Number(math);
+      // en = Number(en);
+      // document.write((ko + math + en) / 3);
+      // console.log(ko, math, en);
+
+      // 문제13
+      // let num1 = prompt("10을 입력하세요.");
+      // let num2 = prompt("2을 입력하세요.");
+      // num1 = Number(num1);
+      // num2 = Number(num2);
+      // document.write(`나누기 몫 ${num1 / num2} <br/>`);
+      // document.write(`나머지 값 ${num1 % num2}`);
+      // console.log(num1, num2);
+
+      // 문제14
+      // let num1 = prompt("2를 입력하세요.");
+      // let num2 = prompt("3를 입력하세요.");
+      // num1 = Number(num1);
+      // num2 = Number(num2);
+      // document.write(`${num1}의 ${num2} = ${Math.pow(num1, num2)}`);
+
+      // 문제15
+      // let round = prompt("원의 반지름을 입력하세요.(정수로 입력할것)");
+      // round = Number(round);
+      // document.write(`반지름 ${round}의 넓이는 ${round * round * 3.14}`);
+
+      // 문제16
+      // document.write((20 > 30) + "<br/>");
+      // document.write(20 <= 30);
+
+      // 문제17
+      // num = Math.floor(123 % 10);
+      // document.write((10 < 20 && 10 > 5) + "<br/>");
+      // document.write((num === 3) + "<br/>");
+      // document.write((5 > 1 || 5 < 10) + "<br/>");
+
+      // 문제18
+      // 랜덤으로 숫자를 하나 말하고 - 3의 배수이면 박수 아니면 N값
+      // let num = Math.floor(Math.random() * 10) + 1;
+      // console.log(num);
+      // if (num % 3 === 0) {
+      //   document.write("짝");
+      // } else {
+      //   document.write(num);
+      // }
+
+      // 문제19
+      // 랜덤으로 나오는 숫자에 위치한 행성 이름
+      // let num = Math.floor(Math.random() * 8) + 1;
+      // console.log(num);
+      // switch (num) {
+      //   case 1:
+      //     document.write("수성");
+      //     break;
+      //   case 2:
+      //     document.write("금성");
+      //     break;
+      //   case 3:
+      //     document.write("지구");
+      //     break;
+      //   case 4:
+      //     document.write("화성");
+      //     break;
+      //   case 5:
+      //     document.write("목성");
+      //     break;
+      //   case 6:
+      //     document.write("토성");
+      //     break;
+      //   case 7:
+      //     document.write("천왕성");
+      //     break;
+      //   case 8:
+      //     document.write("해왕성");
+      //     break;
+      //   default:
+      //     console.log("오류");
+      //     break;
+      // }
+
+      // 문제20
+      // 사용자 키 입력 - 150이상 Y 미만 N
+      // let key = prompt("키를 입력하세요.");
+      // key = Number(key);
+      // console.log(key);
+      // if (key >= 150) {
+      //   document.write("놀이기구 탑승이 가능합니다!");
+      // } else {
+      //   document.write("놀이기구 탑승이 불가능합니다ㅜㅜ");
+      // }
+
+      // 문제21 = 2
+
+      // 문제22
+      // let input = prompt("파이값을 입력하세요.");
+      // input = Number(input);
+      // console.log(input);
+      // document.write(`파이값의 정수는 ${Math.floor(input)} 입니다.`);
+
+      // 문제23
+      // let input = prompt("영어이름을 입력하세요.");
+      // console.log(input);
+      // document.write(`${input.toUpperCase()}님 안녕하세요.`);
+
+      // 문제24
+      // let input = prompt("행성 이름을 입력하세요.");
+      // console.log(input);
+      // if (input === "수성") {
+      //   document.write(`${input}의 영어이름은 Mercury`);
+      // } else if (input === "금성") {
+      //   document.write(`${input}의 영어이름은 Venus`);
+      // } else if (input === "지구") {
+      //   document.write(`${input}의 영어이름은 Earth`);
+      // } else if (input === "화성") {
+      //   document.write(`${input}의 영어이름은 Mars`);
+      // } else if (input === "목성") {
+      //   document.write(`${input}의 영어이름은 Jupiter`);
+      // } else if (input === "토성") {
+      //   document.write(`${input}의 영어이름은 Saturn`);
+      // } else if (input === "천왕성") {
+      //   document.write(`${input}의 영어이름은 Uranus`);
+      // } else if (input === "해왕성") {
+      //   document.write(`${input}의 영어이름은 Neptune`);
+      // }
+    </script>
+  </head>
+  <body></body>
+</html>
