@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최대값, 최소값</title>
+    <script>
+      // 최대값 구하는 공식
+      // 1. 가장 작은 수를 max값에 대입
+      // 2. 모든 수와 max값을 비교
+      // 3. max보다 더 큰 수를 max에 대입
+      // 4. 2~3의 과정을 반복
+      // 5. 마지막에 남는 max값 도출
+
+      // 최소값은 최대값 반대로 적용하면 끝-
+
+      // 초기화는 반복문 밖에서! 반복문 안에서 초기화하면 반복문이 반복되면서 값을 계속 초기화함
+      // Number.MIN_SAFE_INTEGER = 정수 최소값
+      // Number.MAX_SAFE_INTEGER = 정수 최대값
+      let max = Number.MIN_SAFE_INTEGER;
+      let min = Number.MAX_SAFE_INTEGER;
+
+      for (let i = 0; i < 10; i++) {
+        let num = Math.floor(Math.random() * 100) + 1;
+        console.log(num);
+
+        if (num > max) {
+          max = num;
+        }
+        if (num < min) {
+          min = num;
+        }
+      }
+
+      console.log(`최대값 : ${max}`);
+      console.log(`최대값 : ${min}`);
+    </script>
+  </head>
+  <body></body>
+</html>

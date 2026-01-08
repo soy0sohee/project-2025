@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <script>
+      // 1. N*N의 정사각형을 만들기
+      // 2. 일정 패던을 찾기 = i가 증가할수록 감소, j 증가할수록 증가
+      // 3. 코드로 논리화
+
+      // 별찍기
+      // 문제1
+      // 아래와 같이 출력하시오.
+      // *****
+      // *****
+      // *****
+      // *****
+      // *****
+
+      /*
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+      */
+
+      for (let i = 1; i < 6; i++) {
+        let line = "";
+        for (let j = 1; j < 6; j++) {
+          line = line + "*";
+        }
+        console.log(line);
+      }
+
+      // 문제2
+      // *
+      // **
+      // ***
+      // ****
+      // *****
+
+      /*
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < i + 1; j++) {
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+      */
+
+      for (let i = 1; i < 6; i++) {
+        let str = "";
+        for (let j = 1; j < i + 1; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      }
+
+      // 문제2
+      //     *
+      //    **
+      //   ***
+      //  ****
+      // *****
+
+      /*
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j > 4 - i; j++) {
+          document.write("&nbsp;&nbsp;");
+        }
+        for (let j = 0; j > i + 1; j++) {
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+      */
+
+      for (let i = 0; i < 5; i++) {
+        let str = "";
+        for (let j = 0; j < 4 - i; j++) {
+          str = str + " ";
+        }
+        for (let j = 0; j < i + 1; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      }
+
+      //문제4
+      //let N = 5;  N에 따라서 정사각형의 너비/높이가 정해진다.
+      //  5x5짜리 정사각형을 그린다.
+      //*****
+      //*   *
+      //*   *
+      //*   *
+      //*****
+
+      for (let i = 0; i < 1; i++) {
+        let str = "";
+        for (let j = 0; j < 5; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      }
+      for (let i = 0; i < 3; i++) {
+        let str = "";
+        for (let j = 0; j < 5; j++) {
+          if (j > 0 && j < 4) {
+            str = str + " ";
+          } else {
+            str = str + "*";
+          }
+        }
+        console.log(str);
+      }
+      for (let i = 0; i < 1; i++) {
+        let str = "";
+        for (let j = 0; j < 5; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      }
+
+      //문제5
+      //let N = 5;  N에 따라서 Z자의 너비/높이가 정해진다.
+      //*****
+      //   *
+      //  *
+      // *
+      //*****
+      let N = 5;
+      let str = "";
+
+      for (let i = 0; i < N; i++) {
+        str = "";
+        if (i === 0 || i === N - 1) {
+          for (let j = 0; j < N; j++) {
+            str = str + "*";
+          }
+        } else {
+          for (let j = 0; j < N - 1 - i; j++) {
+            str = str + " ";
+          }
+          str = str + "*";
+        }
+        console.log(str);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

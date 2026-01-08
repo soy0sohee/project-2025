@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이중 반복문</title>
+    <!-- 일반 반복문 = 1열 -->
+    <!-- 이중 반복문 = 행열 -->
+    <script>
+      for (let i = 0; i < 5; i++) {
+        console.log("i", i);
+        for (let j = 0; j < 5; j++) {
+          console.log(" j", j);
+        }
+      }
+
+      // 첫번째 for문 = 열 / 두번째 for문 = 행
+      // 구구단 출력
+      for (let i = 2; i <= 9; i++) {
+        for (let j = 1; j <= 9; j++) {
+          console.log(i + " x " + j + " = " + i * j);
+        }
+      }
+
+      // 시간 출력
+      for (let i = 1; i <= 24; i++) {
+        for (let j = 1; j <= 59; j++) {
+          console.log(i + " : " + j);
+        }
+      }
+
+      // 이중 반복문에서 break, continue 사용하기
+      // loopN: = 반복문을 구분하기 위해 레이블을 씀
+      loop1: for (let i = 2; i <= 9; i++) {
+        loop2: for (let j = 1; j <= 9; j++) {
+          console.log(i + " x " + j + " = " + i * j);
+
+          // 이중 반복문의 if는 나를 포함하는 loop 안에서 반복
+          if (j > 5) {
+            continue;
+          } else if (j > 3) {
+            break;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

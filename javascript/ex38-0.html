@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 문제2
+      // *
+      // **
+      // ***
+      // ****
+      // *****
+
+      /*
+      let N = 5;
+      let str = "";
+      for (let i = 0; i < N; i++) {
+        str = " ";
+        for (let j = 0; j < i + 1; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      } */
+
+      // 문제3
+      //     *
+      //    **
+      //   ***
+      //  ****
+      // *****
+
+      /*
+      let N = 5;
+      let str = "";
+      for (let i = 0; i < N; i++) {
+        str = " ";
+        for (let j = 0; j < N - i; j++) {
+          str = str + " ";
+        }
+        for (let j = 0; j < i + 1; j++) {
+          str = str + "*";
+        }
+        console.log(str);
+      }*/
+
+      //문제4
+      //let N = 5;  N에 따라서 정사각형의 너비/높이가 정해진다.
+      //  5x5짜리 정사각형을 그린다.
+      //*****
+      //*   *
+      //*   *
+      //*   *
+      //*****
+
+      /*
+      let N = 5;
+      let str = "";
+      for (let i = 0; i < N; i++) {
+        str = " ";
+        if (i == 0 || i == N - 1) {
+          for (let j = 0; j < N; j++) {
+            str = str + "*";
+          }
+        } else {
+          for (let j = 0; j < 2; j++) {
+            str = str + "*";
+            if (j > 0 || j < 2) {
+              str = str + " ";
+              str = str + " ";
+              str = str + " ";
+            }
+          }
+        }
+        console.log(str);
+      }*/
+
+      //문제5
+      //let N = 5;  N에 따라서 Z자의 너비/높이가 정해진다.
+      //*****
+      //   *
+      //  *
+      // *
+      //*****
+
+      let N = 5;
+      let str = "";
+      for (let i = 0; i < N; i++) {
+        str = "";
+        if (i == 0 || i == N - 1) {
+          for (let j = 0; j < N; j++) {
+            str = str + "*";
+          }
+        } else {
+          for (let j = 0; j < N - 1 - i; j++) {
+            str = str + " ";
+          }
+          str = str + "*";
+        }
+
+        console.log(str);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
