@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배열(Array) = 리스트</title>
+    <!-- C-C++ / 자바 / C# : 배열과 리스트가 별도 -->
+    <!-- JS / Python / Kotlin / Swift : 배열 = 리스트 통합 -->
+    <script>
+      // 배열 : 데이터를 순차적으로 나열해 놓은 자료구조(데이터)
+      //      : 여러 개의 값을 하나의 변수에 순서대로 저장하는 자료구조
+
+      // 램(Ram)
+      //  0x1000 +--------+
+      //         |   10   | 인덱스0
+      //  0x1004 +--------+
+      //         |   20   | 인덱스1
+      //  0x1008 +--------+
+      //         |   30   | 인덱스2
+      //         +--------+
+
+      // 형식
+      // let 배열이름 = [10,20,30]; -> 인덱스0 = 10, 인덱스1 = 20, 인덱스2 = 30,
+      // let 배열이름 = []; -> 빈배열
+      let nums = [10, 20, 30];
+
+      // 배열의 요소(아이템) 값
+      // 배열이름[인덱스번호]
+      console.log(nums[0]);
+      console.log(nums[1]);
+      console.log(nums[2]);
+
+      // 인덱스에 값이 없으면 "undefined" 실행오류가 아닌 빈값으로 선언함
+      console.log(nums[3]);
+
+      nums[3] = 40;
+      console.log(nums[3]);
+
+      // 대량의 데이터에 접근하기 위해 반복문 사용
+      // 인덱스 0부터 3까지 하나씩 증감하면서 콘솔에 값을 보여줘
+      for (let i = 0; i < 3; i++) {
+        console.log(nums[i]);
+      }
+      // 배열이름.length; = 요소의 개수
+      for (let i = 0; i < nums.length; i++) {
+        console.log(nums[i]);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

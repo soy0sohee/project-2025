@@ -12,6 +12,38 @@
       // 철수와 영희의 가장 큰 수를 출력하고, 승자를 출력하시오.
       // 출력예) "철수 승 : 6"
 
+      // 주사위 = 랜덤 1~6
+      // 실행 = 5번
+      // 최대값 출력 후 비교
+
+      chul_max = 0;
+      for (let i = 0; i < 5; i++) {
+        let game = Math.floor(Math.random() * 6) + 1;
+        // console.log(game);
+        if (game > chul_max) {
+          chul_max = game;
+        }
+      }
+      // console.log("최대값 :" + chul_max);
+
+      young_max = 0;
+      for (let i = 0; i < 5; i++) {
+        let game = Math.floor(Math.random() * 6) + 1;
+        // console.log(game);
+        if (game > young_max) {
+          young_max = game;
+        }
+      }
+      // console.log("최대값 :" + young_max);
+
+      if (chul_max > young_max) {
+        document.write(`철수 승 : ${chul_max} <br/>`);
+      } else if (chul_max < young_max) {
+        document.write(`영희 승 : ${young_max} <br/>`);
+      } else {
+        document.write(`무승부 <br/>`);
+      }
+
       // 문제2
       // 또다시 철수와 영희가 주사위 게임을 하고 있다.
       // 철수가 주사위를 5번 던져서, 가장 큰 수를 십의 자릿수로,
@@ -19,6 +51,83 @@
       // 영희도 같은 방법으로 십의 자릿수+일의 자릿수를 만든다.
       // 두 수를 비교하여 승자를 출력하시오.
       // 출력예) "영희 승 : 62"
+
+      chul_max = 0;
+      let chul_min = 6;
+      for (let i = 0; i < 5; i++) {
+        let game = Math.floor(Math.random() * 6) + 1;
+        // console.log(game);
+        if (game > chul_max) {
+          chul_max = game;
+        } else if (game < chul_min) {
+          chul_min = game;
+        }
+      }
+      // console.log("철수 최대 : " + chul_max);
+      // console.log("철수 최소 : " + chul_min);
+
+      chul_sum = chul_max * 10 + chul_min;
+      // console.log("철수 합 : " + chul_sum);
+
+      young_max = 0;
+      let young_min = 6;
+      for (let i = 0; i < 5; i++) {
+        let game = Math.floor(Math.random() * 6) + 1;
+        // console.log(game);
+        if (game > young_max) {
+          young_max = game;
+        } else if (game < young_min) {
+          young_min = game;
+        }
+      }
+      // console.log("영희 최대 : " + young_max);
+      // console.log("영희 최소 : " + young_min);
+
+      young_sum = young_max * 10 + young_min;
+      // console.log("영희 합 : " + young_sum);
+
+      if (chul_sum > young_sum) {
+        document.write(`철수 승 : ${chul_sum} <br/>`);
+      } else if (chul_sum < young_sum) {
+        document.write(`영희 승 : ${young_sum} <br/>`);
+      } else {
+        document.write(`무승부 <br/>`);
+      }
+
+      // 문제3
+      //     *
+      //    **
+      //   ***
+      //  ****
+      // *****
+
+      let N = 5;
+      let i = 0;
+      while (i < N) {
+        let str = "";
+        for (let c = 0; c < N; c++) {
+          str = str + "*";
+        }
+        console.log(str);
+        i++;
+      }
+
+      // 문제4
+      // let N = 5;  N에 따라서 정사각형의 너비/높이가 정해진다.
+      // 5x5짜리 정사각형을 그린다.
+      //*****
+      //*   *
+      //*   *
+      //*   *
+      //*****
+
+      // 문제5
+      // let N = 5;  N에 따라서 Z자의 너비/높이가 정해진다.
+      // *****
+      //    *
+      //   *
+      //  *
+      // *****
     </script>
   </head>
   <body></body>

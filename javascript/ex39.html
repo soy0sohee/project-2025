@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문 - while문 / do-while문</title>
+    <!-- 반복문 기초 이론은 ex.29 참고 -->
+
+    <!-- while문 -->
+    <!-- for문을 실행 순서대로 해체한 것 -->
+    <!-- 조금 더 자유롭게 반복문을 구현할 수 있음 -->
+
+    <!-- do-while문 -->
+    <!-- 한번 먼저 수행문과 증감문을 수행하고 조건식을 적용 -->
+    <!-- 적어도 한번 수행하고 조건 판단 할 때 -->
+    <script>
+      // for문 형식
+      // for ( 변수=초기화; 조건식; 증감문 ) {
+      //  수행문
+      // }
+
+      for (let i = 0; i < 5; i++) {
+        console.log("for문 " + i);
+      }
+
+      // while문 형식
+      // 변수=초기화;
+      // while ( 조건식 ) {
+      //  수행문
+      //  ...
+      //  증감문
+      // }
+
+      let i = 0;
+      while (i < 5) {
+        console.log("while문 " + i);
+        i++;
+      }
+
+      // do-while문 형식
+      // 변수=초기화;
+      // do {
+      //  수행문
+      //  ...
+      //  증감문
+      // }  while ( 조건식 );
+
+      let j = 0;
+      do {
+        console.log("do-while문 " + j);
+        j++;
+      } while (j < 5);
+    </script>
+  </head>
+  <body></body>
+</html>

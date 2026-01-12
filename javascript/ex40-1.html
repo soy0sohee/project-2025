@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>약수와 소수 판별</title>
+    <script>
+      // 약수(divisor, factor) : 정수를 나누었을 때, 나머지가 0이 되는 수
+      // ex) 4의 약수는? 1,2,4
+      // ex) 5의 약수는? 1,5
+      // ex) 12의 약수는? 1,2,3,4,6,12
+
+      // 소수(prime number) : 1과 자기 자신으로만 나누어 지는 약수가 두개인 수
+      // ex) 5의 약수는? 1,5
+      // ex) 2,3,5,7,11,...
+
+      // 문제1
+      // 숫자 12의 약수를 모두 구하시오.
+
+      // 숫자 12를 1~12까지의 정수와 나눴을때 나머지 값이 0인 숫자 = 약수
+
+      let i = 1;
+      while (i <= 12) {
+        console.log(i);
+        if (12 % i == 0) {
+          // document.write(`12의 약수 : ${i} </br>`);
+        }
+        i++;
+      }
+
+      // 문제2
+      // 숫자 7이 약수인지 소수인지 판별하시오.
+
+      // 숫자 7을 1~7까지의 정수와 나눴을때 나머지 값이 0인 숫자 = 약수
+      // 그중 경우의 수가 두번인 숫자 = 소수
+
+      let j = 1;
+      let count = 0;
+      while (j <= 7) {
+        // console.log(j);
+        if (7 % j == 0) {
+          console.log(j);
+          count++;
+        }
+        j++;
+      }
+      if (count == 2) {
+        // document.write(`숫자 7은 소수입니다. </br>`);
+      } else {
+        // document.write(`숫자 7은 약수입니다. </br>`);
+      }
+
+      // 문제 3
+      // 소수판별
+      // 1에서 100사이의 정수 중에서
+      // 소수인 숫자만 출력
+
+      // 1~100 숫자를 1~자기 자신의 숫자와 나눴을때,
+      // 나머지 값이 0인 경우만 걸러서 누적시켜라
+      // 누적된 경우의 수가 두번인 경우만 걸러라
+      // 출력시켜라
+
+      let k = 1;
+      while (k <= 100) {
+        // console.log(i);
+        let count = 0;
+        for (let j = 1; j <= k; j++) {
+          if (k % j == 0) {
+            count++;
+            // console.log(i);
+          }
+        }
+        if (count == 2) {
+          // document.write(`<div>1~100 사이 소수 : ${k}</div>`);
+        }
+        k++;
+      }
+
+      // 문제4
+      // 숫자 야구 게임
+      // 투수가 무한히 공을 던진다.
+      // 스트라이크를 던질 확률은 70%이다.
+      // 볼을 던질 확률은 30%라면
+      // 누적 스트라이크 3개가 될 때 게임을 중단하시오.
+      // 총 투수 수와 볼의 갯수도 출력하시오.
+
+      let strake = 0;
+      let ball = 0;
+      for (;;) {
+        let random = Math.floor(Math.random() * 100) + 1;
+        if (random <= 70) {
+          strake++;
+          console.log("스트라이크");
+        } else if (random > 70) {
+          ball++;
+          console.log("볼");
+        }
+        if (strake === 3) {
+          console.log("게임종료");
+          break;
+        }
+      }
+      document.write(`던진 공의 총 수 : ${strake + ball}</br>`);
+      document.write(`볼의 개수 : ${ball}`);
+    </script>
+  </head>
+  <body></body>
+</html>

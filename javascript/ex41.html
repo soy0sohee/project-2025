@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무한루프</title>
+    <script>
+      // 무한루프 만드는 법
+      // 이벤트를 대기하고 있다가 처리하기 위해서
+      // 무한루프를 사용할 때는 탈출 조건을 필수로 추가하여야함
+      // for(;;) / while(true)
+
+      /* 
+      let count = 0;
+      for (;;) {
+        console.log(count++);
+        if (count > 100) {
+          break;
+        }
+      }
+      count = 0;
+      while (true) {
+        console.log(count++);
+        if (count > 100) {
+          break;
+        }
+      } */
+
+      // 연습문제
+      // 문제1
+      // 주사위 1개를 무한히 던져서, 숫자 5가 나오면 중단하고,
+      // 숫자 5를 출력하시오.
+      let game = 0;
+      while (true) {
+        game = Math.floor(Math.random() * 6) + 1;
+        console.log(game);
+        if (game == 5) {
+          document.write("중단 숫자 : " + game + "<br/>");
+          break;
+        }
+      }
+      // 문제2
+      // 철수는 승부욕이 강해서 이길때까지 주사위를 던지는 녀석임
+      // 철수와 영희가 주사위를 한번씩 번갈아 던지면서,
+      // 승자와 패자와 무승부를 출력하고,
+      // 철수가 승리하면 게임을 멈추시오.
+      while (true) {
+        chul_game = Math.floor(Math.random() * 6) + 1;
+        young_game = Math.floor(Math.random() * 6) + 1;
+        console.log("철수 : " + chul_game + " vs " + "영희 : " + young_game);
+        if (chul_game > young_game) {
+          document.write("철수 승 <br/>");
+          break;
+        } else if (chul_game < young_game) {
+          document.write("영희 승 <br/>");
+        } else {
+          document.write("무승부 <br/>");
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
