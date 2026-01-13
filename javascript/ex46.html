@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열 제어 함수</title>
+    <script>
+      // 1. 리터럴 - string(수정불가)
+      let string1 = "문자열1";
+      console.log(typeof string1, string1);
+
+      // 2. string객체 - object(수정가능)
+      let string2 = new String("문자열2");
+      console.log(typeof string2, string2);
+
+      let string3 = "Abcdef";
+      // 문자열 길이
+      console.log(string3.length);
+      // 문자 대소문자 변경
+      console.log(string3.toUpperCase());
+      console.log(string3.toLowerCase());
+      // 문자 한자만 가져오기
+      let char = string3.charAt(0);
+      let char2 = string3[0];
+      console.log(char, char2);
+
+      // 문자(열)의 인덱스 가져오기
+      let string4 = "java_script_programming";
+      // script 문자열의 위치(인덱스)
+      console.log(string4.indexOf("script"));
+      // 문자열 위치 못찾으면 -1 반환
+      console.log(string4.indexOf("python"));
+      // 문자열 중 첫번째 i 인덱스
+      console.log(string4.indexOf("i"));
+      // 문자열 중 마지막 i 인덱스
+      console.log(string4.lastIndexOf("i"));
+
+      // 문자열 치환(교체)
+      // string4 = 원본 / replaced = 복사본
+      let replaced = string4.replace("java", "ECMA");
+      console.log(string4);
+      console.log(replaced);
+
+      // 문자열 일부 가져오기
+      // 시작점, 끝점 앞까지 일부만 잘라오기
+      let substr1 = string4.substring(5, 11);
+      console.log(substr1);
+
+      // 문자열 분리 = .split()
+      let string5 = "딸기,배,사과,포도,바나나";
+      console.log(string5.split(","));
+
+      // 문자열 연결
+      // 1. + 연산자
+      // 2. .concat() 함수
+      let string6 = "ECMA";
+      let string7 = " script";
+      let concated = string6.concat(string7);
+      console.log(concated);
+
+      // 공백 제거 - 통신응답 문자열에 공백 제거
+      // 좌우 공백 제거
+      let string8 = "  This is java script  ";
+      console.log(string8);
+      console.log(string8.trim());
+      // 모든 공백 제거
+      // 핸드폰번호 : 010 12 54 5974
+      // 공백 제거 정규표현식(Regular Expression) : .replace(/(\s*)/g, "")
+      let fullTrim = string8.replace(/(\s*)/g, "");
+      console.log(fullTrim);
+
+      // 정규표현식 종류 : 숫자인지, 이메일형식인지, 핸드폰번호인지, 이름(알파벳)인지 등..
+    </script>
+  </head>
+  <body></body>
+</html>
