@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>타이머 함수, 인터벌 함수</title>
+    <script>
+      // setTimeout 함수 : 일정 시간 후에 코드 호출
+      // setTimeout(() => {}, 지연시간)
+      setTimeout(() => {
+        console.log("타이머 3초 지남");
+      }, 3000); // 화살표 함수, 지연시간 3초
+
+      setTimeout(function () {
+        console.log("타이머 3초 지남");
+      }, 3000);
+
+      // setInterval 함수 : 일정 시간 마다(주기적) 코드 호출
+      let id = setInterval(() => {
+        console.log("1초마다 수행");
+        // 2025-01-13 00:00:00
+        let date = new Date().toISOString().split("T")[0];
+        let time = new Date().toTimeString().split(" ")[0];
+        console.log(date + " " + time);
+      }, 1000);
+
+      setTimeout(function () {
+        clearInterval(id);
+      }, 6000);
+    </script>
+  </head>
+  <body></body>
+</html>

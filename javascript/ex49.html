@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정렬 알고리즘 - 버블 정렬</title>
+    <!-- 대표 정렬 알고리즘 : 버블정렬, 선택정렬, 삽입정렬 -->
+    <script>
+      // 치환(변수 교환하기)
+      let a = 10;
+      let b = 20;
+
+      let temp = a;
+      a = b;
+      b = temp;
+
+      // 버블 정렬 (bubble sort)
+      // 인접한 두 요소를 비교해서 순서를 정렬
+      // 단점, 원소의 개수가 많아지면 성능이 떨어짐
+
+      // 모든 요소를 쌍으로 비교하면서 큰 값이 뒤로 이동(거품이 올라가듯이)
+      // 이중 반복문으로 i, j 인덱스 발생
+      // 9, 8, 2, 1, 3
+      // 9:8, 9:2, 9:1, 9:3
+      // 8, 2, 1, 3, 9
+      // 8:2, 8:1, 8:3, 8:9
+      // 2, 1, 3, 8, 9
+      // 2:1, 2:3, 3:8, 8:9
+      // 1, 2, 3, 8, 9
+
+      // 모든 자릿수를 두개 자릿수 쌍으로 비교, 왼쪽 값이 더 크면 치환
+      let nums = [8, 9, 2, 1, 3];
+      let t = 0;
+      console.log(nums);
+      for (let i = 0; i < nums.length; i++) {
+        console.log(i);
+        for (let j = 0; j < nums.length - i; j++) {
+          console.log(" ", j);
+          if (nums[j] > nums[j + 1]) {
+            // 치환
+            t = nums[j];
+            nums[j] = nums[j + 1];
+            nums[j + 1] = t;
+          }
+        }
+      }
+      console.log(nums);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>문제 32</title>
+    <title>문제풀이</title>
     <script>
       // sort() 함수
       // 1. 문자열 정렬 = sort()
@@ -12,10 +12,17 @@
       // join() 함수
       // 공백으로 분리된 문자열
       // 배열을 다시 구분자가 있는 문자열로 만든다.
-      let input = prompt("176 156 155 165 166 169");
-      let arr = input.split(" ").sort().join(" ");
-      console.log(arr);
 
+      // 문제32 방법1
+      let input = "176 156 155 165 166 169";
+
+      // 매소드 체이닝(Method Chaining) : 매소드 뒤에 매소드 호출 가능
+      let arr = input.split(" ").sort().join(" ");
+      // arr = input.split(" "); -- 배열로 변환
+      // arr = input.sort(); -- 오름차순 정렬
+      // arr = input.join(" "); -- 문자열로 변환
+
+      // console.log(arr);
       // 문자열 비교
       if (input === arr) {
         document.write("Yes");
@@ -23,19 +30,68 @@
         document.write("No");
       }
 
-      let input2 = "176 156 155 165 166 169";
-      let arr_input2 = input.split(" ");
-      let arr_sort2 = input.split(" ").sort();
+      // 문제32 방법2
+      let input2 = "155 156 165 166 169 176";
+      let arr_input2 = input2.split(" ");
+      let arr_sort2 = input2.split(" ").sort();
+      // console.log(typeof arr_input2);
+
+      // 판별로직(flag로직) - boolean
+      // 판별에 들어가기 전에 미리 boolean값을 설정
+      // 팔별로직
+      // if(boolean체크)
+
+      let check = true;
+      for (let i = 0; i < arr_input2.length; i++) {
+        console.log(arr_input2[i]);
+        console.log(arr_sort2[i]);
+        // console.log(typeof arr_input2[i]);
+        if (arr_input2[i] != arr_sort2[i]) {
+          // 한번이라도 안맞으면 거짓
+          check = false;
+          break;
+        }
+      }
+      document.write(check ? "Yes" : "No");
 
       // 배열과 배열의 값을 비교
-      if (arr_input2 == arr_sort2) {
-      }
+      // if (arr_input2 == arr_sort2) {}
 
       // 값 참조 vs 주소 참조
       // 값(value) 참조 : 특정 메모리 주소에 실제 값이 들어있음, 실제 값 바로 비교 가능
       //                : Number, String - 변수의 실제 값을 가짐
       // 주소(address) 참조 : 특정 메모리 주소를 참조해서 실제 값을 찾음, 주소값을 비교하므로 실제 값 비교 불가
       //                    : Object(배열, 키밸류객체, 클래스객체) - 변수의 주소 값을 가짐
+
+      // 문제33
+      // 1. reverse()
+      input = "1 2 3 4 5";
+      arr = input.split(" ");
+      let arr_reverse = arr.reverse();
+      document.write(arr_reverse);
+      let str = "";
+      for (let i = 0; i < arr_reverse.length; i++) {
+        str = str + arr_reverse[i] + " ";
+      }
+      console.log(str);
+
+      // 2. 역순 정렬
+      input = "1 2 3 4 5";
+      arr = input.split(" ");
+      str = "";
+      for (let i = arr.length - 1; i >= 0; i--) {
+        str = str + arr[i] + " ";
+      }
+      console.log(str);
+
+      // join() 함수
+      // 배열의 값을 모두 문자열로 바꿈
+      let arr_str = ["떡볶이", "오뎅", "튀김"];
+      let arr_num = [10, 20, 30];
+      console.log(typeof arr_str[0], arr_str);
+      console.log(typeof arr_num[0], arr_num);
+      arr_num.join(",");
+      console.log(typeof arr_num.join(","));
     </script>
   </head>
   <body></body>

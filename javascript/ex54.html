@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수형 변수</title>
+    <script>
+      // 함수 : 코드 뭉치를 기능적으로 분리하고 이름을 붙여 놓은 것
+
+      // 함수형변수(익명함수)
+      // 함수의 매개변수(값,코드)로 전달
+      // 비동기 처리 (코드의 선언시점과 실행시점이 다른 것)
+      // 예) 사용자의 UI액션 = 버튼 선언 시점과 클릭 시점이 다름
+      // 예) http통신 = 요청 시점과 응답 시점이 다름
+
+      // 일반함수
+      function myFunc1() {
+        console.log("myFunc1 호출됨");
+      }
+      myFunc1();
+
+      // 함수형변수(익명함수) : 함수를 변수(값)처럼 코드를 저장해 놓은 것
+      // funcVar = 코드를 가지고 있음
+      let myFunc2 = function () {
+        console.log("myFunc2 호출됨");
+      };
+      myFunc2();
+
+      // numVar = 10을 가지고 있음
+      let numVar = 10;
+
+      // 익명함수의 매개변수와 반환값
+      let funcVar2 = function (param) {
+        return param * 2;
+      };
+      console.log(funcVar2(2));
+
+      // 화살표 함수 : ES6버전부터
+      let funcVar3 = (param) => {
+        return param * 2;
+      };
+      console.log(funcVar3(2));
+
+      // 일반함수의 매개변수로 함수형변수를 입력해 보자.
+      let sumFunc = (a, b) => {
+        return a + b;
+      };
+      // 입력값과 매소드(코드)까지 입력해준다.
+      function sum(p1, p2, method) {
+        return method(p1, p2);
+      }
+      let result = sum(10, 20, sumFunc);
+      console.log(result);
+    </script>
+  </head>
+  <body></body>
+</html>

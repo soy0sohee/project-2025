@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정렬 알고리즘 - 삽입 정렬</title>
+    <script>
+      // 삽입 정렬 (Insertion Sort)
+      // 앞에서부터 하나씩 이미 정렬된 영역에 새 값을 알맞은 위치에 끼워 넣는 방식
+
+      // 인덱스 1(두번째)부터 정렬을 시작하고,
+      // 자기보다 왼쪽에 있는 값들과 비교하여,
+      // 더 작은 값이면 맞교환한다.
+      // 교환할 값을 가진 key변수를 이용함.
+
+      let nums = [9, 8, 1, 3, 2];
+      let key;
+
+      for (let i = 1; i < nums.length; i++) {
+        key = nums[i]; // 현재 삽입할 값
+        console.log(i);
+        // 기준값 i의 왼쪽에 있는 값들과 비교하며 자리 이동
+        let j = i - 1;
+        console.log(j);
+        while (j >= 0 && nums[j] > key) {
+          nums[j + 1] = nums[j]; // 오른쪽으로 한 칸 이동
+          j--;
+          console.log(nums[j + 1]);
+        }
+        console.log(j);
+        // 알맞은 위치에 key 삽입
+        nums[j + 1] = key;
+        console.log(nums[j + 1]);
+      }
+
+      // 결과 출력
+      for (let num of nums) {
+        console.log(num);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <script>
+      // 연습문제
+      // 1. 함수의 이름은 double
+      //    매개변수로 number타입 1개를 받고
+      //    그 값을 결과값으로 *2
+      //    함수의 선언부와 호출부로 코딩하시오.
+      function double(num) {
+        let result = num * 2;
+        return result;
+      }
+      console.log(double(3));
+
+      // 2. 함수의 이름은 max
+      //    매개변수로 number타입 3개를 입력받고,
+      //    그 3개의 값 중 가장 큰 수를 반환하시오.
+      function max(num1, num2, num3) {
+        let result = 0;
+        if (num1 > num2 && num1 > num3) {
+          result = num1;
+        } else if (num2 > num1 && num2 > num3) {
+          result = num2;
+        } else if (num3 > num1 && num3 > num2) {
+          result = num3;
+        }
+        return result;
+      }
+      console.log(max(20, 30, 10));
+
+      // 3. 복불복 게임을 함수로 설계
+      //    입력 값으로 Number타입(정수 1~10사이) 1개를 입력받고,
+      //    정수 3과 7일 때는 "게임에서 졌습니다."
+      //    그외의 수 일때는 "게임에서 이겼습니다."
+      //    호출부에서 몇번 실행하여 테스트 하시오.
+      function random(num) {
+        let check = true;
+        if (num === 3 || num === 7) {
+          check = false;
+        }
+        let result = check ? "게임에서 이겼습니다." : "게임에서 졌습니다.";
+        return result;
+      }
+      for (let i = 0; i < 3; i++) {
+        let num = Math.floor(Math.random() * 10) + 1;
+        console.log(num);
+        document.write(`${random(num)} </br>`);
+      }
+
+      // 함수적 사고 : 코드를 기능단위로 분리하여 중복 제거함
+    </script>
+  </head>
+  <body></body>
+</html>

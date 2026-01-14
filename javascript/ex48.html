@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정렬하기</title>
+    <script>
+      // 1. sort() 함수 : 정렬알고리즘 = Tim Sort
+      // 삽입정렬(Insertion Sort)와 머지정렬(Merge Sort)를 결합하여 만든 알고리즘
+
+      // 숫자열 정렬
+      let arrNum = [20, 10, 30, 50, 40];
+      let arrNum_sorted = arrNum.sort();
+      console.log(arrNum); //배열의 원본도 정렬됨
+      console.log(arrNum_sorted);
+
+      arrNum = [20, 10, 3, 50, 40, 1];
+      let newNum = Array.from(arrNum); //배열 복사
+      let newNum_sorted = newNum.sort();
+      console.log(arrNum); //배열의 원본은 보존됨
+      console.log(newNum);
+      console.log(newNum_sorted);
+
+      // 문자열 정렬
+      let arrNum2 = ["1", "3", "10", "2"];
+      let arrNum2_sorted = arrNum2.sort(); //문자열은 유니코드 순서대로 정렬
+      console.log(arrNum2);
+      console.log(arrNum2_sorted);
+
+      // 1. 문자열 숫자를 정렬하고 싶으면, 비교함수를 사용
+      arrNum2.sort(function (a, b) {
+        console.log(`a:${a}, b:${b}`);
+        return Number(a) - Number(b);
+        // 값을 +양수로 리턴, -음수로 리턴, 0으로 리턴함에 따라 정렬 결과가 달라짐
+        // a - b = 오름차순 / b - a = 내림차순
+      });
+      console.log(arrNum2);
+
+      let arrNum3 = ["20", "30", "40", "50", "10"];
+      arrNum3.sort(function (a, b) {
+        return Number(a) - Number(b);
+      });
+
+      console.log(arrNum3);
+
+      // 2. 문자열을 숫자열로
+      // arrStr = ["1", "3", "10", "2", "6"];
+      // nums = [];
+      // num = 0;
+      // for (let i of arrStr) {
+      //   num = Number(i);
+      //   nums.push(num);
+      // }
+      // nums.sort();
+      // console.log(nums);
+    </script>
+  </head>
+  <body></body>
+</html>
