@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key-Value 객체</title>
+    <script>
+      // 괄호 정리
+      // 소괄호 ( ) : 함수 function myfunc(){}, 화살표함수 let myfunc ()=>{}, 조건문 if()else(), switch(){},
+      //            : 반복문 for(){}, while(){}, do{}while()
+      // 중괄호 { } : 함수본체 function myfunc(){}, 조건문 switch(){}, 반복문 for(){}, while(){}, do{}while(),
+      //            : 키-밸류객체 {}
+      // 대괄호 [ ] : 배열 let arr=[], 배열인덱스 arr[], 키-밸류객체 데이터참조 keyValue["key"]
+
+      // 객체 = 자바(클래스 -> 객체), 자바스크립트(키 -> 객체, 배열 -> Object객체)
+      // 키=밸류(Key-Value) 객체 : Key와 Value가 쌍으로 이루어진 자료구조
+      //                         : Key - 반드시 문자열형식, 따옴표 미사용
+      //                         : Value - 모든 타입 가능
+
+      let keyValue = { apple: 1000, banana: 2000 }; //key = apple, value = 1000
+      console.log(keyValue);
+
+      // HTTP통신 응답은 3가지 종류 : html, json, xml, file, stream
+      // json 데이터와 1:1 매칭해주는 데이터 구조가 key-value 객체 (자바 = map)
+
+      // PC통신 프로토콜(http(web), socket(챗팅,게임), e-mail, 파일전송, 원격접속)
+      // 프론트엔드(web,app)             <-- http -->  백엔드(server)
+      // html요청, react-javascript요청  <-- http -->  html
+      // json key-value 객체             <-- json -->  json
+
+      let keyValue1 = {
+        apple: 1000, // key = apple, value = 1000
+        banana: 2000,
+      };
+      console.log(keyValue1["apple"]);
+      console.log(keyValue1["banana"]);
+      console.log(keyValue1.apple);
+      console.log(keyValue1.banana);
+
+      // key-value객체의 value에는 다양한 타입 넣을 수 있음
+      // 익명함수 value
+      let person = {
+        name: "홍길동", // 변수 - 속성
+        action: () => {
+          console.log("액션배우"); // 메소드(함수) - 행동
+        },
+        axb: (a, b) => {
+          let result = a * b;
+          return result; // 메소드(함수) - 행동
+        },
+      };
+      console.log(person.name);
+      console.log(person.action()); // 함수의 반환값이 없음으로 = undefined
+      console.log(person.axb(1, 5));
+
+      // 다양한 타입으로 객체 선언
+      let toy = {
+        name: "마진가 피규어",
+        price: 1000,
+        lang: "한국어",
+        color: "white & black",
+      };
+      // key-value객체 전체 순회
+      // for-in문 : key만 가져옴
+      for (let key in toy) {
+        console.log(typeof toy, typeof key);
+        console.log(key);
+        console.log(toy[key]);
+      }
+      // for-of문 : key-vlaue 가져옴
+      for (let [key, value] of Object.entries(toy)) {
+        console.log("for-of key :", key);
+        console.log("for-of value :", value);
+      }
+
+      // 연습문제
+      // student 키밸류 객체를 선언하고,
+      // 학생의 국어, 영어, 수학 성적을 각각 70, 80, 90으로 설정
+      // 합산과 평균을 내는 익명함수를 각각 sum, avr로 설정
+      // 익명함수를 통해 각 과목의 성적과 성적 Sum과 avr값을 출력하시오
+
+      let student = {
+        kor: 70,
+        eng: 80,
+        math: 90,
+        sum: () => {
+          let result = student.kor + student.eng + student.math;
+          return result;
+        },
+        atr: () => {
+          let result = (student.kor + student.eng + student.math) / 3;
+          return result;
+        },
+      };
+
+      console.log("국어", student.kor);
+      console.log("영어", student.eng);
+      console.log("수학", student.math);
+      document.write("성적 합산 : ", student.sum(), "<br/>");
+      document.write("성적 평균 : ", student.atr());
+    </script>
+  </head>
+  <body></body>
+</html>

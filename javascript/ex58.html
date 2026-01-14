@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this 연산자</title>
+    <script>
+      // this 예약어 : 현재 실행 중인 함수를 호출하는 주체(객체)
+      // this 예약어 : 객체가 자기 자신의 속성이나 메소드(값이 함수인 객체)에 접근할 때 사용
+      // 주의 : 일반 함수에서만 동작, 화살표 함수에서는 사용할 수 없음
+      let globalName = "변사또";
+      let person = {
+        name: "홍길동",
+        age: 30,
+        intro: function () {
+          console.log("제 이름은 " + this.name + " 입니다");
+          return;
+        },
+        greeting: () => {
+          let globalName = "변사또";
+          console.log("제 이름은 " + this.globalName + " 입니다");
+          return;
+        },
+      };
+
+      console.log(person.intro());
+      console.log(person.greeting());
+
+      // // 생성자 함수 - 함수가 호출될 때 자동으로 호출되는 함수
+
+      // 전역변수 : script 바로 안의 내용
+      let globlaVar = "전역 변수";
+      console.log(globlaVar);
+      let person1 = {
+        name: "홍길동",
+        regualrFunc: function () {
+          let localVar = "지역 변수";
+          console.log(localVar);
+          console.log(globlaVar);
+          console.log(this.name);
+
+          let arrowFunc = () => {
+            console.log(this.globlaVar); // 동위레벨 변수 참조 불가
+            console.log(this.localVar); // 동위레벨 변수 참조 불가
+            console.log(this.name); // 동위레벨 변수 참조 불가
+          };
+          arrowFunc();
+        },
+      };
+      person1.regualrFunc();
+    </script>
+  </head>
+  <body></body>
+</html>
