@@ -3,13 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS 중급문법</title>
+    <title>JS 중급문법1</title>
     <script>
       // ES6버전 이상 - 리액트.js <- 최신 트렌드 문법을 구사해야 추후 AI코드 이해 가능
       // 구조분해할당과 전개연산자
-      // - 쪼갠다       - 나열한다
+      // -> 쪼갠다      -> 나열한다
       // Destructuring Assignment
       // Spread Operator
+
+      // ++ 배열의 구조분해(할당)
+      // let arr1 = [10, 20, 30];
+      let a = 10;
+      let b = 20;
+      let c = 30;
+      console.log(a, b, c); // = 간단하게
+      // 구조분해하여 각각 변수명으로 할당한 것, 배열은 아님 단순 변수 지정
+      // 변수명은 문자형식으로만 가능
+      let [x, y, z] = [10, 20, 30];
+      console.log(x, y, z);
+
+      // 일부만 새로운 이름으로 할당
+      // 콤마로 할당 위치 구분
+      let [d] = [10, 20, 30];
+      console.log(d);
+      let [, e] = [10, 20, 30];
+      console.log(e);
+      let [, , f] = [10, 20, 30];
+      console.log(f);
+
+      // ++ 객체의 구조분해(할당)
+      let obj = {
+        apple: 1000,
+        banana: 2000,
+      };
+      // let apple = obj.apple;
+      // let banana = obj.banana; = 간단하게
+      // console.log(apple, banana);
+      // 객체의 키와 변수이름을 매칭 시켜줘야함
+      let { apple, banana } = obj;
+      console.log(apple, banana);
+
+      // 새로운 이름으로 할당
+      let { apple: fruit1, banana: fruit2 } = obj;
+      console.log(fruit1, fruit2);
+      console.log(obj);
+
+      // 일부만 새로운 이름으로 할당
+      // 키로 할당 위치 구분
+      let { apple: newFruit } = obj;
+      console.log(newFruit);
+
+      // ++ 배열의 전개연산자 [...변수명]
+      let [i, j, ...rest] = [10, 20, 30, 40, 50];
+      console.log(i, rest);
+      console.log(j);
+      console.log(rest); // 나머지 [30,40,50]
+
+      // 값을 치환할때 응용할 수 있음
+      let aa = 10;
+      let bb = 20;
+      // let temp = aa;
+      // aa == bb;
+      // bb == temp; // = 간편하게
+      [bb, aa] = [aa, bb];
+      console.log(aa);
+      console.log(bb);
+
+      // ++ 객체의 전개연산자 [...변수명]
+      // 객체를 병합할때 응용할 수 있음, 유니코드 순으로 나열
+      let pet = {
+        cat: 1000,
+        dog: 2000,
+        pig: 3000,
+      };
+      let ball = {
+        baseball: 1000,
+        soccer: 2000,
+        basketball: 3000,
+      };
+      let favorit = {
+        ...pet,
+        ...ball,
+      };
+      console.log(favorit);
+
+      // 함수의 결과값으로 구조분해할당
+      function foo() {
+        return [10, 20];
+      }
+      console.log(foo());
+
+      // 기본값 설정과 값 치환
+      let [n = 5, m = 7] = [1];
+      console.log(n, m);
+      let { baseball = 4000, pigu = 5000 } = ball;
+      console.log(pigu);
     </script>
   </head>
   <body></body>

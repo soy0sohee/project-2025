@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 중급문법2</title>
+    <script>
+      // 고차함수(Higher-Order Function) or 배열 메소드
+      // 고차함수 : 함수를 매개변수로 받고나 함수를 반환하는 함수
+      // forEach(), map(), reduce(), find(), filter() 함수
+
+      // 고차함수 - 배열 매개변수 순서
+      // item     | index | array
+      // 배열요소 | 순번  | 원본배열
+
+      // const 상수 : 한번 값이 할당되면, 값 변경 불가(안정성)
+      // let 변수 : 값 변경 가능
+
+      // forEach() 함수 : 배열 전체 순회
+      let arr = [10, 20, 30, 40, 50];
+      for (const item of arr) {
+        console.log(item);
+      }
+      // 고차함수는 함수를 입력 받을 수 있음
+      // 함수 실행을 대행하도록 하는 것
+
+      arr.forEach((item, index, array) => {
+        console.log(item, index, array);
+      });
+
+      arr.forEach((a) => {
+        console.log(a);
+      });
+      arr.forEach((a, b) => {
+        console.log(a, b);
+      });
+      arr.forEach((a, b, c) => {
+        console.log(c);
+      });
+
+      // map() 함수 : 원본 배열은 변경되지 않음, sort()함수 원본 변경
+      // 기존 배열 값에 어떤 처리를 가해 새로운 배열을 만듦
+      const newArr = arr.map((i) => {
+        return i * 2;
+      });
+      console.log(arr);
+      console.log(newArr);
+
+      const newArr1 = arr.map((a, b, c) => {
+        console.log(a, b, c);
+      });
+
+      // ex) 문자열을
+      let str = "10 20 30 40 50";
+      //     배열과 숫자 타입으로 바꿔라
+      let nums = str.split(" ").map(Number);
+      console.log(str);
+      console.log(nums);
+
+      let strs = str.split(" ").map(String);
+      console.log(str);
+      console.log(strs);
+
+      // key-value객체 배열에서의 경우
+      const users = [
+        { id: 1, name: "hong" },
+        { id: 2, name: "park" },
+        { id: 3, name: "lee" },
+      ];
+      users.forEach((i) => {
+        console.log(i.name);
+      });
+      users.forEach((a, b, c) => {
+        console.log(a, b, c);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
