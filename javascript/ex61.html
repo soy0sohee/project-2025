@@ -7,6 +7,7 @@
     <script>
       // 고차함수(Higher-Order Function) or 배열 메소드
       // 고차함수 : 함수를 매개변수로 받고나 함수를 반환하는 함수
+      // 반복문을 대신하여 고차함수를 사용한다.
       // forEach(), map(), reduce(), find(), filter() 함수
 
       // 고차함수 - 배열 매개변수 순서
@@ -16,7 +17,8 @@
       // const 상수 : 한번 값이 할당되면, 값 변경 불가(안정성)
       // let 변수 : 값 변경 가능
 
-      // forEach() 함수 : 배열 전체 순회
+      // ** forEach() 함수 : 배열 전체 순회
+      // for문과 다르게 break,continue를 사용할 수 없어서 배열의 모든 요소를 중단없이 순회하는 특징
       let arr = [10, 20, 30, 40, 50];
       for (const item of arr) {
         console.log(item);
@@ -38,7 +40,7 @@
         console.log(c);
       });
 
-      // map() 함수 : 원본 배열은 변경되지 않음, sort()함수 원본 변경
+      // ** map() 함수 : 원본 배열은 변경되지 않음, sort()함수 원본 변경
       // 기존 배열 값에 어떤 처리를 가해 새로운 배열을 만듦
       const newArr = arr.map((i) => {
         return i * 2;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 중급문법2</title>
+    <script>
+      // find : 특정 값을 찾아냄 / true인 순간 값 반환 / 반환값은 특정값이나 undefined
+      // filter : 필터, 특정요소를 걸러냄 / true인것만 모아서 배열로 반환 / 반환값은 배열이나 빈배열
+
+      // ** find 함수
+      let nums = [10, 20, 30, 40, 50];
+
+      const foundVal1 = nums.find((item, index, array) => {
+        return item < 10; // 모두 false
+      });
+      console.log(foundVal1); // undefined
+
+      const foundVal2 = nums.find((item, index, array) => {
+        return item > 30; // false false false true
+      });
+      console.log(foundVal2); // 40
+
+      // ** filter 함수
+      let arrFilter1 = nums.filter((item, index, array) => {
+        return item < 10; // 모두 false
+      });
+      console.log(arrFilter1); // []
+
+      let arrFilter2 = nums.filter((item, index, array) => {
+        return item < 35; // true true true false false
+      });
+      console.log(arrFilter2); // [10, 20, 30]
+    </script>
+  </head>
+  <body></body>
+</html>
