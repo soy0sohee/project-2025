@@ -362,7 +362,169 @@
       // console.log(now);
 
       // 문제41
-      let input = "AAABBBcccddd";
+      // let input = "AAABBBcccddd";
+      // let str = "";
+      // let num = 0;
+      // for (let j = 0; j <= input.length; j++) {
+      //   for (let i = 65; i <= 90; i++) {
+      //     if (input[j] == String.fromCharCode(i)) {
+      //       String.fromCharCode(i + 32);
+      //       str = str + String.fromCharCode(i + 32);
+      //     } else if (input[j] == String.fromCharCode(i + 32)) {
+      //       String.fromCharCode(i);
+      //       str = str + String.fromCharCode(i);
+      //     }
+      //   }
+      // }
+      // console.log(str);
+
+      // 문제42
+      // const input = [10, 11, 12, 13, 14, 15];
+      // console.log(input);
+      // let strArr = "";
+      // const strNum = input.forEach((item, index, array) => {
+      //   strArr += String(item);
+      // });
+      // console.log(strArr);
+      // const str = strArr.split("");
+      // const sum = str.reduce((acc, cur, index, array) => {
+      //   return Number(acc) + Number(cur);
+      // });
+      // console.log(sum);
+
+      // 문제43
+
+      // 문제44
+      // // 점수 입력
+      // const input = [97, 86, 75, 66, 55, 97, 85, 97, 97, 95];
+      // console.log(input);
+      // // 최대 3위 점수 찾기
+      // let max1 = 0;
+      // let max2 = 0;
+      // let max3 = 0;
+      // const max_wrap = input.forEach((item, ind, arr) => {
+      //   if (item > max1) {
+      //     max1 = item;
+      //   } else if (item < max1 && item > max2) {
+      //     max2 = item;
+      //   } else if (item < max2 && item > max3) {
+      //     max3 = item;
+      //   }
+      // });
+      // console.log(max1, max2, max3);
+      // // 점수에 해당하는 사람 필터링
+      // const result = input.filter((item, ind, arr) => {
+      //   return item == max1 || item == max2 || item == max3;
+      // });
+      // console.log(result);
+      // // 사람 수 카운트
+      // let max_count = 0;
+      // for (let i = 0; i <= result.length; i++) {
+      //   if (i > max_count) {
+      //     max_count++;
+      //   }
+      // }
+      // console.log(max_count);
+      // document.write("사탕 받을 사람 : ", max_count);
+
+      // 문제45
+      // const input = "hqllo my namq is hyqwon";
+      // let strArr = "";
+      // for (let str of input) {
+      //   if (str == "q") {
+      //     str = "e";
+      //   }
+      //   strArr += str;
+      // }
+      // console.log(strArr);
+
+      // 문제46
+      // const total_weight = 180;
+      // const member = 8;
+      // let sum = 0;
+      // let count = 0;
+      // let i = 0;
+      // do {
+      //   let weight = Math.floor(Math.random() * 50) + 1;
+      //   sum += weight;
+      //   if (sum <= total_weight) {
+      //     count++;
+      //     console.log(count + "명 : " + sum);
+      //   }
+      //   i++;
+      // } while (i <script member);
+      // document.write("총 탑승 인원 : " + count);
+
+      // 문제47
+      // const random = Math.floor(Math.random() * 99) + 1;
+      // let result = "";
+      // if (random == 11 || random == 12 || random == 13) {
+      //   result = random + "th";
+      // } else {
+      //   if (random % 10 == 1) {
+      //     result = random + "st";
+      //   } else if (random % 10 == 2) {
+      //     result = random + "nd";
+      //   } else if (random % 10 == 3) {
+      //     result = random + "rd";
+      //   } else {
+      //     result = random + "th";
+      //   }
+      // }
+      // console.log(result);
+
+      // 문제48
+      // const lotto = [13, 23, 24, 35, 40, 45];
+      // const lucky = 7;
+      // const myLotto = [13, 23, 20, 30, 0, 0];
+      // let count = 0;
+      // for (let i of lotto) {
+      //   for (let j of myLotto) {
+      //     // console.log(i, j);
+      //     if (i == j) {
+      //       count++;
+      //     }
+      //   }
+      // }
+      // let bonus = 0;
+      // for (let k of myLotto) {
+      //   console.log(k);
+      //   console.log(lucky);
+      //   if (k == lucky) {
+      //     bonus++;
+      //   }
+      // }
+      // switch (count) {
+      //   case 6:
+      //     document.write("1등 당첨");
+      //     break;
+      //   case 5:
+      //     if (bonus == 1) {
+      //       document.write("2등당첨");
+      //     } else {
+      //       document.write("3등당첨");
+      //     }
+      //     break;
+      //   case 4:
+      //     document.write("4등 당첨");
+      //     break;
+      //   case 3:
+      //     document.write("5등 당첨");
+      //     break;
+      //   case 2:
+      //     document.write("꽝");
+      //     break;
+      // }
+
+      // 문제49
+      const str = "aaabbbccc";
+      const arr = str.split("");
+
+      const key = arr.reduce((acc, cur) => {
+        console.log(acc, cur);
+        acc[cur] = (acc[cur] || 0) + 1;
+        return acc;
+      }, []);
     </script>
   </head>
   <body></body>

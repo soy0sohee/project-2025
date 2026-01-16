@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - 계산기 프로그램</title>
+  </head>
+  <body>
+    <input type="text" id="num1" value="10" />
+    <input type="text" id="num2" value="6" />
+    <input type="text" disabled="disbled" id="result" value="" />
+    <button onclick="calc()">input값 가져오기</button>
+
+    <script>
+      function calc() {
+        // input태그 vlaue 가져오기
+        let num1_value = document.getElementById("num1").value;
+        console.log(num1_value);
+
+        let num2_value = document.getElementById("num2").value;
+        console.log(num2_value);
+
+        // input태그 vlaue 설정하기
+        let result = document.getElementById("result");
+        result.value = "33";
+
+        // clear
+        // reulst.value = "";
+      }
+    </script>
+  </body>
+</html>
