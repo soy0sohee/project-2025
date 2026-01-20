@@ -1,163 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- ex72 -->
+    <title>연습문제 - 자판기 프로그램</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      .warp {
-        width: 400px;
-        height: 100%;
-        border: 1px solid black;
-        margin: 0 auto;
-        padding: 30px 40px 40px 40px;
-        box-sizing: border-box;
-      }
-      h1,
-      h3 {
+      #wrap {
+        border: 1px solid gray;
+        width: 300px;
+        height: 400px;
+        margin: 30px auto;
         display: flex;
-        justify-content: center;
-        margin-bottom: 12px;
-      }
-      h3 {
-        margin-bottom: 30px;
-      }
-      .input_wrap {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 30px;
-      }
-      .input_row {
-        display: flex;
+        flex-flow: wrap column;
         align-items: center;
-        gap: 8px;
-      }
-      .input_row > label {
-        flex: 1;
-        font-size: 16px;
-        margin-bottom: 2px;
-      }
-      .input_row > input {
-        flex: 3;
-        padding: 8px;
-        border: 1px solid #a3a3a3;
-        background-color: #ddd;
         text-align: center;
       }
-      .input_row > #result {
-        border: 1px solid #666;
-        background-color: #777;
-        color: #fff;
+      .btn {
+        width: 250px;
+        height: 30px;
+        /* margin-bottom: 10px; */
       }
-      .btn_wrap {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+      #can {
+        background-color: green;
+        color: rgb(240, 228, 228);
+      }
+      #water {
+        background-color: rgb(9, 216, 19);
+        color: rgb(240, 228, 228);
+      }
+      #result {
+        background-color: rgb(108, 158, 235);
+        color: rgb(240, 228, 228);
+      }
+      .won {
+        width: 120px;
+        height: 30px;
+        margin-bottom: 10px;
+        background-color: rgb(214, 48, 70);
+        color: rgb(240, 228, 228);
       }
       button {
-        padding: 8px;
-        border: 0;
-        background-color: #286cd1;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
+        border: 1px solid rgba(65, 65, 65, 0.5);
       }
-      button:hover {
-        opacity: 0.8;
-      }
-      .back {
-        background-color: #f13232;
+      #remain {
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <div class="warp">
-      <h1>JavaScript</h1>
-      <h3>계산기 프로그램을 작성해보자</h3>
-      <div class="input_wrap">
-        <div class="input_row">
-          <label for="num1">숫자 1</label>
-          <input type="text" id="num1" value="" />
-        </div>
-        <div class="input_row">
-          <label for="num2">숫자 2</label>
-          <input type="text" id="num2" value="" />
-        </div>
-        <div class="input_row">
-          <label for="result">연산 결과</label>
-          <input type="text" disabled="disabled" id="result" value="" />
-        </div>
+    <div id="wrap">
+      <div>
+        <p>JavaScript</p>
+        <p>자판기 프로그램을 작성해보자</p>
       </div>
-      <div class="btn_wrap">
-        <button type="button" onclick="clac_plus()">덧셈</button>
-        <button type="button" onclick="clac_minus()">뺄셈</button>
-        <button type="button" onclick="clac_times()">곱셈</button>
-        <button type="button" onclick="clac_divided()">나눗셈</button>
-        <button type="button" onclick="clac_back()" class="back">지우기</button>
+      <div>
+        <p>1. 동전 투입 시 잔액 추가됨.</p>
+        <p>2. 잔액 부족 시 잔액 부족 팝업</p>
+        <p>3. 뽑기 후에 잔액 차감.</p>
       </div>
+      <div id="insert">
+        <button class="won" id="coin1000" onclick="calc()">1000원 투입</button>
+        <button class="won" id="coin500" onclick="calc()">500원 투입</button>
+      </div>
+      <button class="btn" id="can" onclick="calc()">캔음료 2000원 뽑기</button>
+      <button class="btn" id="water" onclick="calc()">생수 700원 뽑기</button>
+      <label for="result" id="remain">잔액</label>
+      <button class="btn" id="result" onclick="calc()">0</button>
     </div>
 
     <script>
-      function clac_plus() {
-        let num1 = document.getElementById("num1").value;
-        console.log(num1);
-        let num2 = document.getElementById("num2").value;
-        console.log(num2);
-        let plus = Number(num1) + Number(num2);
-        console.log(plus);
+      // 오른쪽 그림과 같이 동작하는 자판기를 만드시오.
+      //
+      // 잔액은 result의 value값을 가져와서 연산
+      // result.innerHTML = Number(result.innerHTML) + 1000;
 
+      function calc() {
+        // 아이디 변수 변경
         let result = document.getElementById("result");
-        result.value = plus;
-      }
+        const coin1000 = document.getElementById("coin1000");
+        const coin500 = document.getElementById("coin500");
+        const can = document.getElementById("can");
+        const water = document.getElementById("water");
 
-      function clac_minus() {
-        let num1 = document.getElementById("num1").value;
-        console.log(num1);
-        let num2 = document.getElementById("num2").value;
-        console.log(num2);
-        let minus = Number(num1) - Number(num2);
-        console.log(minus);
-
-        let result = document.getElementById("result");
-        result.value = minus;
-      }
-
-      function clac_times() {
-        let num1 = document.getElementById("num1").value;
-        console.log(num1);
-        let num2 = document.getElementById("num2").value;
-        console.log(num2);
-        let times = Number(num1) * Number(num2);
-        console.log(times);
-
-        let result = document.getElementById("result");
-        result.value = times;
-      }
-
-      function clac_divided() {
-        let num1 = document.getElementById("num1").value;
-        console.log(num1);
-        let num2 = document.getElementById("num2").value;
-        console.log(num2);
-        let devided = Number(num1) / Number(num2);
-        console.log(devided);
-
-        let result = document.getElementById("result");
-        result.value = devided;
-      }
-
-      function clac_back() {
-        let num1 = document.getElementById("num1");
-        num1.value = "";
-        let num2 = document.getElementById("num2");
-        num2.value = "";
-        let result = document.getElementById("result");
-        result.value = "";
+        // 자판기 계산
+        coin1000.onclick = function () {
+          result.innerHTML = Number(result.innerHTML) + 1000;
+        };
+        coin500.onclick = function () {
+          result.innerHTML = Number(result.innerHTML) + 500;
+        };
+        can.onclick = function () {
+          if (Number(result.innerHTML >= 2000)) {
+            result.innerHTML = Number(result.innerHTML) - 2000;
+            alert("캔음료가 나왔습니다.");
+          } else {
+            alert("잔액이 부족합니다.");
+          }
+        };
+        water.onclick = function () {
+          if (Number(result.innerHTML) >= 700) {
+            result.innerHTML = Number(result.innerHTML) - 700;
+            alert("생수가 나왔습니다.");
+          } else {
+            alert("잔액이 부족합니다.");
+          }
+        };
       }
     </script>
   </body>

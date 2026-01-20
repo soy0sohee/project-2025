@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>생성자 함수와 클래스</title>
+    <script>
+      // 1. 일반함수
+      function user() {
+        console.log(this); // window 객체 호출
+        let name = "hong gil-dong";
+        function sayHi() {
+          console.log(this); // window 객체 호출
+          console.log(this.name);
+        }
+        sayHi();
+      }
+      user();
+
+      // 2. 생성자함수
+      // 2.1. 함수이름이 대문자로 시작
+      // 2.2. 호출 시 new 키워드 사용
+      function Users(name) {
+        this.name = name;
+        console.log(this);
+        this.sayHi = function () {
+          console.log(this);
+          console.log("저는 " + this.name + "입니다.");
+        };
+      }
+      // new 하는일
+      // 1. 빈 객체 {} 생성
+      // 2. 객체에 this연결
+      // 3. 생성자 함수 실행
+      // 4. this 자동 반환
+      const users = new Users("철수");
+      users.sayHi();
+
+      // 3. 클래스
+      // class 문법은 생성자 함수와 같은 개념
+      class Animal {
+        constructor(name) {
+          console.log(this);
+          this.name = name;
+        }
+        sayHi() {
+          console.log(this);
+          console.log("나는 " + this.name + "입니다.");
+        }
+      }
+      const animal = new Animal("강아지");
+      animal.sayHi();
+
+      // 4. 객체
+      let user4 = {
+        name: "영희",
+        sayHi: function () {
+          console.log(this);
+          console.log("저는 " + this.name + "입니다.");
+        },
+      };
+      console.log(user4);
+    </script>
+  </head>
+  <body></body>
+</html>

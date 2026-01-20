@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this 예약어</title>
+    <!-- this 자신을 호출하는 주체를 나타내는 키워드 -->
+    <!-- 호출되는 상황 3가지 -->
+    <!-- 1. 객체 안에서 호출될 때 -->
+    <!-- 2. 그냥 혼주 호출될 때 -->
+    <!-- 3. 화살표 함수로 호출될 때 -->
+
+    <!-- 스코프는 정적이고 함수는 동적인 실행 환경을 알면 이해됨 -->
+    <script>
+      // 1. 객체 안에서 호출될 때
+      // sayHello를 호출하는 주체 = person
+      // 객체 안에서 this를 쓰면, 그 객체 자신을 가리킴
+      const person = {
+        name: "철수",
+        sayHello: function () {
+          console.log("안녕, 내 이름은 " + this.name + "야");
+        },
+      };
+      person.sayHello();
+
+      // 2. 그냥 혼주 호출될 때
+      // showThis를 호출하는 주체 = 전역객체
+      // 전역객체는 window 모든 세계
+      function showThis() {
+        console.log("showThis", this);
+      }
+      showThis();
+
+      // 3. 화살표 함수로 호출될 때
+      // regularFunc를 호출하는 주체 = user
+      // arrowFunc를 호출하는 주체 = 전역객체
+      // 일반 함수와 화살표 함수의 호출하는 주체가 다른 이유는 함수의 실행 컨텍스트가 동적이기 때문임
+
+      const user = {
+        name: "영희",
+        regularFunc: function () {
+          console.log("regularFunc", this);
+          console.log("regularFunc", this.name);
+        },
+        arrowFunc: () => {
+          console.log("arrowFunc", this);
+          console.log("arrowFunc", this.name);
+        },
+      };
+      user.regularFunc();
+      user.arrowFunc();
+    </script>
+  </head>
+  <body></body>
+</html>
