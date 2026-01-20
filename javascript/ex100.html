@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -517,14 +517,27 @@
       // }
 
       // 문제49
-      const str = "aaabbbccc";
-      const arr = str.split("");
+      // const str = "aaabbbccc";
+      // const arr = str.split("");
+      // const result = arr.reduce((acc, cur) => {
+      //   acc[cur] = (acc[cur] || 0) + 1;
+      //   return acc;
+      // }, []);
+      // console.log(result);
 
-      const key = arr.reduce((acc, cur) => {
-        console.log(acc, cur);
-        acc[cur] = (acc[cur] || 0) + 1;
-        return acc;
-      }, []);
+      // 문제50
+      // function factorial(n) {
+      //   if (n <= 0) {
+      //     return 1;
+      //   }
+      //   return n * factorial(n - 1);
+      // }
+      // console.log(factorial(5));
+
+      // 문제51
+      const strInput = "The quick brown fox jumps over the lazy dog";
+      strArr = String(strInput).split(" ");
+      console.log(strArr);
     </script>
   </head>
   <body></body>
