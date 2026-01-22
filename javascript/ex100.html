@@ -578,6 +578,93 @@
       // console.log(str + "(이)가 총 " + max + "표로 반장이 되었습니다.");
 
       // 문제54
+      // const inputNum = "1 2 3 4 5";
+      // const numArr = inputNum.split(" ");
+      // console.log(numArr);
+      // let num = numArr[0];
+      // let result = "";
+      // for (let i of numArr) {
+      //   if (i == num) {
+      //     num = Number(num) + 1;
+      //     result = "yes";
+      //   } else {
+      //     result = "no";
+      //   }
+      //   console.log(Number(num));
+      // }
+      // console.log(result);
+
+      // 문제55
+
+      // 문제56
+      // nationWidth = {
+      //   korea: 220877,
+      //   Rusia: 17098242,
+      //   China: 9596961,
+      //   France: 543965,
+      //   Japan: 377915,
+      //   England: 242900,
+      // };
+      // console.log(nationWidth);
+      // let max = 0;
+      // for (let i in nationWidth) {
+      //   const num = nationWidth[i] - nationWidth.korea;
+      //   console.log(num);
+      //   if (num <= max) {
+      //     max = num;
+      //   }
+      // }
+      // console.log(max);
+      // let min = max;
+      // for (let i in nationWidth) {
+      //   const num = nationWidth[i] - nationWidth.korea;
+      //   console.log(num);
+      //   if (num <= min || num != 0) {
+      //     min = num;
+      //   }
+      // }
+      // let key = "";
+      // let value = "";
+      // for (let i in nationWidth) {
+      //   const num = nationWidth[i] - nationWidth.korea;
+      //   if (num == min) {
+      //     key = i;
+      //     value = nationWidth[i];
+      //   }
+      // }
+      // console.log(key, value);
+
+      // 문제57
+      // const input = 1000;
+      // let numArr = [];
+      // for (let i = 1; i <= input; i++) {
+      //   numArr += i;
+      // }
+      // const nums = numArr.split("");
+      // let count = 0;
+      // const result = nums.forEach((item) => {
+      //   if (item == 1) {
+      //     count++;
+      //   }
+      // });
+      // console.log(count);
+
+      // 문제58
+      const input = 123456789;
+      const numArr = String(input).split("").reverse();
+      let num = numArr.map((item, index) => {
+        console.log(item, index);
+        let comma = index + 1;
+        console.log(comma);
+
+        if (comma % 3 == 0) {
+          item = "," + item;
+        }
+        console.log(item);
+
+        return item;
+      });
+      console.log(num);
     </script>
   </head>
   <body></body>

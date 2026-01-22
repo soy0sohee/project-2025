@@ -266,6 +266,7 @@ SELECT 주문수량 * 단가 AS '주문금액'
 FROM 주문세부;
 
 -- CTE(WITH절)
+-- 가상 테이블에 이름 부여
 WITH 주문cte AS (
 	SELECT *
 		,주문수량 * 단가 AS '주문금액'
@@ -273,10 +274,19 @@ WITH 주문cte AS (
 	FROM 주문세부
 )
 SELECT *
-	,주문금액
-	,할인금액
 	,주문금액 - 할인금액 AS '실제 주문금액'
 FROM 주문cte;
+
+-- 서브쿼리 사용방법
+-- SELECT문 실행 순서를 이용하여 FROM에 별칭 넣음
+SELECT t.*
+	,(t.주문금액 - t.할인금액) AS '실제 주문금액'
+FROM (
+	SELECT *
+		,주문수량 * 단가 AS '주문금액'
+		,TRUNCATE(주문수량 * 단가 * 할인율, -1) AS '할인금액'
+	FROM 주문세부
+) AS t;
 
 -- 3. 사원 테이블에서 전체 사원의 이름, 생일, 만나이, 입사일, 입사일수, 
 -- 입사한 지 500일 후의 날짜를 보이시오.
@@ -286,7 +296,8 @@ SELECT 이름
 	,ABS(TIMESTAMPDIFF(YEAR, NOW(),생일)) AS '만나이'
 	,입사일
 	,DATEDIFF(NOW(),입사일) AS '입사일수'
-	,ADDDATE(입사일, INTERVAL 500 DAY) AS '입사 500일 후 날짜'
+	,ADDDATE(입사일, INTERVAL 5 DAY) AS '입사 500일 후'
+	,ADDDATE(입사일, INTERVAL 365*5 DAY) AS '5년 근속일'
 FROM 사원;
 
 -- 4. 고객 테이블에서 도시 컬럼의 데이터를 다음 조건에 따라 ‘대도시’와 ‘도시’로 구분하고, 
@@ -307,6 +318,77 @@ SELECT CASE
 	END AS '마일리지'
 FROM 고객;
 
+-- IF() = 삼항연산자처럼 동작
+SELECT 도시
+	, IF(도시 LIKE '%특별시' || 도시 LIKE '%광역시', '대도시', '도시') AS '도시구분'
+	,마일리지
+	, CASE
+		WHEN 마일리지 >= 100000 THEN 'VVIP고객'
+		WHEN 마일리지 >= 10000 THEN 'VIP고객'
+		ELSE '일반고객'
+	END AS '마일리지구분'
+FROM 고객
+ORDER BY 마일리지구분 ASC;
+
+-- 5. 주문 테이블에서 주문번호, 고객번호, 주문일 및 주문연도, 분기, 월, 일, 요일, 한글요일을 보이시오.
+SELECT 주문번호
+	, 고객번호
+	, 주문일
+	, CAST(YEAR(주문일) AS YEAR) AS '주문연도'
+	, CASE 
+		WHEN EXTRACT(MONTH FROM 주문일) BETWEEN 1 AND 3 THEN '1분기'
+		WHEN EXTRACT(MONTH FROM 주문일) BETWEEN 4 AND 6 THEN '2분기'
+		WHEN EXTRACT(MONTH FROM 주문일) BETWEEN 7 AND 9 THEN '3분기'
+		WHEN EXTRACT(MONTH FROM 주문일) BETWEEN 10 AND 12 THEN '4분기'
+	END AS '분기'
+	, MONTH(주문일) AS '월'
+	, EXTRACT(DAY FROM 주문일) AS '일' 
+	, WEEKDAY(주문일) AS '요일'
+	, CASE WEEKDAY(주문일)
+		WHEN 0 THEN '월요일'
+		WHEN 1 THEN '화요일'
+		WHEN 2 THEN '수요일'
+		WHEN 3 THEN '목요일'
+		WHEN 4 THEN '금요일'
+		WHEN 5 THEN '토요일'
+		WHEN 6 THEN '일요일'
+	END AS '한글요일'
+FROM 주문;
+
+-- 6. 주문 테이블 요청일보다 방송일이 7일 이상 늦은 주문내역을 보이시오
+SELECT *
+	,DATEDIFF(발송일, 요청일) AS '지연일수'
+FROM 주문
+WHERE DATEDIFF(발송일, 요청일) >= 7;
+
+-- 실전문제
+-- 1. 고객 테이블에서 이름에 '정'이 들어간 담당자명을 검색하시오
+SELECT *
+FROM 고객
+WHERE 담당자명 LIKE '정%';
+
+-- 2. 제품 테이블에서 제품번호, 제품명, 재고, 재고구분을 보이시오
+--    - 제고구분 : 재고가 100개 이상 = '과다재고' / 10개 이상 = '적정' / 나머지 = '재고부족'
+SELECT 제품번호
+	, 제품명
+	, 재고
+	, CASE 
+		WHEN 재고 >= 100 THEN '과다재고'
+		WHEN 재고 >= 10 THEN '적정'
+		ELSE '재고부족'
+	END AS 재고구분
+FROM 제품;
+
+-- 3. 사원 테이블에서 입사한지 40개월이 지난 사원을 찾아
+--    이름, 부서번호, 직위, 입사일, 입사일수, 입사개월수
+SELECT 이름
+	, 부서번호
+	, 직위
+	, 입사일
+	, DATEDIFF(NOW(), 입사일) AS '입사일수'
+	, TIMESTAMPDIFF(MONTH, 입사일, NOW()) AS '입사개월수'
+FROM 사원
+WHERE TIMESTAMPDIFF(MONTH, 입사일, NOW()) > 40;
 
 
 
