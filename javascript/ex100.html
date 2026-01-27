@@ -650,21 +650,126 @@
       // console.log(count);
 
       // 문제58
-      const input = 123456789;
-      const numArr = String(input).split("").reverse();
-      let num = numArr.map((item, index) => {
-        console.log(item, index);
-        let comma = index + 1;
-        console.log(comma);
+      // const input = 1234567890000;
+      // const numArr = String(input).split("");
+      // let count = 0;
+      // let num = "";
+      // let result = "";
+      // for (let i = numArr.length - 1; i >= 0; i--) {
+      //   count++;
+      //   num += numArr[i];
+      //   if (count == numArr.length) {
+      //     break;
+      //   } else if (count % 3 == 0) {
+      //     num += ",";
+      //   }
+      // }
+      // for (let j = num.length - 1; j >= 0; j--) {
+      //   result += num[j];
+      // }
+      // console.log(result);
 
-        if (comma % 3 == 0) {
-          item = "," + item;
-        }
-        console.log(item);
+      // 문제59
+      // const input = "sososo";
+      // const str = (50 - input.length) / 2;
+      // console.log(str);
+      // let result = "";
+      // let count = 0;
+      // for (let i = 0; i < 50 - input.length; i++) {
+      //   console.log(i);
+      //   count++;
+      //   result += "=";
+      //   if (count == str) {
+      //     result += input;
+      //   }
+      //   console.log(result);
+      // }
 
-        return item;
-      });
-      console.log(num);
+      // 문제60
+      // const students = [
+      //   "강은지",
+      //   "김유정",
+      //   "박현서",
+      //   "최성훈",
+      //   "홍유진",
+      //   "박지호",
+      //   "권윤일",
+      //   "김채리",
+      //   "한지호",
+      //   "김진이",
+      //   "김민호",
+      //   "강채연",
+      // ];
+      // const strArr = students.sort();
+      // console.log(strArr);
+      // let count = 0;
+      // const student = strArr.map((item) => {
+      //   // console.log(item);
+      //   let studentKv = {
+      //     번호: count++,
+      //     이름: item,
+      //   };
+      //   return studentKv;
+      // });
+      // console.log(student);
+
+      // 문제61
+      // const input = "aaabbbbcdddd";
+      // const strArr = input.split("");
+      // const strRed = strArr.reduce((acc, cur) => {
+      //   acc[cur] = (acc[cur] || 0) + 1;
+      //   return acc;
+      // }, {});
+      // console.log(strRed);
+
+      // 문제62
+
+      // 문제63
+      // const input = "복잡한 세상 편하게 살자";
+      // const strArr = input.split(" ");
+      // let result = "";
+      // const strMap = strArr.map((item) => {
+      //   for (let i = 0; i <= item.length; i++) {
+      //     if (i == 0) {
+      //       result += item[i];
+      //     }
+      //   }
+      //   return result;
+      // });
+      // console.log(result);
+
+      // 문제64
+      // const input = 24;
+      // const n7 = input / 7;
+      // const num_7 = Math.ceil(n7);
+      // const n3 = input / 3;
+      // const num_3 = Math.ceil(n3);
+      // let result = 0;
+      // if (num_7 > num_3) {
+      //   result = "3kg 화물칸 : " + num_3;
+      // } else if (num_7 < num_3) {
+      //   result = "7kg 화물칸 : " + num_7;
+      // } else {
+      //   result = -1;
+      // }
+      // console.log(result);
+
+      // 문제65
+      // const num = [1, 2, 3, 4];
+      // const str = ["a", "b", "c", "d"];
+      // console.log(num, str);
+      // let list = num.map((item, index) => {
+      //   if ((index + 1) % 2 === 0) {
+      //     return [str[index], item];
+      //   } else if ((index + 1) % 2 !== 0) {
+      //     return [item, str[index]];
+      //   }
+      // });
+      // console.log(list);
+
+      // 문제66
+      const top = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
+      console.log(top);
     </script>
   </head>
   <body></body>
