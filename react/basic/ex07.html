@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>컴퍼넌트 상태값 관리하기(useState 훅(Hook))</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <p>컴퍼넌트 상태값 관리하기(useState 훅(Hook))</p>
+
+    <div id="root"></div>
+
+    <!-- <button>Click Here!</button>
+
+    <script>
+      let button = document.getElementsByTagName("button");
+      button[0].onclick = function () {
+        this.innerText = "Clicked!";
+      };
+    </script> -->
+
+    <script type="text/babel">
+      // 리액트 훅(Hook)
+      // Hook = 꼬챙이, SW에서는 끼어들어가서 수행하는 기능
+      // Hook 종류
+      // useState, useEffect, useContext, useReducer 등...
+
+      function MyButton() {
+        // 구조분해할당 : [state상태값, 상태변경함수]를 반환
+        // isClicked = false기본값으로 초기화되므로 Boolean타입
+        const [isClicked, setIsClicked] = React.useState(false);
+        // React.CreateElement(type, props, children)
+        // type : 생성할 React 엘리먼트 타입
+        // props : 해당 엘리먼트에 전달할 속성
+        // children : 자식요소 즉, 태그 사이에 들어갈 내용
+
+        // JSX 적용 방식
+        return (
+          <button
+            onClick={() =>
+              isClicked ? setIsClicked(false) : setIsClicked(true)
+            }
+          >
+            {isClicked ? "Clicked" : "Clicked Here!"}
+          </button>
+        );
+
+        // JSX 적용 전 방식
+        // return React.createElement(
+        //   "button",
+        //   {
+        //     onClick: () => {
+        //       setIsClicked(true);
+        //     },
+        //   },
+        //   isClicked ? "Clicked!" : "Clicked Here!",
+        // );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<MyButton />);
+    </script>
+  </body>
+</html>

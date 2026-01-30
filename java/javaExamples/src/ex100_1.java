@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ex100_1 {
     public static void main(String[] args) {
         // 문제1
@@ -112,11 +114,14 @@ public class ex100_1 {
         int d1 = sc17.nextInt();
         System.out.printf("%x", d1);
         sc17.close();
+        */
 
         // 문제18
         Scanner sc18 = new Scanner(System.in);
         System.out.println("문제18 : ");
+        String str = sc18.next();
+        byte asci = Byte.parseByte(str);
+        System.out.println("문제18 : ");
         sc18.close();
-        */
     }
 }
