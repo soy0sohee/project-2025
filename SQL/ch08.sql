@@ -248,11 +248,94 @@ WHERE 학과번호 = '02';
 DELETE FROM 학과
 WHERE 학과번호 = '01';
 
+-- 트랜잭션(Transaction)
+-- 직역 = 거래
+-- IT = 더이상 분할이 불가능한 최소단위
+-- DB = 한번에 묶어서 처리하는 데이터 조작업무
+--    = 예) 은행송금과정 철수출금->영희입금
 
+USE 세계학사;
 
+CREATE TABLE 계좌 (
+	이름 VARCHAR(10)
+	,잔액 INT
+);
+DESC 계좌;
 
+INSERT INTO 계좌
+VALUES ('철수', 50000)
+	,('영희', 0);
+SELECT * FROM 계좌;
 
+-- MySQL : AUTO COMMIT, insert/update/delete 동작 자동 COMMIT
+-- Oracle : insert/update/delete 동작 후 COMMIT 필수
 
+-- 트랜잭션 시작
+-- 철수 -1000 
+-- 영희 +1000
+-- 트랜잭션 종료(COMMIT,ROLLBACK)
+-- COMMIT : 정상 종료, DB에 물리적으로 저장
+-- ROLLBACK : 비정상 종료, 트랜잭션 이전으로 원복(복구)
+
+-- 계좌이체를 트랙잭션으로 처리
+SELECT * FROM 계좌;
+
+START TRANSACTION;
+UPDATE 계좌 
+	SET 잔액 = 잔액 - 1000
+WHERE 이름 = '철수';
+UPDATE 계좌 
+	SET 잔액 = 잔액 + 1000
+WHERE 이름 = '영희';
+COMMIT;
+
+START TRANSACTION;
+UPDATE 계좌 
+	SET 잔액 = 잔액 - 1000
+WHERE 이름 = '철수';
+ROLLBACK;
+
+-- MySQL 함수역할 - 프로시저
+-- 프로시저 삭제
+DROP PROCEDURE IF EXISTS 자동이체_프로시저;
+
+-- 프로시저 생성
+CREATE PROCEDURE 자동이체_프로시저()
+BEGIN
+	DECLARE EXIT Handler FOR SQLEXCEPTION -- SQL에 오류가 있으면 여기로 빠져나와라
+	BEGIN
+		ROLLBACK;
+		SELECT '오류가 발생하여 모든 작업이 취소(롤백)되었습니다.' AS 결과;
+	END;
+	
+	START TRANSACTION;
+	UPDATE 계좌 
+		SET 잔액 = 잔액 - 1000
+	WHERE 이름 = '철수';
+	UPDATE 존재하지않는계좌 
+		SET 잔액 = 잔액 + 1000
+	WHERE 이름 = '영희';
+	COMMIT;
+	SELECT '이체가 성공적으로 완료되었습니다.' AS 결과;
+END;
+
+-- 프로시저가 목록에 있는지 확인
+SHOW PROCEDURE Status WHERE Name = '자동이체_프로시저';
+
+-- 테스트
+-- 이전상태 확인
+SELECT * FROM 계좌;
+
+-- 트렌젝션 프로시저 호출
+CALL 자동이체_프로시저();
+
+-- 이후상태 확인
+SELECT * FROM 계좌;
+
+-- 백엔드 서버 프레임워크에서 트랜잭션 처리를 하는 기능을 가짐
+-- 자바/스프링(부트) 프레임워크 : @Transaction
+-- JS/Prisma 라이브러리 : prisma.$transaction()
+-- Python/sqlalchemy 라이브러리 : Session 객체
 
 
 

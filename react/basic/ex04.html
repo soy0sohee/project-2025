@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리액트 예제4</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <!-- JSX문법을 JS로 변환해주는 JS -->
+    <!-- min.js : 소스 용량을 줄이기 위해 공백, 줄바꿈을 제거한 js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- JSX를 이용한 HTML 요소 생성 -->
+    <p>JSX를 이용한 HTML 요소 생성(클래스형)</p>
+    <div id="root"></div>
+    <!-- 바벨이 번역하는 스크립트임을 알려줌 -->
+    <script type="text/babel">
+      // root요소 지정
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      // 리액트 클래스형 컴퍼넌트 렌더링
+      root.render(React.createElement(Greeting));
+
+      // 리액트 클래스형 컴퍼넌트 정의
+      class Greeting extends React.Component {
+        render() {
+          return (
+            // JSX 문법으로 반환
+            <h1 className="greeting">Hello World!</h1>
+          );
+        }
+      }
+      // 리액트 클래스형 컴퍼넌트 렌더링
+      root.render(React.createElement(Greeting));
+
+      // 리액트 함수형 컴퍼넌트 정의
+      const Greeting2 = <h1 className="greeting">Hello World!2</h1>; // Greeting2 : JSX.Element타입
+      // 리액트 함수형 컴퍼넌트 렌더링
+      root.render(Greeting2);
+
+      // 문법이 단순함으로 함수형 컴퍼넌트를 선호함
+    </script>
+  </body>
+</html>

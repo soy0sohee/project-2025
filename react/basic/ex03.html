@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리액트 예제3</title>
+    <!-- 리액트 외부 연결링크 -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <!-- 리액트 함수를 이용해서 HTML 요소 생성 -->
+    <p>리액트 함수를 이용해서 html요소 생성하기</p>
+    <div id="root"></div>
+    <script>
+      const elementH1 = React.createElement(
+        "h1",
+        { className: "greeting" },
+        "Hello Wolrd!",
+      );
+      // root요소 지정
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      // root요소 추가
+      root.render(elementH1);
+    </script>
+  </body>
+</html>
