@@ -1,0 +1,20 @@
+package com.study.Ex03SpringDI;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+// Bean을 생성하는 방법
+// - @Configuration + @Bean
+// - @Conponent + @Autowired
+//   -> 필드 주입 : 가장 일반적인 방법
+//   -> 수정자 주입 : setter 함수
+//   -> 생성자 주입 : 가장 추천하는 방법
+
+@SpringBootApplication
+public class Ex03SpringDiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Ex03SpringDiApplication.class, args);
+	}
+
+}

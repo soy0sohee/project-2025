@@ -1,0 +1,23 @@
+<!doctype html>
+<!-- xmlng : xml name space 약자 -->
+<!-- th : 타임리프 관련 태그나 속성 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>index.html</title>
+  </head>
+  <body>
+    <h2>타임리프에 오신것을 환영합니다.</h2>
+    <h3>th:text = innerText 출력</h3>
+    <p th:text="텍스트입니다.">innerText</p>
+    <p th:text="${name_text}">innerText</p>
+    <h3>th:utext = innerHTML 출력</h3>
+    <p th:utext="${name_html}">innerHTML</p>
+    <h3>문자열 연결</h3>
+    <p th:text="'Welcome, '+${name_text}">연결된 문자열 = '문구 ' + ${값}</p>
+    <h3>문자열 보간(리터럴 템플릿)</h3>
+    <p th:text="|Welcome, ${name_text}|">연결된 문자열 = |문구 ${값}|</p>
+    <h3>input - value 값 넣기</h3>
+    <input type="text" th:value="${server_value}" />
+  </body>
+</html>

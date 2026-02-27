@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 카운터</title>
+</head>
+<body>
+    <h3 id="changeCountNum">카운트 : 0</h3>
+    <button id="plus" onclick="plus();">더하기</button>
+    <button id="minus" onclick="minus();">빼기</button>
+    <hr />
+    <button onclick="URLver();">URL 버전</button>
+    <button onclick="APIver();">API 버전</button>
+
+    <script>
+        let count = document.getElementById("changeCountNum");
+        let countNum = 0;
+
+        function plus(){
+            const plus = document.getElementById("plus");
+            countNum += 1;
+            count.innerText = "카운트 : " + countNum;
+        }
+        function minus(){
+            const minus = document.getElementById("minus");
+            countNum -= 1;
+            count.innerText = "카운트 : " + countNum;
+        }
+
+        function URLver(){
+            window.location.href="/";
+        }
+        function APIver(){
+            window.location.href="/countApi";
+        }
+    </script>
+</body>
+</html>

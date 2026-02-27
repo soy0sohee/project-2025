@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.study'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+// lombok : 생성자, getter/setter 자동생성해주는 라이브러리
+dependencies {
+	// 의존성 관리 구문 '패키지 이름:라이브러리 이름'
+	// implementation : 실제 코드 실행시 필요한 라이브러리임을 지정, 컴파일/런타임시 필요
+	// compileOnly : 컴파일시에만 필요, 실행파일에는 포함 안됨
+	// annotationProcessor : 컴파일 과정에서 애너테이션 해석해서 소스 파일을 생성해주는 라이브러리
+	// testImplementation : 테스트 코드 작성 및 싫애시 필요한 라이브러리
+	// testRuntimeOnly : 테스트 코드 실행시에만 필요한 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

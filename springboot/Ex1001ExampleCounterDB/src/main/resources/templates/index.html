@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카운터</title>
+</head>
+<body>
+    <h3 th:text="|카운트 : ${count}|">카운트 : 0</h3>
+    <button onclick="plus();">더하기</button>
+    <button onclick="minus();">빼기</button>
+    <hr />
+    <button onclick="JSver();">JS 버전</button>
+    <button onclick="APIver();">API 버전</button>
+
+    <script>
+        function plus() {
+            window.location.href="/plus";
+        }
+        function minus() {
+            window.location.href="/minus";
+        }
+
+        function JSver() {
+            window.location.href="/count";
+        }
+        function APIver() {
+            window.location.href="/countApi"
+        }
+    </script>
+</body>
+</html>

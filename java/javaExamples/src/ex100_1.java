@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Random;
 
 public class ex100_1 {
     public static void main(String[] args) {
@@ -116,12 +116,18 @@ public class ex100_1 {
         sc17.close();
         */
 
-        // 문제18
-        Scanner sc18 = new Scanner(System.in);
-        System.out.println("문제18 : ");
-        String str = sc18.next();
-        byte asci = Byte.parseByte(str);
-        System.out.println("문제18 : ");
-        sc18.close();
+//        // 문제18
+//        Scanner sc18 = new Scanner(System.in);
+//        System.out.println("문제18 : ");
+//        String str = sc18.next();
+//        byte asci = Byte.parseByte(str);
+//        System.out.println("문제18 : ");
+//        sc18.close();
+
+        Random random = new Random();
+        int randomNum = random.nextInt(100);
+        String number = String.valueOf(randomNum);
+        Integer clientRandom = Integer.parseInt(number);
+        System.out.println(clientRandom);
     }
 }

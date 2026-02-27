@@ -17,10 +17,10 @@
 // 3. UI의 구성 단위: 컴포넌트 내에서 리액트 엘리먼트는 HTML 태그처럼 사용됩니다.
 import React from "react";
 
-const element1 = <h1 className="greeting">안녕하세요! E1</h1>;
+export const element1 = <h1 className="greeting">안녕하세요! E1</h1>;
 // 빌드 도구(Babel등)에 의해 최종적으로 변환된 모습
 // React.createElement(type,props,[children])
-const element2 = React.createElement(
+export const element2 = React.createElement(
   "h1",
   { className: "greeting" },
   "안녕하세요! E2",
@@ -74,5 +74,41 @@ export function Hello(props) {
   );
 }
 
-export default element1; // 대표하는 모듈 하나만 내보내기
-export { element1, element2 }; // 여러개 내보내기
+const style = {
+  border: "1px solid black",
+  padding: "10px",
+  borderRadius: "8px",
+};
+
+export function Button(props) {
+  // JS에서는 세미콜론 생략가능하기에 줄바꿈하면 return; 인식
+  // 줄바꿈 되면 ()소괄호 필수
+  return (
+    <>
+      <button style={{ color: props.color }}>
+        {/* JSX안에서의 주석문 */}
+        {/* props는 자동으로 children속성을 가지고 있음 */}
+        {/* children은 하위요소(자식)을 의미 */}
+        <b>{props.children}</b>
+      </button>
+    </>
+  );
+}
+
+export function ConfirmDialog() {
+  return (
+    <div style={style}>
+      <p>확인버튼</p>
+      <Button color="green">
+        <span>확인</span>
+      </Button>
+      &nbsp; &nbsp;
+      <Button color="gray">
+        <span>취소</span>
+      </Button>
+    </div>
+  );
+}
+
+// export default element1; // 대표하는 모듈 하나만 내보내기
+// export { element1, element2 }; // 여러개 내보내기

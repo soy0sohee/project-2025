@@ -768,8 +768,18 @@
       // console.log(list);
 
       // 문제66
-      const topInput = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
-      const rules = "ABD";
+      // const topInput = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
+      // const rules = "ABD";
+
+      const product = {
+        노트북: 8000,
+        스마트폰: 4000,
+      };
+      console.log(product);
+      for (let [key, value] of Object.entries(product)) {
+        console.log(key); // 키 순회
+        console.log(value); // 값 순회
+      }
     </script>
   </head>
   <body></body>

@@ -1,0 +1,16 @@
+<!doctype html>
+<!-- xmlng : xml name space 약자 -->
+<!-- th : 타임리프 관련 태그나 속성 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>index6.html</title>
+  </head>
+  <body>
+    <h2>타임리프의 링크 테스트</h2>
+    <a th:href="@{index7}"> /index7로 리다이렉트 링크 </a>
+    <!-- 페이지 이동 -->
+    <!-- 1. 리다이렉트 : a태그, html refresh문, th:href / Model의 데이터 소멸 -->
+    <!-- 2. 포워드 : 서버 내부에서 다른 페이지(URL)로 이동 / Model의 데이터를 가지고 이동 -->
+  </body>
+</html>
