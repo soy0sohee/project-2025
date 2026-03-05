@@ -1,0 +1,21 @@
+.formWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+}
+.inputTitle {
+  color: #fff;
+  font-size: 16px;
+}
+.inputBox {
+  height: 48px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.inputBox:last-of-type {
+  margin-bottom: 0;
+}

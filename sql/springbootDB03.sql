@@ -19,3 +19,5 @@ UPDATE counter.count
 WHERE count_no = 1;
 
 SELECT * FROM counter.count;
+
+SHOW tables;

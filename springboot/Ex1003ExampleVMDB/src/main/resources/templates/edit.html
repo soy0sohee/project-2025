@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자판기 상품 수정</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/input.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">자판기 상품 수정</h1>
+
+      <form class="formWrap" action="/edit/product" method="post">
+        <label class="inputTitle" for="productName">상품명 :</label>
+        <input
+          class="inputBox"
+          type="text"
+          id="productName"
+          name="productName"
+          value=""
+        />
+        <label class="inputTitle" for="price">가격 :</label>
+        <input
+          class="inputBox"
+          type="text"
+          id="price"
+          name="productPrice"
+          value=""
+        />
+        <label class="inputTitle" for="limitDate">유통기한 :</label>
+        <input
+          class="inputBox"
+          type="date"
+          id="limitDate"
+          name="productLimitDate"
+          value=""
+        />
+      </form>
+
+      <div class="btnWrap">
+        <button class="btnPrimary" type="button" onclick="editProduct()">
+          상품 수정하기
+        </button>
+        <button class="btnSecondary" type="button" onclick="prevPage()">
+          돌아가기
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const productName = document.getElementById("productName");
+      const price = document.getElementById("price");
+      const limitDate = document.getElementById("limitDate");
+
+      const params = new URLSearchParams(window.location.search);
+      const productNo = params.get("productNo");
+
+      fetch(`/edit/data?productNo=${productNo}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+          productName.value = json.productName;
+          price.value = json.productPrice;
+          limitDate.value = json.productLimitDate;
+        })
+        .catch((error) => {
+          console.log("edit error: " + error);
+        });
+
+      function editProduct() {
+        fetch(`/edit/product?productNo=${productNo}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            productName: productName.value,
+            productPrice: price.value,
+            productLimitDate: limitDate.value,
+          }),
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((text) => {
+            window.location.href = "/";
+          })
+          .catch((error) => {
+            console.log("add error: " + error);
+          });
+      }
+
+      function prevPage() {
+        window.location.href = "/";
+      }
+    </script>
+  </body>
+</html>

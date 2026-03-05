@@ -13,7 +13,6 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private CounterBean counter;
-
     @Autowired
     private CountRepository countRepository;
 
@@ -66,38 +65,46 @@ public class MainController {
 
     // index - fetch(), API 요청
     @GetMapping("/countApi")
-    public String countApi(){
+    public String countApi(Model model){
+        List<CountEntity> list = countRepository.findAll();
+        CountEntity countEntity = list.get(0);
+
+        model.addAttribute("count", countEntity.getCount());
+
         return "countApi";
     }
     @GetMapping("/api/plus")
     @ResponseBody
     public String apiPlus(){
-        counter.setCount(counter.getCount() + 1);
-        return String.valueOf(counter.getCount());
+        // counter.setCount(counter.getCount() + 1);
+
+        CountEntity countEntity = countRepository.findById(1L).get();
+        Long count = countEntity.getCount();
+        System.out.println(count);
+
+        countEntity.updateCount(count + 1L);
+        countRepository.save(countEntity);
+
+        return String.valueOf(count + 1L);
     }
     @GetMapping("/api/minus")
     @ResponseBody
     public String apiMinus(){
-        counter.setCount(counter.getCount() - 1);
-        return String.valueOf(counter.getCount());
+        // counter.setCount(counter.getCount() - 1);
+
+        CountEntity countEntity = countRepository.findById(1L).get();
+        Long count = countEntity.getCount();
+        System.out.println(count);
+
+        countEntity.updateCount(count - 1L);
+        countRepository.save(countEntity);
+
+        return String.valueOf(count - 1L);
     }
 
     // count - JS 버전
     @GetMapping("/count")
     public String count(){
         return "count";
-    }
-
-    @GetMapping("/js/plus")
-    public String jsplus(){
-        Optional<CountEntity> optional = countRepository.findById(1L);
-        optional.ifPresent((countEntity)->{
-            Long count = countEntity.getCount();
-            System.out.println("<< count: " + count);
-
-            countEntity.updateCount(count + 1);
-            countRepository.save(countEntity);
-        });
-        return "redirect:/count";
     }
 }

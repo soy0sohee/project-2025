@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자판기 프로그램</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/table.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">자판기 프로그램</h1>
+
+      <div class="contentWrap">
+        <div class="left">
+          <h2 class="tableTitle">▽ 자판기 상품 목록</h2>
+        </div>
+        <p class="tableNodata" id="tableNodata">상품목록이 비어있습니다.</p>
+        <div class="tableWrap" id="tabledata">
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>유통기한</th>
+                <th>수정</th>
+                <th>삭제</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyList">
+              <!-- <tr>
+                <td>1</td>
+                <td>불고기버거</td>
+                <td>1000</td>
+                <td>2023-12-25</td>
+                <td><a href="#" onclick="edit(${item.productNo}, event)" class="btnUpdate">수정</a></td>
+                <td><a href="#" onclick="delete(${item.productNo}, event)" class="btnDelete">삭제</a></td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <div class="right">
+          <p class="tableListCount">
+            ▲ 총&nbsp;<span id="count"></span>&nbsp;개의 상품이 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="btnWrap">
+        <button class="btnPrimary" onclick="add()">상품 추가하기</button>
+      </div>
+    </div>
+
+    <script>
+      const tbody = document.getElementById("tbodyList");
+      const count = document.getElementById("count");
+      const tableNodata = document.getElementById("tableNodata");
+      const tableData = document.getElementById("tabledata");
+
+      fetch("/list", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+          // 리스트는 배열로 들어가므로 forEach 순회하며 item을 넣어야함
+          json.list.forEach((item) => {
+            tbody.innerHTML += `
+              <tr>
+                <td>${item.productNo}</td>
+                <td>${item.productName}</td>
+                <td>${item.productPrice}</td>
+                <td>${item.productLimitDate}</td>
+                <td><a href="#" onclick="editProduct(${item.productNo}, event)" class="btnUpdate">수정</a></td>
+                <td><a href="#" onclick="deleteProduct(${item.productNo}, event)" class="btnDelete">삭제</a></td>
+              </tr>
+            `;
+          });
+          count.innerText = json.count;
+
+          if ((json.count = 0)) {
+            tableNodata.style.display = "block";
+            tableData.style.display = "none";
+          } else {
+            tableNodata.style.display = "none";
+            tableData.style.display = "block";
+          }
+        })
+        .catch((error) => {
+          console.log("index error: " + error);
+        });
+
+      function editProduct(productNo, event) {
+        event.preventDefault(); //페이지 이동 막기
+        window.location.href = `/edit?productNo=${productNo}`; //url에 num담고 이동
+      }
+
+      function deleteProduct(productNo, event) {
+        const result = confirm("삭제하시겠습니까?");
+
+        if (result) {
+          fetch(`/delete?productNo=${productNo}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => {
+              return response.text();
+            })
+            .then((text) => {
+              window.location.href = "/";
+            });
+        }
+      }
+
+      function add() {
+        window.location.href = "/add";
+      }
+    </script>
+  </body>
+</html>

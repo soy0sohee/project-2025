@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-  <h3 id="count">카운트 : 0</h3>
+  <h3 id="count" th:text="|카운트 : ${count}|">카운트 : 0</h3>
   <button onclick="plus();">더하기</button>
   <button onclick="minus();">빼기</button>
   <hr />

@@ -44,11 +44,16 @@ public class ReplyService {
     @Transactional(readOnly = true)
     public boolean existsById(final Long replyIdx) {
         boolean isFound = replyRepository.existsById( replyIdx );
+
         return isFound;
     }
 
     //댓글 DB인덱스로 댓글 정보 가져오기
-
+    @Transactional(readOnly = true)
+    public ReplyResponseDto findById(Long replyIdx){
+        Reply entity = replyRepository.findById(replyIdx).orElseThrow(()->new IllegalArgumentException("댓글이 없습니다."));
+        return new ReplyResponseDto(entity);
+    }
 
     //댓글 업데이트
 }
