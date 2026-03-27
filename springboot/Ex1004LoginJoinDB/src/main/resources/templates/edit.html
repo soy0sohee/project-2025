@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <a href="/admin" onclick="prev()"
+          ><img src="/img/prev.png" alt="이전"
+        /></a>
+        <h1>회원정보 수정</h1>
+      </div>
+
+      <form class="contentWrap" action="/edit/save" method="post">
+        <input type="hidden" id="duplicateSuccess" value="" />
+        <div class="formList">
+          <label for="username">
+            <img src="/img/username.png" alt="아이디" />
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="memberUsername"
+            placeholder="아이디"
+            min="4"
+            max="12"
+            value=""
+          />
+        </div>
+        <div class="formList">
+          <label for="email">
+            <img src="/img/emil.png" alt="이메일" />
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="memberEmail"
+            placeholder="이메일 주소"
+            value=""
+          />
+        </div>
+        <div class="formList">
+          <label for="password">
+            <img src="/img/password.png" alt="비밀번호" />
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="memberPassword"
+            placeholder="비밀번호"
+            min="4"
+            max="12"
+            value=""
+          />
+        </div>
+        <div class="formList">
+          <label for="rePassword">
+            <img src="/img/repassword.png" alt="role" />
+          </label>
+          <select class="custom" name="memberRole" id="role">
+            <option id="user" value="user">user</option>
+            <option id="admin" value="admin">admin</option>
+          </select>
+        </div>
+      </form>
+
+      <button class="btnPrimary" type="button" onclick="save()">수정</button>
+    </div>
+
+    <script>
+      let username = document.getElementById("username");
+      let email = document.getElementById("email");
+      let password = document.getElementById("password");
+      let role = document.getElementById("role");
+
+      const params = new URLSearchParams(window.location.search);
+      const memberNo = params.get("memberNo");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch(`/edit/data?memberNo=${memberNo}`, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((json) => {
+            console.log(json);
+
+            username.value = json.memberUsername;
+            email.value = json.memberEmail;
+            password.value = json.memberPassword;
+            role.value = json.memberRole;
+          });
+      });
+
+      function save() {
+        fetch(`/edit/save?memberNo=${memberNo}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            memberUsername: username.value,
+            memberEmail: email.value,
+            memberPassword: password.value,
+            memberRole: role.value,
+          }),
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((text) => {
+            window.location.href = "/admin";
+          });
+      }
+
+      function prev() {
+        window.location.href = "/admin";
+      }
+    </script>
+  </body>
+</html>

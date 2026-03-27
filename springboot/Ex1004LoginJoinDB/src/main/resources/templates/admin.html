@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <a href="#" onclick="prev()"><img src="/img/prev.png" alt="이전" /></a>
+        <h1>관리자 - 회원정보</h1>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>암호</th>
+            <th>이메일</th>
+            <th>권한</th>
+            <th>가입일</th>
+            <th>수정</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody id="list">
+          <!-- 
+          
+          <tr>
+            <td>0</td>
+            <td>hong</td>
+            <td>1234</td>
+            <td>hong@gmail.com</td>
+            <td>admin</td>
+            <td>2023-12-13</td>
+            <td class="btnTableWrap">
+              <button
+                class="btnTable update"
+                type="button"
+                onclick="listUpdate()"
+              >
+                수정
+              </button>
+            </td>
+            <td class="btnTableWrap">
+              <button
+                class="btnTable delete"
+                type="button"
+                onclick="listDelete()"
+              >
+                삭제
+              </button>
+            </td>
+          </tr>
+
+           -->
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      let list = document.getElementById("list");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/admin", {
+          method: "POST",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((json) => {
+            json.forEach((members) => {
+              list.innerHTML += `
+                <tr>
+                  <td>${members.memberNo}</td>
+                  <td>${members.memberUsername}</td>
+                  <td>${members.memberPassword}</td>
+                  <td>${members.memberEmail}</td>
+                  <td>${members.memberRole}</td>
+                  <td>${members.memberJoindate}</td>
+                  <td class="btnTableWrap">
+                    <button
+                      class="btnTable update"
+                      type="button"
+                      onclick="listUpdate(${members.memberNo})"
+                    >
+                      수정
+                    </button>
+                  </td>
+                  <td class="btnTableWrap">
+                    <button
+                      class="btnTable delete"
+                      type="button"
+                      onclick="listDelete(${members.memberNo})"
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              `;
+            });
+          });
+      });
+
+      function listUpdate(memberNo) {
+        window.location.href = "/edit?memberNo=" + memberNo;
+      }
+
+      function listDelete(memberNo) {
+        if (
+          !confirm("삭제 시 회원정보를 복구 할 수 없습니다. 삭제하시겠습니까?")
+        ) {
+          return;
+        }
+
+        fetch(`/admin/delete?memberNo=${memberNo}`, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.text;
+          })
+          .then((text) => {
+            console.log(text);
+            window.location.href = "/admin";
+          });
+      }
+
+      function prev() {
+        window.location.href = "/";
+      }
+    </script>
+  </body>
+</html>

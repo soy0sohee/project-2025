@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포스트잇 - 단일 파일 버전</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
+
+      /* ===== note.css (inlined) ===== */
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", "Segoe UI", sans-serif;
+        background: radial-gradient(
+          ellipse at 20% 20%,
+          #f5ede2 0%,
+          #ede3d6 40%,
+          #e5d9c8 100%
+        );
+      }
+      .notePage {
+        display: grid;
+        place-items: center;
+      }
+      .noteStage {
+        width: min(980px, calc(100vw - 32px));
+        padding: 28px 16px 36px;
+        display: grid;
+        place-items: center;
+      }
+      .note {
+        position: absolute;
+        width: 230px;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        transition:
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+        user-select: none;
+        box-shadow:
+          0 1px 1px rgba(0, 0, 0, 0.08),
+          0 4px 8px rgba(0, 0, 0, 0.1),
+          0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+      .note:hover {
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.1),
+          0 8px 20px rgba(0, 0, 0, 0.14),
+          0 16px 40px rgba(0, 0, 0, 0.1);
+        z-index: 99999 !important;
+      }
+      .note.dragging {
+        box-shadow:
+          0 4px 8px rgba(0, 0, 0, 0.12),
+          0 16px 40px rgba(0, 0, 0, 0.18),
+          0 32px 64px rgba(0, 0, 0, 0.12);
+        cursor: grabbing !important;
+      }
+      .glue {
+        height: 38px;
+        border-radius: 3px 3px 0 0;
+        cursor: grab;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        flex-shrink: 0;
+      }
+      .glue::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.07);
+      }
+      .glue:active {
+        cursor: grabbing;
+      }
+      .glueLines {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        opacity: 0.3;
+      }
+      .glueLine {
+        width: 22px;
+        height: 2px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .glueActions {
+        display: flex;
+        gap: 5px;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+      }
+      .note:hover .glueActions {
+        opacity: 1;
+      }
+      .actionBtn {
+        width: 22px;
+        height: 22px;
+        border: none;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(0, 0, 0, 0.45);
+        padding: 0;
+        transition:
+          background 0.12s,
+          color 0.12s,
+          transform 0.1s;
+      }
+      .actionBtn:hover {
+        background: rgba(0, 0, 0, 0.18);
+        color: rgba(0, 0, 0, 0.75);
+        transform: scale(1.1);
+      }
+      .deleteBtn:hover {
+        background: rgba(192, 57, 43, 0.2);
+        color: #c0392b;
+      }
+      .body {
+        flex: 1;
+        padding: 12px 14px 8px;
+        display: flex;
+        flex-direction: column;
+      }
+      .textarea {
+        flex: 1;
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        resize: none;
+        font-family: "Noto Sans KR", "Segoe UI", sans-serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(0, 0, 0, 0.72);
+        min-height: 130px;
+        cursor: text;
+      }
+      .textarea::placeholder {
+        color: rgba(0, 0, 0, 0.22);
+        font-style: italic;
+      }
+      .footer {
+        padding: 8px 14px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+      }
+      .timestamp {
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.28);
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .colorRow {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .colorDot {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+      }
+      .colorDot:hover {
+        transform: scale(1.3);
+      }
+      .colorDot.active {
+        border-color: rgba(0, 0, 0, 0.45);
+        transform: scale(1.2);
+      }
+      .foldCorner {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .foldCorner::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style: solid;
+        border-width: 0 0 24px 24px;
+        border-color: transparent transparent rgba(0, 0, 0, 0.07) transparent;
+      }
+      .foldCorner::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style: solid;
+        border-width: 0 0 23px 23px;
+        border-color: transparent transparent rgba(255, 255, 255, 0.25)
+          transparent;
+      }
+
+      /* ===== app.css (inlined) ===== */
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", "Segoe UI", sans-serif;
+      }
+      .app {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: #f0ebe3;
+      }
+      .toolbar {
+        height: 64px;
+        background: #fff;
+        border-bottom: 1px solid #e8e2da;
+        display: flex;
+        align-items: center;
+        padding: 0 28px;
+        gap: 0;
+        flex-shrink: 0;
+        z-index: 1000;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-right: 28px;
+      }
+      .logoMark {
+        position: relative;
+        width: 34px;
+        height: 34px;
+      }
+      .logoStack1 {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: #ffca28;
+        border-radius: 3px;
+        top: 5px;
+        left: 5px;
+        transform: rotate(6deg);
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.12);
+      }
+      .logoStack2 {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: #ff7043;
+        border-radius: 3px;
+        top: 2px;
+        left: 2px;
+        transform: rotate(-4deg);
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.12);
+      }
+      .logoStack3 {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        border-radius: 3px;
+        top: 0;
+        left: 0;
+        box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logoText {
+        font-size: 17px;
+        font-weight: 700;
+        color: #2d2d2d;
+        letter-spacing: -0.5px;
+      }
+      .logoSub {
+        font-size: 11px;
+        color: #bbb;
+        font-weight: 400;
+        letter-spacing: 0;
+      }
+      .colorSection {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-right: 24px;
+      }
+      .sectionLabel {
+        font-size: 12px;
+        font-weight: 500;
+        color: #aaa;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+      .colorPalette {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .colorSwatch {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2.5px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+        position: relative;
+      }
+      .colorSwatch:hover {
+        transform: scale(1.2);
+      }
+      .colorSwatch.active {
+        border-color: #2d2d2d;
+        transform: scale(1.15);
+      }
+      .colorSwatch.active::after {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+      }
+      .vDivider {
+        width: 1px;
+        height: 28px;
+        background: #ebebeb;
+        margin: 0 24px;
+      }
+      .addBtn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 20px;
+        height: 40px;
+        background: #2d2d2d;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          transform 0.1s ease;
+        letter-spacing: -0.3px;
+        flex-shrink: 0;
+      }
+      .addBtn:hover {
+        background: #444;
+        transform: translateY(-1px);
+      }
+      .addBtn:active {
+        transform: translateY(0);
+      }
+      .addBtnIcon {
+        width: 18px;
+        height: 18px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .toolbarRight {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .stats {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: #f7f4f0;
+        border-radius: 8px;
+        border: 1px solid #ebe7e0;
+      }
+      .statsNum {
+        font-size: 15px;
+        font-weight: 700;
+        color: #2d2d2d;
+      }
+      .statsLabel {
+        font-size: 12px;
+        color: #aaa;
+      }
+      .clearBtn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0 14px;
+        height: 36px;
+        background: transparent;
+        border: 1.5px solid #e8e0d8;
+        border-radius: 9px;
+        color: #c0392b;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition:
+          background 0.12s ease,
+          border-color 0.12s ease;
+      }
+      .clearBtn:hover {
+        background: #fdf0ee;
+        border-color: #e8a09a;
+      }
+      .board {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 28px,
+            rgba(0, 0, 0, 0.018) 28px,
+            rgba(0, 0, 0, 0.018) 29px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 28px,
+            rgba(0, 0, 0, 0.018) 28px,
+            rgba(0, 0, 0, 0.018) 29px
+          ),
+          radial-gradient(
+            ellipse at 20% 20%,
+            #f5ede2 0%,
+            #ede3d6 40%,
+            #e5d9c8 100%
+          );
+      }
+      .boardNoise {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      .emptyState {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        pointer-events: none;
+      }
+      .board[data-has-notes="true"] .emptyState {
+        display: none;
+      }
+      .emptyNotes {
+        display: flex;
+        align-items: flex-end;
+        gap: -8px;
+        margin-bottom: 8px;
+        position: relative;
+      }
+      .emptyNote1 {
+        width: 70px;
+        height: 70px;
+        background: #ffca28;
+        border-radius: 4px;
+        box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.12);
+        transform: rotate(-8deg) translateY(4px);
+        opacity: 0.5;
+      }
+      .emptyNote2 {
+        width: 70px;
+        height: 70px;
+        background: #ff7043;
+        border-radius: 4px;
+        box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.12);
+        transform: rotate(5deg) translateX(-8px);
+        opacity: 0.5;
+      }
+      .emptyNote3 {
+        width: 70px;
+        height: 70px;
+        background: #81c784;
+        border-radius: 4px;
+        box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.12);
+        transform: rotate(-3deg) translateX(-16px) translateY(2px);
+        opacity: 0.5;
+      }
+      .emptyTitle {
+        font-size: 18px;
+        font-weight: 700;
+        color: #aaa;
+        letter-spacing: -0.4px;
+      }
+      .emptyDesc {
+        font-size: 14px;
+        color: #c0b9b0;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .emptyShortcut {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 7px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-bottom: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #555;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .emptyShortcutText {
+        font-size: 12px;
+        color: #bbb;
+      }
+      .contextMenu {
+        position: fixed;
+        background: #ffffff;
+        border: 1px solid #e8e2da;
+        border-radius: 12px;
+        padding: 6px;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.14),
+          0 2px 8px rgba(0, 0, 0, 0.06);
+        z-index: 9999;
+        min-width: 180px;
+      }
+      .contextMenuTitle {
+        font-size: 11px;
+        font-weight: 600;
+        color: #bbb;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 6px 12px 4px;
+      }
+      .contextMenuItem {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #444;
+        transition: background 0.1s ease;
+        user-select: none;
+      }
+      .contextMenuItem:hover {
+        background: #f7f4f0;
+      }
+      .contextColorDot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      }
+      .contextMenuDivider {
+        height: 1px;
+        background: #f0ece6;
+        margin: 4px 0;
+      }
+      .contextMenuDanger {
+        color: #c0392b;
+      }
+      .contextMenuDanger:hover {
+        background: #fdf0ee !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <p style="padding: 12px 16px">이 페이지는 JavaScript가 필요합니다.</p>
+    </noscript>
+
+    <!-- ===== app.html (inlined) ===== -->
+    <div class="app">
+      <header class="toolbar">
+        <div class="logo">
+          <div class="logoMark" aria-hidden="true">
+            <div class="logoStack1"></div>
+            <div class="logoStack2"></div>
+            <div class="logoStack3">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M2 4h10M2 7h10M2 10h6"
+                  stroke="#aaa"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="logoText">포스트잇</div>
+            <div class="logoSub">메모 보드</div>
+          </div>
+        </div>
+
+        <div class="vDivider" aria-hidden="true"></div>
+
+        <div class="colorSection">
+          <span class="sectionLabel">색상</span>
+          <div class="colorPalette" role="list">
+            <button
+              class="colorSwatch active"
+              style="background-color: #fff59d; box-shadow: 0 1px 4px #fff59d88"
+              title="노랑"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="background-color: #ffcc80; box-shadow: 0 1px 4px #ffcc8088"
+              title="주황"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="background-color: #f48fb1; box-shadow: 0 1px 4px #f48fb188"
+              title="핑크"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="background-color: #c5e1a5; box-shadow: 0 1px 4px #c5e1a588"
+              title="초록"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="background-color: #90caf9; box-shadow: 0 1px 4px #90caf988"
+              title="파랑"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="background-color: #ce93d8; box-shadow: 0 1px 4px #ce93d888"
+              title="보라"
+            ></button>
+            <button
+              class="colorSwatch"
+              style="
+                background-color: #fafafa;
+                box-shadow: 0 1px 4px #ffffff;
+                border: 1px solid #dddddd;
+              "
+              title="흰색"
+            ></button>
+          </div>
+        </div>
+
+        <div class="vDivider" aria-hidden="true"></div>
+
+        <button class="addBtn" type="button">
+          <div class="addBtnIcon" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <path
+                d="M5.5 1v9M1 5.5h9"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          새 포스트잇
+        </button>
+
+        <div class="toolbarRight">
+          <div class="stats">
+            <span class="statsNum">3</span>
+            <span class="statsLabel">개의 메모</span>
+          </div>
+          <button class="clearBtn" type="button">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 1L10 10M10 1L1 10"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+            전체 삭제
+          </button>
+        </div>
+      </header>
+
+      <main class="board" aria-label="메모 보드" ${list.getGlueColor}>
+        <div class="boardNoise" aria-hidden="true"></div>
+        <section
+          th:each="list : ${lists}"
+          class="note"
+          data-note="true"
+          th:data-note-id="'note-' + ${list.id}"
+          th:data-color="${list.color}"
+          th:data-created-at="${list.createdAt}"
+          th:style="'left:' + ${list.posX} + 'px; top:' + ${list.posY} + 'px; z-index:' + ${list.zIndex} + '; background-color:' + ${list.bgColor} + '; transform: rotate(' + ${list.rotation} + 'deg);'"
+        >
+          <div
+            class="glue"
+            th:style="'background-color: ' + ${list.getGlueColor}"
+          >
+            <div class="glueLines" aria-hidden="true">
+              <span class="glueLine"></span>
+              <span class="glueLine"></span>
+              <span class="glueLine"></span>
+            </div>
+            <div class="glueActions">
+              <!-- 삭제 버튼 - 메모 id 저장 -->
+              <button
+                class="actionBtn deleteBtn"
+                type="button"
+                th:data-id="${list.id}"
+                title="삭제"
+              >
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                  <path
+                    d="M1 1L8 8M8 1L1 8"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="body">
+            <!-- 메모 내용 -->
+            <textarea
+              class="textarea"
+              spellcheck="false"
+              th:text="${list.content}"
+            ></textarea>
+          </div>
+          <div class="footer">
+            <!-- 날짜 포맷 -->
+            <span
+              class="timestamp"
+              th:text="${#temporals.format(list.createdAt, 'MM/dd HH:mm')}"
+            >
+            </span>
+            <div class="colorRow" aria-label="색상 선택">
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'yellow'} ? 'active'"
+                style="background-color: #fff59d"
+                data-color="yellow"
+                title="노랑"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'orange'} ? 'active'"
+                style="background-color: #ffcc80"
+                data-color="orange"
+                title="주황"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'pink'}   ? 'active'"
+                style="background-color: #f48fb1"
+                data-color="pink"
+                title="핑크"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'green'}  ? 'active'"
+                style="background-color: #c5e1a5"
+                data-color="green"
+                title="초록"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'blue'}   ? 'active'"
+                style="background-color: #90caf9"
+                data-color="blue"
+                title="파랑"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'purple'} ? 'active'"
+                style="background-color: #ce93d8"
+                data-color="purple"
+                title="보라"
+              ></span>
+              <span
+                class="colorDot"
+                th:classappend="${list.color == 'white'}  ? 'active'"
+                style="background-color: #fafafa"
+                data-color="white"
+                title="흰색"
+              ></span>
+            </div>
+          </div>
+          <div class="foldCorner" aria-hidden="true"></div>
+        </section>
+
+        <div class="emptyState" hidden>
+          <div class="emptyNotes" aria-hidden="true">
+            <div class="emptyNote1"></div>
+            <div class="emptyNote2"></div>
+            <div class="emptyNote3"></div>
+          </div>
+          <p class="emptyTitle">아직 메모가 없어요</p>
+          <p class="emptyDesc">
+            보드를 더블클릭하거나 우클릭해서 메모를 추가하세요
+          </p>
+          <div class="emptyShortcut" aria-hidden="true">
+            <span class="kbd">Ctrl</span>
+            <span class="emptyShortcutText">+</span>
+            <span class="kbd">N</span>
+            <span class="emptyShortcutText">으로도 추가할 수 있어요</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ===== app.js (inlined) ===== -->
+    <script>
+      const NOTE_COLORS = [
+        { name: "yellow", bg: "#FFF59D", glue: "#FFF176", label: "노랑" },
+        { name: "orange", bg: "#FFCC80", glue: "#FFB74D", label: "주황" },
+        { name: "pink", bg: "#F48FB1", glue: "#F06292", label: "핑크" },
+        { name: "green", bg: "#C5E1A5", glue: "#A5D6A7", label: "초록" },
+        { name: "blue", bg: "#90CAF9", glue: "#64B5F6", label: "파랑" },
+        { name: "purple", bg: "#CE93D8", glue: "#BA68C8", label: "보라" },
+        { name: "white", bg: "#FAFAFA", glue: "#EEEEEE", label: "흰색" },
+      ];
+
+      function formatDate(date) {
+        const d = new Date(date);
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        const hh = String(d.getHours()).padStart(2, "0");
+        const min = String(d.getMinutes()).padStart(2, "0");
+        return `${mm}/${dd} ${hh}:${min}`;
+      }
+
+      function randomRotation() {
+        return Number((Math.random() * 8 - 4).toFixed(2));
+      }
+
+      function randomPosition(boardEl) {
+        const rect = boardEl.getBoundingClientRect();
+        const boardW = rect.width || 800;
+        const boardH = rect.height || 600;
+        const maxX = Math.max(60, boardW - 270);
+        const maxY = Math.max(60, boardH - 300);
+        return {
+          x: Math.floor(Math.random() * maxX) + 40,
+          y: Math.floor(Math.random() * maxY) + 40,
+        };
+      }
+
+      function clamp(n, min, max) {
+        return Math.max(min, Math.min(n, max));
+      }
+
+      function getColorConfig(name) {
+        return NOTE_COLORS.find((c) => c.name === name) || NOTE_COLORS[0];
+      }
+
+      function uid() {
+        return `note-${Math.random().toString(16).slice(2)}-${Date.now()}`;
+      }
+
+      function createEl(tag, className, attrs = {}) {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        for (const [k, v] of Object.entries(attrs)) {
+          if (v === undefined || v === null) continue;
+          if (k === "text") el.textContent = String(v);
+          else if (k === "html") el.innerHTML = String(v);
+          else el.setAttribute(k, String(v));
+        }
+        return el;
+      }
+
+      function buildNoteElement(note) {
+        const cfg = getColorConfig(note.color);
+
+        const noteEl = createEl("section", "note", {
+          "data-note": "true",
+          "data-note-id": note.id,
+          "data-color": note.color,
+          "data-created-at": note.createdAt.toISOString(),
+          "aria-label": "포스트잇 메모",
+        });
+
+        noteEl.style.left = `${note.x}px`;
+        noteEl.style.top = `${note.y}px`;
+        noteEl.style.zIndex = String(note.zIndex);
+        noteEl.style.backgroundColor = cfg.bg;
+        noteEl.style.transform = `rotate(${note.rotation}deg)`;
+
+        const glue = createEl("div", "glue");
+        glue.style.backgroundColor = cfg.glue;
+
+        const glueLines = createEl("div", "glueLines", {
+          "aria-hidden": "true",
+        });
+        glueLines.append(
+          createEl("span", "glueLine"),
+          createEl("span", "glueLine"),
+          createEl("span", "glueLine"),
+        );
+
+        const glueActions = createEl("div", "glueActions");
+        const delBtn = createEl("button", "actionBtn deleteBtn", {
+          type: "button",
+          title: "삭제",
+          "aria-label": "삭제",
+        });
+        delBtn.innerHTML = `
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
+            <path d="M1 1L8 8M8 1L1 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        `.trim();
+        glueActions.append(delBtn);
+
+        glue.append(glueLines, glueActions);
+
+        const body = createEl("div", "body");
+        const textarea = createEl("textarea", "textarea", {
+          spellcheck: "false",
+          placeholder: "여기에 메모를 입력하세요...",
+        });
+        textarea.value = note.text || "";
+        body.append(textarea);
+
+        const footer = createEl("div", "footer");
+        const timestamp = createEl("span", "timestamp", {
+          text: formatDate(note.createdAt),
+        });
+        const colorRow = createEl("div", "colorRow", {
+          "aria-label": "색상 선택",
+        });
+        for (const c of NOTE_COLORS) {
+          const dot = createEl(
+            "span",
+            `colorDot${c.name === note.color ? " active" : ""}`,
+            { title: c.label },
+          );
+          dot.style.backgroundColor = c.bg;
+          dot.dataset.color = c.name;
+          colorRow.append(dot);
+        }
+        footer.append(timestamp, colorRow);
+
+        const fold = createEl("div", "foldCorner", { "aria-hidden": "true" });
+        noteEl.append(glue, body, footer, fold);
+
+        return noteEl;
+      }
+
+      function parseExistingNotes(boardEl) {
+        const els = Array.from(boardEl.querySelectorAll('[data-note="true"]'));
+        let maxZ = 1;
+        const notes = [];
+
+        for (const el of els) {
+          const id = el.dataset.noteId || uid();
+          el.dataset.noteId = id;
+
+          const color = el.dataset.color || "yellow";
+          const createdAt = el.dataset.createdAt
+            ? new Date(el.dataset.createdAt)
+            : new Date();
+
+          const left = parseFloat(el.style.left || "0");
+          const top = parseFloat(el.style.top || "0");
+          const zIndex = parseInt(el.style.zIndex || "1", 10) || 1;
+          maxZ = Math.max(maxZ, zIndex);
+
+          const textarea = el.querySelector("textarea");
+          const text = textarea ? textarea.value : "";
+
+          const rotationMatch = (el.style.transform || "").match(
+            /rotate\(([-\d.]+)deg\)/,
+          );
+          const rotation = rotationMatch
+            ? parseFloat(rotationMatch[1])
+            : randomRotation();
+
+          notes.push({
+            id,
+            text,
+            color,
+            x: left,
+            y: top,
+            zIndex,
+            rotation,
+            createdAt,
+          });
+        }
+
+        return { notes, maxZ };
+      }
+
+      function init() {
+        const appEl = document.querySelector(".app");
+        const boardEl = document.querySelector(".board");
+        if (!appEl || !boardEl) return;
+
+        const addBtn = document.querySelector(".addBtn");
+        const clearBtn = document.querySelector(".clearBtn");
+        const statsNum = document.querySelector(".statsNum");
+        const emptyState = document.querySelector(".emptyState");
+
+        const paletteButtons = Array.from(
+          document.querySelectorAll(".colorPalette .colorSwatch"),
+        );
+
+        let selectedColor = "yellow";
+        let ctxMenu = null;
+
+        let { notes, maxZ } = parseExistingNotes(boardEl);
+
+        function setSelectedColor(color) {
+          selectedColor = color;
+          paletteButtons.forEach((btn) => btn.classList.remove("active"));
+          const idx = NOTE_COLORS.findIndex((c) => c.name === color);
+          if (idx >= 0 && paletteButtons[idx])
+            paletteButtons[idx].classList.add("active");
+        }
+
+        {
+          const activeIdx = paletteButtons.findIndex((b) =>
+            b.classList.contains("active"),
+          );
+          if (activeIdx >= 0 && NOTE_COLORS[activeIdx])
+            selectedColor = NOTE_COLORS[activeIdx].name;
+        }
+
+        function updateUI() {
+          const domCount =
+            boardEl.querySelectorAll('[data-note="true"]').length;
+
+          const hasNotes = domCount > 0;
+
+          boardEl.dataset.hasNotes = hasNotes ? "true" : "false";
+
+          if (statsNum) statsNum.textContent = domCount;
+          if (clearBtn) clearBtn.hidden = !hasNotes;
+
+          if (emptyState) {
+            if (hasNotes) {
+              emptyState.style.display = "none";
+            } else {
+              emptyState.style.display = "flex";
+            }
+          }
+        }
+        function bringToFront(id) {
+          maxZ += 1;
+          const note = notes.find((n) => n.id === id);
+          if (!note) return;
+          note.zIndex = maxZ;
+          const el = boardEl.querySelector(
+            `[data-note-id="${CSS.escape(id)}"]`,
+          );
+          if (el) el.style.zIndex = String(note.zIndex);
+        }
+
+        function setNoteColor(id, color) {
+          const note = notes.find((n) => n.id === id);
+          if (!note) return;
+          note.color = color;
+          const cfg = getColorConfig(color);
+
+          const el = boardEl.querySelector(
+            `[data-note-id="${CSS.escape(id)}"]`,
+          );
+          if (!el) return;
+          el.dataset.color = color;
+          el.style.backgroundColor = cfg.bg;
+          const glue = el.querySelector(".glue");
+          if (glue) glue.style.backgroundColor = cfg.glue;
+
+          const dots = Array.from(el.querySelectorAll(".colorDot"));
+          dots.forEach((d) =>
+            d.classList.toggle("active", d.dataset.color === color),
+          );
+
+          // ★ 색상 변경 저장
+          const dbId = id.replace("note-", "");
+          fetch("/update?id=" + dbId, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              posX: note.x,
+              posY: note.y,
+              zIndex: note.zIndex,
+              color: note.color,
+              content: note.text,
+              rotation: note.rotation,
+            }),
+          }).catch((error) => console.log("색상 저장 에러: " + error));
+        }
+
+        function addNote(x, y, color) {
+          const pos =
+            x != null && y != null ? { x, y } : randomPosition(boardEl);
+          maxZ += 1;
+          const note = {
+            id: uid(),
+            text: "",
+            color: color || selectedColor,
+            x: pos.x,
+            y: pos.y,
+            zIndex: maxZ,
+            rotation: randomRotation(),
+            createdAt: new Date(),
+          };
+
+          notes.push(note);
+          const el = buildNoteElement(note);
+          boardEl.append(el);
+          updateUI();
+          return note;
+        }
+
+        // 선택 삭제
+        function deleteNote(id) {
+          // DB id 추출 (note-123 → 123)
+          const dbId = id.replace("note-", "");
+
+          fetch("/delete?id=" + dbId)
+            .then(() => {
+              notes = notes.filter((n) => n.id !== id);
+              const el = boardEl.querySelector(
+                `[data-note-id="${CSS.escape(id)}"]`,
+              );
+              if (el) el.remove();
+              updateUI();
+            })
+            .catch((error) => {
+              console.log("삭제 에러: " + error);
+            });
+        }
+
+        function clearAll() {
+          if (notes.length === 0) return;
+          // confirm 삭제!
+          for (const n of notes) {
+            const el = boardEl.querySelector(
+              `[data-note-id="${CSS.escape(n.id)}"]`,
+            );
+            if (el) el.remove();
+          }
+          notes = [];
+          updateUI();
+        }
+
+        function closeContextMenu() {
+          if (ctxMenu) ctxMenu.remove();
+          ctxMenu = null;
+        }
+
+        function openContextMenu(clientX, clientY, boardX, boardY) {
+          closeContextMenu();
+
+          const menu = createEl("div", "contextMenu");
+          menu.style.left = `${clientX}px`;
+          menu.style.top = `${clientY}px`;
+
+          menu.append(
+            createEl("div", "contextMenuTitle", { text: "새 포스트잇 추가" }),
+          );
+          for (const c of NOTE_COLORS) {
+            const item = createEl("div", "contextMenuItem");
+            const dot = createEl("span", "contextColorDot");
+            dot.style.backgroundColor = c.bg;
+            item.append(dot, document.createTextNode(`${c.label} 포스트잇`));
+            item.addEventListener("click", () => {
+              setSelectedColor(c.name);
+              addNote(boardX - 115, boardY - 19, c.name);
+              closeContextMenu();
+            });
+            menu.append(item);
+          }
+
+          if (notes.length > 0) {
+            menu.append(createEl("div", "contextMenuDivider"));
+            const danger = createEl("div", "contextMenuItem contextMenuDanger");
+            danger.innerHTML = `
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M2 2L11 11M11 2L2 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            `.trim();
+            danger.append(document.createTextNode("모두 삭제"));
+            danger.addEventListener("click", () => {
+              clearAll();
+              closeContextMenu();
+            });
+            menu.append(danger);
+          }
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+          document.body.append(menu);
+          ctxMenu = menu;
+        }
+
+        paletteButtons.forEach((btn, idx) => {
+          btn.addEventListener("click", () => {
+            const color = NOTE_COLORS[idx] ? NOTE_COLORS[idx].name : "yellow";
+            setSelectedColor(color);
+          });
+        });
+
+        boardEl.addEventListener("click", (e) => {
+          const dot = e.target.closest(".colorDot");
+          if (!dot) return;
+
+          const noteEl = dot.closest('[data-note="true"]');
+          if (!noteEl) return;
+
+          const id = noteEl.dataset.noteId;
+          const color = dot.dataset.color;
+
+          setNoteColor(id, color);
+        });
+
+        // 새 포스트잇 추가
+        if (addBtn)
+          addBtn.addEventListener("click", () => {
+            const posX = Math.floor(Math.random() * 600) + 40;
+            const posY = Math.floor(Math.random() * 400) + 40;
+            const zIndex = maxZ + 1;
+            const rotation = parseFloat((Math.random() * 8 - 4).toFixed(2));
+
+            fetch("/add", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ posX, posY, zIndex, rotation }),
+            })
+              .then((res) => res.json())
+              .then((saved) => {
+                console.log("통신완료");
+                const note = addNote(saved.posX, saved.posY);
+
+                // ★ 임시 id → 실제 DB id로 교체
+                const oldId = note.id;
+                const newId = "note-" + saved.id;
+                note.id = newId;
+
+                // ★ HTML 요소의 data-note-id도 교체
+                const el = boardEl.querySelector(
+                  `[data-note-id="${CSS.escape(oldId)}"]`,
+                );
+                if (el) el.dataset.noteId = newId;
+              })
+              .catch((error) => console.log("새포스트잇 추가 에러: " + error));
+          });
+
+        // 전체 삭제
+        if (clearBtn)
+          clearBtn.addEventListener("click", () => {
+            if (
+              !window.confirm(`${notes.length}개의 포스트잇을 모두 삭제할까요?`)
+            )
+              return;
+
+            fetch("/deleteAll")
+              .then(() => {
+                clearAll(); // ← 화면에서도 전체 삭제
+              })
+              .catch((error) => {
+                console.log("전체 삭제 에러: " + error);
+              });
+          });
+
+        boardEl.addEventListener("click", (e) => {
+          const btn = e.target.closest(".deleteBtn");
+          if (!btn) return;
+
+          const noteEl = btn.closest('[data-note="true"]');
+          if (!noteEl) return;
+
+          const id = noteEl.dataset.noteId; // note-3 같은 값
+
+          if (!confirm("포스트잇을 삭제할까요?")) return;
+
+          deleteNote(id);
+        });
+
+        boardEl.addEventListener("dblclick", (e) => {
+          if (e.target.closest('[data-note="true"]')) return;
+          const rect = boardEl.getBoundingClientRect();
+          addNote(e.clientX - rect.left - 115, e.clientY - rect.top - 19);
+        });
+
+        boardEl.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+          const rect = boardEl.getBoundingClientRect();
+          openContextMenu(
+            e.clientX,
+            e.clientY,
+            e.clientX - rect.left,
+            e.clientY - rect.top,
+          );
+        });
+
+        document.addEventListener("click", () => closeContextMenu());
+
+        window.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "n") {
+            e.preventDefault();
+            addNote();
+          }
+          if (e.key === "Escape") closeContextMenu();
+        });
+
+        boardEl.addEventListener("input", (e) => {
+          const ta = e.target.closest("textarea");
+          if (!ta) return;
+          const noteEl = ta.closest('[data-note="true"]');
+          if (!noteEl) return;
+          const id = noteEl.dataset.noteId;
+          const note = notes.find((n) => n.id === id);
+          if (note) note.text = ta.value;
+
+          // ★ 텍스트 저장 (타이핑 멈추고 1초 후 저장)
+          clearTimeout(note._saveTimer);
+          note._saveTimer = setTimeout(() => {
+            const dbId = id.replace("note-", "");
+            fetch("/update?id=" + dbId, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                posX: note.x,
+                posY: note.y,
+                zIndex: note.zIndex,
+                color: note.color,
+                content: note.text,
+                rotation: note.rotation,
+              }),
+            }).catch((error) => console.log("내용 저장 에러: " + error));
+          }, 1000); // ← 1초 후 저장 (타이핑마다 저장하면 너무 많은 요청)
+        });
+
+        let dragging = null;
+
+        boardEl.addEventListener("mousedown", (e) => {
+          const noteEl = e.target.closest('[data-note="true"]');
+          if (!noteEl) return;
+
+          if (e.target.closest("button") || e.target.tagName === "TEXTAREA")
+            return;
+          e.preventDefault();
+
+          const id = noteEl.dataset.noteId;
+          bringToFront(id);
+
+          const boardRect = boardEl.getBoundingClientRect();
+          const noteRect = noteEl.getBoundingClientRect();
+
+          const left = parseFloat(noteEl.style.left || "0");
+          const top = parseFloat(noteEl.style.top || "0");
+
+          dragging = {
+            id,
+            offsetX: e.clientX - boardRect.left - left,
+            offsetY: e.clientY - boardRect.top - top,
+            noteW: noteRect.width || 230,
+            noteH: noteRect.height || 230,
+          };
+
+          noteEl.classList.add("dragging");
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!dragging) return;
+          const boardRect = boardEl.getBoundingClientRect();
+
+          const newX = clamp(
+            e.clientX - boardRect.left - dragging.offsetX,
+            0,
+            boardRect.width - dragging.noteW,
+          );
+          const newY = clamp(
+            e.clientY - boardRect.top - dragging.offsetY,
+            0,
+            boardRect.height - dragging.noteH,
+          );
+
+          const note = notes.find((n) => n.id === dragging.id);
+          if (note) {
+            note.x = newX;
+            note.y = newY;
+          }
+
+          const noteEl = boardEl.querySelector(
+            `[data-note-id="${CSS.escape(dragging.id)}"]`,
+          );
+          if (noteEl) {
+            noteEl.style.left = `${newX}px`;
+            noteEl.style.top = `${newY}px`;
+          }
+        });
+
+        window.addEventListener("mouseup", () => {
+          if (!dragging) return;
+          const noteEl = boardEl.querySelector(
+            `[data-note-id="${CSS.escape(dragging.id)}"]`,
+          );
+          if (noteEl) noteEl.classList.remove("dragging");
+
+          // ★ 드래그 끝나면 위치 저장
+          const note = notes.find((n) => n.id === dragging.id);
+          if (note) {
+            const dbId = dragging.id.replace("note-", "");
+            fetch("/update?id=" + dbId, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                posX: note.x,
+                posY: note.y,
+                zIndex: note.zIndex,
+                color: note.color,
+                content: note.text,
+                rotation: note.rotation,
+              }),
+            }).catch((error) => console.log("위치 저장 에러: " + error));
+          }
+          dragging = null;
+        });
+        updateUI();
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

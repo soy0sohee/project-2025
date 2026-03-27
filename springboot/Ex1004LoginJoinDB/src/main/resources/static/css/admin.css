@@ -1,0 +1,46 @@
+.wrap {
+  width: 1200px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+}
+
+th,
+td {
+  width: auto;
+  box-sizing: border-box;
+  padding: 12px 20px;
+}
+
+th {
+  background-color: #e3e3e3;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+.btnTableWrap {
+  text-align: center;
+}
+
+.btnTable {
+  width: 56px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.update {
+  border: 0;
+  background-color: #121212;
+  color: #fff;
+}
+
+.delete {
+  border: 0;
+  background-color: #cf1e25;
+  color: #fff;
+}

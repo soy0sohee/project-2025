@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수강신청 시스템</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .manage-btn {
+        padding: 10px 20px;
+        background-color: #16a34a;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .manage-btn:hover {
+        background-color: #15803d;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>수강신청 시스템</h1>
+        <div style="display: flex; align-items: center; gap: 16px">
+          <div class="creditInfo">
+            신청 학점: <span id="totalCredits" class="credits">0</span> / 18
+          </div>
+          <button class="manage-btn" type="button" onclick="manage()">
+            수강과목 관리
+          </button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="section" aria-label="개설 강좌">
+          <h2>개설 강좌</h2>
+          <div id="availableCourses" class="courseList"></div>
+        </section>
+
+        <section class="section" aria-label="수강 신청 내역">
+          <h2>수강 신청 내역</h2>
+          <div id="registeredCourses"></div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const MAX_CREDITS = 18;
+      let AVAILABLE_COURSES = [];
+      let registeredCourses = [];
+
+      const $totalCredits = document.getElementById("totalCredits");
+      const $availableCourses = document.getElementById("availableCourses");
+      const $registeredCourses = document.getElementById("registeredCourses");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/", {
+          method: "POST",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((json) => {
+            console.log("DB 데이터:", json);
+            AVAILABLE_COURSES = json.courses; // .courses 추가
+            registeredCourses = json.registrations // registrations 추가
+              .map((reg) =>
+                AVAILABLE_COURSES.find((c) => c.courseId === reg.courseId),
+              )
+              .filter(Boolean); // null 제거
+            render();
+          })
+          .catch((error) => {
+            console.error("데이터 불러오기 실패:", error);
+          });
+      });
+
+      function isRegistered(courseId) {
+        return registeredCourses.some((c) => c.courseId === Number(courseId));
+      }
+
+      function isFull(course) {
+        return course.enrolled >= course.capacity;
+      }
+
+      function calcTotalCredits() {
+        return registeredCourses.reduce(
+          (sum, course) => sum + course.credits,
+          0,
+        );
+      }
+
+      function handleRegister(courseId) {
+        const course = AVAILABLE_COURSES.find(
+          (c) => c.courseId === Number(courseId),
+        );
+
+        if (!course) return;
+
+        if (isRegistered(course.courseId)) {
+          alert("이미 신청한 과목입니다.");
+          return;
+        }
+        if (isFull(course)) {
+          alert("수강 인원이 마감되었습니다.");
+          return;
+        }
+
+        fetch(`/register?courseId=${courseId}`, {
+          method: "POST",
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((text) => {
+            registeredCourses = [...registeredCourses, course];
+            course.enrolled = Number(course.enrolled || 0) + 1;
+            render();
+          })
+          .catch((error) => {
+            console.log("전송실패: " + error);
+          });
+      }
+
+      function handleCancel(courseId) {
+        fetch(`/cancel?courseId=${courseId}`, {
+          method: "POST",
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((text) => {
+            registeredCourses = registeredCourses.filter(
+              (c) => c.courseId !== Number(courseId), // 신청 내역에서 제거
+            );
+
+            const course = AVAILABLE_COURSES.find(
+              (c) => c.courseId === Number(courseId), // 개설 강좌의 현재 신청 인원도 감소(화면에 바로 반영)
+            );
+            if (course) {
+              course.enrolled = Math.max(0, Number(course.enrolled || 0) - 1);
+            }
+            render();
+          })
+          .catch((error) => {
+            console.log("전송실패: " + error);
+          });
+      }
+
+      function renderAvailableCourses() {
+        $availableCourses.innerHTML = AVAILABLE_COURSES.map((course) => {
+          const registered = isRegistered(course.courseId);
+          const full = isFull(course);
+          const disabled = registered || full;
+          const buttonLabel = registered ? "신청완료" : full ? "마감" : "신청";
+
+          return `
+            <div class="courseCard courseCard--available">
+              <div class="courseInfo">
+                <div class="courseName">${course.name}</div>
+                <div class="courseDetails">
+                  <span>${course.professor}</span>
+                  <span class="separator">•</span>
+                  <span>${course.time}</span>
+                </div>
+                <div class="courseStats">
+                  <span>${course.credits}학점</span>
+                  <span class="separator">•</span>
+                  <span class="${full ? "full" : ""}">${course.enrolled}/${course.capacity}명</span>
+                </div>
+              </div>
+              <button
+                class="registerButton"
+                data-action="register"
+                data-course-id="${course.courseId}"
+                ${disabled ? "disabled" : ""}
+              >${buttonLabel}</button>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function renderRegisteredCourses() {
+        if (registeredCourses.length === 0) {
+          $registeredCourses.innerHTML = `<div class="empty">수강 신청한 과목이 없습니다.</div>`;
+          return;
+        }
+
+        $registeredCourses.innerHTML = `
+          <div class="registeredList">
+            ${registeredCourses
+              .map(
+                (course) => `
+                  <div class="courseCard courseCard--registered">
+                    <div class="courseInfo">
+                      <div class="courseName">${course.name}</div>
+                      <div class="courseDetails">
+                        <span>${course.professor}</span>
+                        <span class="separator">•</span>
+                        <span>${course.time}</span>
+                        <span class="separator">•</span>
+                        <span>${course.credits}학점</span>
+                      </div>
+                    </div>
+                    <button
+                      class="cancelButton"
+                      data-action="cancel"
+                      data-course-id="${course.courseId}"
+                    >취소</button>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderHeader() {
+        const total = calcTotalCredits();
+        $totalCredits.textContent = String(total);
+        $totalCredits.setAttribute(
+          "aria-label",
+          `신청 학점 ${total} / ${MAX_CREDITS}`,
+        );
+      }
+
+      function render() {
+        renderHeader();
+        renderAvailableCourses();
+        renderRegisteredCourses();
+      }
+
+      document.body.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+
+        const action = btn.dataset.action;
+        const courseId = btn.dataset.courseId;
+        if (!courseId) return;
+
+        if (action === "register") handleRegister(courseId);
+
+        if (action === "cancel") handleCancel(courseId);
+      });
+
+      function manage() {
+        window.location.href = "/manage";
+      }
+    </script>
+  </body>
+</html>

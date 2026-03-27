@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="/css/common.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>회원가입</h1>
+
+      <form class="contentWrap" action="/join" method="post">
+        <input type="hidden" id="duplicateSuccess" value="" />
+        <div class="formList">
+          <label for="username">
+            <img src="/img/username.png" alt="아이디" />
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="memberUsername"
+            placeholder="아이디"
+            min="4"
+            max="12"
+            value=""
+          />
+          <button class="btnSecondary" type="button" onclick="duplicate()">
+            중복확인
+          </button>
+        </div>
+        <div class="formList">
+          <label for="email">
+            <img src="/img/emil.png" alt="이메일" />
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="memberEmail"
+            placeholder="이메일 주소"
+            value=""
+          />
+        </div>
+        <div class="formList">
+          <label for="password">
+            <img src="/img/password.png" alt="비밀번호" />
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="memberPassword"
+            placeholder="비밀번호"
+            min="4"
+            max="12"
+            value=""
+          />
+        </div>
+        <div class="formList">
+          <label for="rePassword">
+            <img src="/img/repassword.png" alt="비밀번호재확인" />
+          </label>
+          <input
+            type="password"
+            id="rePassword"
+            name="memberPassword"
+            placeholder="비밀번호 확인"
+            min="4"
+            max="12"
+            value=""
+          />
+        </div>
+        <div class="formCheck">
+          <input type="checkbox" id="agree" name="agree" value="" />
+          <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
+        </div>
+      </form>
+
+      <button class="btnPrimary" type="button" onclick="signup()">
+        가입하기
+      </button>
+    </div>
+
+    <script>
+      const username = document.getElementById("username");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const rePassword = document.getElementById("rePassword");
+      const agree = document.getElementById("agree");
+      let duplicateSuccess = document.getElementById("duplicateSuccess");
+
+      function duplicate() {
+        fetch("/join/duplicate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            memberUsername: username.value,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              return response.text().then((message) => {
+                throw new Error(message);
+              });
+            }
+            return response.text();
+          })
+          .then((text) => {
+            alert("사용 가능한 아이디입니다.");
+            duplicateSuccess.value = text;
+            console.log(text);
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      }
+
+      function signup() {
+        if (username.value === null || username.value === "") {
+          alert("아이디를 입력해주세요.");
+          return;
+        }
+        if (password.value === null || password.value === "") {
+          alert("비밀번호를 입력해주세요.");
+          return;
+        }
+        if (rePassword.value === null || rePassword.value === "") {
+          alert("비밀번호 확인을 입력해주세요.");
+          return;
+        }
+        if (password.value !== rePassword.value) {
+          alert("비밀번호가 다릅니다.");
+          return;
+        }
+        if (!agree.checked) {
+          alert("개인정보 수집 및 이용에 동의해주세요.");
+          return;
+        }
+        if (duplicateSuccess.value !== "ok") {
+          alert("아이디 중복을 확인해주세요.");
+          return;
+        }
+
+        fetch("/join/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            memberUsername: username.value,
+            memberEmail: email.value,
+            memberPassword: password.value,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              return response.text().then((message) => {
+                throw new Error(message);
+              });
+            }
+            return response.text();
+          })
+          .then((text) => {
+            alert("회원가입을 완료하였습니다.");
+            window.location.href = "/";
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      }
+    </script>
+  </body>
+</html>

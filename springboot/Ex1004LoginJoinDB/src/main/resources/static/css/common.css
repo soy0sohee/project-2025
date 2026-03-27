@@ -1,7 +1,138 @@
+#login {
+  display: block;
+}
+
+#success {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   color: #121212;
+  font-size: 16px;
 }
 
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+}
+
+.wrap {
+  width: 520px;
+  margin: 40px auto;
+  background-color: #fff;
+  /* border: 1px solid #d3d3d3; */
+  border-radius: 16px;
+  padding: 36px 32px 40px;
+  box-sizing: border-box;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+
+img {
+  width: 24px;
+  height: 24px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header {
+  position: relative;
+}
+
+.header a {
+  position: absolute;
+  top: 8px;
+}
+
+.contentWrap {
+  margin: 24px 0 26px;
+}
+
+.formList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.formList > input,
+.formList > select {
+  width: 100%;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 12px 8px 10px;
+}
+
+.custom {
+  appearance: none;
+  background: url(../img/dropdown.png) no-repeat right 8px center;
+}
+
+.formCheck {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formCheck > input {
+  width: 16px;
+  margin-top: 2px;
+  border: 1px solid #a3a3a3;
+}
+
+.btnPrimary {
+  width: 100%;
+  height: 56px;
+  border: 0;
+  background-color: #121212;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.btnSecondary {
+  width: 120px;
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  background-color: #e3e3e3;
+  color: #121212;
+  border-radius: 4px;
+}
+
+.btnTaxtWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+.btnText {
+  color: #666;
+}
+
+.successMessage {
+  display: flex;
+  justify-content: center;
+}
+
+.fontSize {
+  font-size: 18px;
+}
+
+.color {
+  color: rgb(221, 144, 0);
+}
